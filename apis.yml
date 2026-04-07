@@ -10,14 +10,13 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
-  - Developer Portals
-  - Platform Engineering
-  - Software Catalog
-  - Internal Developer Portal
-  - Self-Service
-  - Scorecards
   - Automations
+  - Developer Portals
+  - Internal Developer Portal
+  - Platform Engineering
+  - Scorecards
+  - Self-Service
+  - Software Catalog
 created: '2025-01-08'
 modified: '2026-03-03'
 url: https://raw.githubusercontent.com/api-evangelist/port/refs/heads/main/apis.yml
@@ -33,12 +32,11 @@ apis:
     humanURL: https://docs.getport.io/api-reference/port-api/
     baseURL: https://api.getport.io
     tags:
-      - API
+      - Actions
       - Blueprints
       - Entities
-      - Actions
-      - Scorecards
       - Integrations
+      - Scorecards
       - Software Catalog
     properties:
       - type: Documentation
