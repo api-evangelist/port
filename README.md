@@ -5,18 +5,18 @@ This API is documented in the OpenAPI format and provides programmatic access to
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
 
 ## Tags:
 
- - API, Developer Portals, Platform Engineering, Software Catalog, Internal Developer Portal, Self-Service, Scorecards, Automations
+ - Automations, Developer Portals, Internal Developer Portal, Platform Engineering, Scorecards, Self-Service, Software Catalog
 
 ## Timestamps
 
-- **Created:** 2025-01-08 
-- **Modified:** 2026-03-03 
+- **Created:** 2025-01-08
+- **Modified:** 2026-04-28
 
 ## APIs
 
@@ -25,16 +25,18 @@ This API is documented in the OpenAPI format and provides programmatic access to
 
 **Human URL:** [https://docs.getport.io/api-reference/port-api/](https://docs.getport.io/api-reference/port-api/)
 
+**Base URL:** [https://api.getport.io](https://api.getport.io)
 
 #### Tags:
 
- - API, Blueprints, Entities, Actions, Scorecards, Integrations, Software Catalog
+ - Actions, Blueprints, Entities, Integrations, Scorecards, Software Catalog
 
 #### Properties
 
 - [Documentation](https://docs.getport.io/api-reference/port-api/)
 - [APIGettingStarted](https://docs.port.io/getting-started/overview/)
 - [Authentication](https://docs.port.io/build-your-software-catalog/custom-integration/api/)
+- [OpenAPI](openapi/port-openapi.yml)
 
 ## Common Properties
 

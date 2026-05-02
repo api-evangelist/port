@@ -18,7 +18,7 @@ tags:
   - Self-Service
   - Software Catalog
 created: '2025-01-08'
-modified: '2026-03-03'
+modified: '2026-04-28'
 url: https://raw.githubusercontent.com/api-evangelist/port/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
@@ -45,6 +45,8 @@ apis:
         url: https://docs.port.io/getting-started/overview/
       - type: Authentication
         url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+      - type: OpenAPI
+        url: openapi/port-openapi.yml
 common:
   - type: Portal
     url: https://www.port.io/
