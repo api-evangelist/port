@@ -1,0 +1,13 @@
+{
+  "repo": "port",
+  "feeds": [
+    {
+      "source": "https://www.port.io/blog",
+      "feed_url": "https://www.port.io/blog/rss.xml",
+      "saved": 10,
+      "title": "Developer Experience & Platform Engineering Blog | Port"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:34:09Z"
+}
