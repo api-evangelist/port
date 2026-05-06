@@ -1,0 +1,3351 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Port API
+  description: Port API API capability.
+  tags:
+  - Port
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: port
+    baseUri: https://api.example.com
+    description: Port API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: Authorization
+      value: '{{PORT_TOKEN}}'
+    resources:
+    - name: v1-blueprints-blueprint-identifier-permissions
+      path: /v1/blueprints/{blueprint_identifier}/permissions
+      operations:
+      - name: get-v1-blueprints-blueprint-identifier-permissio
+        method: GET
+        description: Get a blueprint's permissions
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patch-v1-blueprints-blueprint-identifier-permiss
+        method: PATCH
+        description: Update a blueprint's permissions
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-permissions-s
+      path: /v1/blueprints/{blueprint_identifier}/permissions/simulate
+      operations:
+      - name: post-v1-blueprints-blueprint-identifier-permissi
+        method: POST
+        description: Simulate permissions for a user
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-pages-page-identifier-permissions
+      path: /v1/pages/{page_identifier}/permissions
+      operations:
+      - name: get-v1-pages-page-identifier-permissions
+        method: GET
+        description: Get a page's permissions
+        inputParameters:
+        - name: page_identifier
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patch-v1-pages-page-identifier-permissions
+        method: PATCH
+        description: Update a page's permissions
+        inputParameters:
+        - name: page_identifier
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-auth-access-token
+      path: /v1/auth/access_token
+      operations:
+      - name: post-v1-auth-access-token
+        method: POST
+        description: Create an access token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-entities
+      path: /v1/blueprints/{blueprint_identifier}/entities
+      operations:
+      - name: post-v1-blueprints-blueprint-identifier-entities
+        method: POST
+        description: Create an entity
+        inputParameters:
+        - name: upsert
+          in: query
+          type: boolean
+          required: true
+          description: If `true`, this call will override the entire entity/ies, if it/they already exist/s.
+        - name: validation_only
+          in: query
+          type: boolean
+          description: If `true`, this call will only validate the entity/ies and return the validation errors.
+        - name: create_missing_related_entities
+          in: query
+          type: boolean
+          description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to
+            create an entity and its related entities in one call, or if
+        - name: merge
+          in: query
+          type: boolean
+          description: If `true` and `upsert` is also `true`, this call will update the entity/ies, if it/they already exist/s.
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-v1-blueprints-blueprint-identifier-entities
+        method: GET
+        description: Get all entities of a blueprint
+        inputParameters:
+        - name: exclude_calculated_properties
+          in: query
+          type: boolean
+          description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+        - name: include
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+            Only these values will be retu
+        - name: exclude
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+            to be ommitted from the respons
+        - name: attach_title_to_relation
+          in: query
+          type: boolean
+        - name: attach_identifier_to_title_mirror_properties
+          in: query
+          type: boolean
+        - name: allow_partial_results
+          in: query
+          type: boolean
+          description: When enabled allows some of the blueprint searches to fail without failing the full request.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-entities-bulk
+      path: /v1/blueprints/{blueprint_identifier}/entities/bulk
+      operations:
+      - name: post-v1-blueprints-blueprint-identifier-entities
+        method: POST
+        description: Create multiple entities
+        inputParameters:
+        - name: upsert
+          in: query
+          type: boolean
+          required: true
+          description: If `true`, this call will override the entire entity/ies, if it/they already exist/s.
+        - name: validation_only
+          in: query
+          type: boolean
+          description: If `true`, this call will only validate the entity/ies and return the validation errors.
+        - name: create_missing_related_entities
+          in: query
+          type: boolean
+          description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to
+            create an entity and its related entities in one call, or if
+        - name: merge
+          in: query
+          type: boolean
+          description: If `true` and `upsert` is also `true`, this call will update the entity/ies, if it/they already exist/s.
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-entities-enti
+      path: /v1/blueprints/{blueprint_identifier}/entities/{entity_identifier}
+      operations:
+      - name: patch-v1-blueprints-blueprint-identifier-entitie
+        method: PATCH
+        description: Update an entity
+        inputParameters:
+        - name: create_missing_related_entities
+          in: query
+          type: boolean
+          description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to
+            create an entity and its related entities in one call, or if
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: entity_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the entity to operate on.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put-v1-blueprints-blueprint-identifier-entities-
+        method: PUT
+        description: Change an entity
+        inputParameters:
+        - name: create_missing_related_entities
+          in: query
+          type: boolean
+          description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to
+            create an entity and its related entities in one call, or if
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: entity_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the entity to operate on.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-v1-blueprints-blueprint-identifier-entities-
+        method: GET
+        description: Get an entity
+        inputParameters:
+        - name: exclude_calculated_properties
+          in: query
+          type: boolean
+          description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+        - name: include
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+            Only these values will be retu
+        - name: exclude
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+            to be ommitted from the respons
+        - name: attach_title_to_relation
+          in: query
+          type: boolean
+        - name: attach_identifier_to_title_mirror_properties
+          in: query
+          type: boolean
+        - name: allow_partial_results
+          in: query
+          type: boolean
+          description: When enabled allows some of the blueprint searches to fail without failing the full request.
+        - name: entity_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the entity to operate on.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-v1-blueprints-blueprint-identifier-entiti
+        method: DELETE
+        description: Delete an entity
+        inputParameters:
+        - name: delete_dependents
+          in: query
+          type: boolean
+          required: true
+          description: If `true`, this call will also delete all entities with a relation to the deleted entity.
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: entity_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the entity to operate on.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-entities-coun
+      path: /v1/blueprints/{blueprint_identifier}/entities-count
+      operations:
+      - name: get-v1-blueprints-blueprint-identifier-entities-
+        method: GET
+        description: Get a blueprint's entity count
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-all-entities
+      path: /v1/blueprints/{blueprint_identifier}/all-entities
+      operations:
+      - name: delete-v1-blueprints-blueprint-identifier-all-en
+        method: DELETE
+        description: Delete all entities of a blueprint
+        inputParameters:
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the deleted entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: delete_blueprint
+          in: query
+          type: boolean
+          description: If `true`, this call will also delete the blueprint itself.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-bulk-entities
+      path: /v1/blueprints/{blueprint_identifier}/bulk/entities/delete
+      operations:
+      - name: post-v1-blueprints-blueprint-identifier-bulk-ent
+        method: POST
+        description: Delete multiple entities
+        inputParameters:
+        - name: delete_dependents
+          in: query
+          type: boolean
+          required: true
+          description: If `true`, this call will also delete all entities with a relation to the deleted entity.
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-entities-search
+      path: /v1/entities/search
+      operations:
+      - name: post-v1-entities-search
+        method: POST
+        description: Search entities
+        inputParameters:
+        - name: exclude_calculated_properties
+          in: query
+          type: boolean
+          description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+        - name: include
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+            Only these values will be retu
+        - name: exclude
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+            to be ommitted from the respons
+        - name: attach_title_to_relation
+          in: query
+          type: boolean
+        - name: attach_identifier_to_title_mirror_properties
+          in: query
+          type: boolean
+        - name: allow_partial_results
+          in: query
+          type: boolean
+          description: When enabled allows some of the blueprint searches to fail without failing the full request.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-entities-sear
+      path: /v1/blueprints/{blueprint_identifier}/entities/search
+      operations:
+      - name: post-v1-blueprints-blueprint-identifier-entities
+        method: POST
+        description: Search a blueprint's entities
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint whose entities you want to search.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-entities-aggregate
+      path: /v1/entities/aggregate
+      operations:
+      - name: post-v1-entities-aggregate
+        method: POST
+        description: Aggregate entities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-entities-aggregate-over-time
+      path: /v1/entities/aggregate-over-time
+      operations:
+      - name: post-v1-entities-aggregate-over-time
+        method: POST
+        description: Aggregate entities over time
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-entities-properties-history
+      path: /v1/entities/properties-history
+      operations:
+      - name: post-v1-entities-properties-history
+        method: POST
+        description: Fetch the history of an entity's properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints
+      path: /v1/blueprints
+      operations:
+      - name: get-v1-blueprints
+        method: GET
+        description: Get all blueprints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post-v1-blueprints
+        method: POST
+        description: Create a blueprint
+        inputParameters:
+        - name: create_catalog_page
+          in: query
+          type: boolean
+          description: If true, a catalog page will be created for this blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-identifier
+      path: /v1/blueprints/{identifier}
+      operations:
+      - name: get-v1-blueprints-identifier
+        method: GET
+        description: Get a blueprint
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the resource you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put-v1-blueprints-identifier
+        method: PUT
+        description: Change a blueprint
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the resource you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patch-v1-blueprints-identifier
+        method: PATCH
+        description: Update a blueprint
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the resource you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-v1-blueprints-identifier
+        method: DELETE
+        description: Delete a blueprint
+        inputParameters:
+        - name: delete_actions
+          in: query
+          type: boolean
+          description: If `true`, all self-service actions associated with this blueprint will be deleted as well.
+        - name: identifier
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the resource you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-properties-pr
+      path: /v1/blueprints/{blueprint_identifier}/properties/{property_identifier}/rename
+      operations:
+      - name: patch-v1-blueprints-blueprint-identifier-propert
+        method: PATCH
+        description: Rename a property in a blueprint
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint you want to change.
+        - name: property_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the property you want to rename.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-mirror-proper
+      path: /v1/blueprints/{blueprint_identifier}/mirror/{property_identifier}/rename
+      operations:
+      - name: patch-v1-blueprints-blueprint-identifier-mirror-
+        method: PATCH
+        description: Rename a blueprint's mirror property
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint you want to change.
+        - name: property_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the property you want to rename.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-relations-rel
+      path: /v1/blueprints/{blueprint_identifier}/relations/{relation_identifier}/rename
+      operations:
+      - name: patch-v1-blueprints-blueprint-identifier-relatio
+        method: PATCH
+        description: Rename a blueprint's relation
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the blueprint you want to change.
+        - name: relation_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the relation you want to rename.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-actions
+      path: /v1/actions
+      operations:
+      - name: post-v1-actions
+        method: POST
+        description: Create an action/automation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-v1-actions
+        method: GET
+        description: Get actions/automations
+        inputParameters:
+        - name: action_identifier
+          in: query
+          type: array
+          description: The identifier/s of the action/s and/or automation/s you want to fetch.
+        - name: blueprint_identifier
+          in: query
+          type: array
+          description: The identifier/s of the blueprint/s whose actions/automations you wish to fetch.
+        - name: operation
+          in: query
+          type: array
+          description: The [operation type/s](https://docs.port.io/create-self-service-experiences/setup-ui-for-action/#basic-details)
+            of the action/s you want to fetch. Relevant only
+        - name: published
+          in: query
+          type: boolean
+          description: Only relevant for **automations**. If `true`, only published automations will be fetched.
+        - name: trigger_type
+          in: query
+          type: string
+        - name: trigger_event
+          in: query
+          type: array
+          description: The event/s that triggered the automation/s you want to fetch. Relevant only for automations.
+        - name: trigger_event_action_identifier
+          in: query
+          type: array
+        - name: version
+          in: query
+          type: string
+          description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-actions-action-identifier
+      path: /v1/actions/{action_identifier}
+      operations:
+      - name: put-v1-actions-action-identifier
+        method: PUT
+        description: Change an action/automation
+        inputParameters:
+        - name: action_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action/automation you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-v1-actions-action-identifier
+        method: GET
+        description: Get an action/automation
+        inputParameters:
+        - name: action_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action/automation you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-v1-actions-action-identifier
+        method: DELETE
+        description: Delete an action/automation
+        inputParameters:
+        - name: action_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action/automation you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-actions
+      path: /v1/blueprints/{blueprint_identifier}/actions
+      operations:
+      - name: post-v1-blueprints-blueprint-identifier-actions
+        method: POST
+        description: This route is deprecated since November 20th 2024
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: nullable
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put-v1-blueprints-blueprint-identifier-actions
+        method: PUT
+        description: This route is deprecated since November 20th 2024
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: nullable
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-v1-blueprints-blueprint-identifier-actions
+        method: GET
+        description: This route is deprecated since November 20th 2024
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: nullable
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blueprints-blueprint-identifier-actions-actio
+      path: /v1/blueprints/{blueprint_identifier}/actions/{action_identifier}
+      operations:
+      - name: put-v1-blueprints-blueprint-identifier-actions-a
+        method: PUT
+        description: This route is deprecated since November 20th 2024
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: nullable
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-v1-blueprints-blueprint-identifier-actions-a
+        method: GET
+        description: This route is deprecated since November 20th 2024
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: nullable
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-v1-blueprints-blueprint-identifier-action
+        method: DELETE
+        description: This route is deprecated since November 20th 2024
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: nullable
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-actions-action-identifier-runs
+      path: /v1/actions/{action_identifier}/runs
+      operations:
+      - name: post-v1-actions-action-identifier-runs
+        method: POST
+        description: Execute a self-service action
+        inputParameters:
+        - name: run_as
+          in: query
+          type: string
+          description: The executing user of the action. If not provided, the action will be run on behalf of the user/machine
+            who initiated the action (identified by the bearer token
+        - name: action_identifier
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action/automation you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-actions-runs-run-id
+      path: /v1/actions/runs/{run_id}
+      operations:
+      - name: patch-v1-actions-runs-run-id
+        method: PATCH
+        description: Update an action run
+        inputParameters:
+        - name: version
+          in: query
+          type: string
+          description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+        - name: run_id
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action run.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-v1-actions-runs-run-id
+        method: GET
+        description: Get an action run's details
+        inputParameters:
+        - name: version
+          in: query
+          type: string
+          description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+        - name: run_id
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action run.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-actions-runs-run-id-approval
+      path: /v1/actions/runs/{run_id}/approval
+      operations:
+      - name: patch-v1-actions-runs-run-id-approval
+        method: PATCH
+        description: Approve an action run
+        inputParameters:
+        - name: version
+          in: query
+          type: string
+          description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+        - name: run_id
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action run.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-actions-runs
+      path: /v1/actions/runs
+      operations:
+      - name: get-v1-actions-runs
+        method: GET
+        description: Get all action runs
+        inputParameters:
+        - name: entity
+          in: query
+          type: string
+          description: The identifier of the entity associated with the action run.
+        - name: blueprint
+          in: query
+          type: string
+          description: The identifier of the blueprint associated with the action run.
+        - name: active
+          in: query
+          type: boolean
+          description: If `true`, only running action runs will be fetched.
+        - name: user_email
+          in: query
+          type: string
+          description: The email of the user who initiated the action run.
+        - name: user_id
+          in: query
+          type: string
+          description: The id of the user who initiated the action run.
+        - name: limit
+          in: query
+          type: number
+          description: The maximum number of action runs to fetch.
+        - name: exclude
+          in: query
+          type: array
+          description: The fields to exclude from the response
+        - name: external_run_id
+          in: query
+          type: string
+          description: The run id of your backend, for example the id that GitHub gives the workflow. This can be used to
+            identify the action run instead of the `run_id`.
+        - name: version
+          in: query
+          type: string
+          description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+        - name: action
+          in: query
+          type: string
+        - name: source
+          in: query
+          type: array
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-actions-runs-run-id-logs
+      path: /v1/actions/runs/{run_id}/logs
+      operations:
+      - name: post-v1-actions-runs-run-id-logs
+        method: POST
+        description: Add a log to an action run
+        inputParameters:
+        - name: run_id
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action run.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-v1-actions-runs-run-id-logs
+        method: GET
+        description: Get an action's run logs
+        inputParameters:
+        - name: limit
+          in: query
+          type: number
+          description: The maximum number of logs to fetch.
+        - name: offset
+          in: query
+          type: number
+          description: The number of logs to skip.
+        - name: run_id
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action run.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-actions-runs-run-id-approvers
+      path: /v1/actions/runs/{run_id}/approvers
+      operations:
+      - name: get-v1-actions-runs-run-id-approvers
+        method: GET
+        description: Get an action run's approvers
+        inputParameters:
+        - name: include_pending_approvers
+          in: query
+          type: boolean
+          required: true
+          description: If `true`, the route will also return the users who have not yet approved the action run.
+        - name: run_id
+          in: path
+          type: string
+          required: true
+          description: The identifier of the action run.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-pages
+      path: /v1/pages
+      operations:
+      - name: get-v1-pages
+        method: GET
+        description: Get all pages in your portal
+        inputParameters:
+        - name: compact
+          in: query
+          type: boolean
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post-v1-pages
+        method: POST
+        description: Create pages in your portal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-pages-identifier
+      path: /v1/pages/{identifier}
+      operations:
+      - name: get-v1-pages-identifier
+        method: GET
+        description: Get a page
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the resource you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patch-v1-pages-identifier
+        method: PATCH
+        description: Patch a page
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the resource you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-v1-pages-identifier
+        method: DELETE
+        description: Delete a page
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the resource you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-pages-identifier-duplicate
+      path: /v1/pages/{identifier}/duplicate
+      operations:
+      - name: post-v1-pages-identifier-duplicate
+        method: POST
+        description: Duplicate a page
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the resource you want to operate on.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-pages-page-identifier-widgets
+      path: /v1/pages/{page_identifier}/widgets
+      operations:
+      - name: post-v1-pages-page-identifier-widgets
+        method: POST
+        description: Create a widget
+        inputParameters:
+        - name: page_identifier
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-pages-page-identifier-widgets-widget-id
+      path: /v1/pages/{page_identifier}/widgets/{widget_id}
+      operations:
+      - name: patch-v1-pages-page-identifier-widgets-widget-id
+        method: PATCH
+        description: Update a widget
+        inputParameters:
+        - name: page_identifier
+          in: path
+          type: string
+          required: true
+        - name: widget_id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-v1-pages-page-identifier-widgets-widget-i
+        method: DELETE
+        description: Delete a widget
+        inputParameters:
+        - name: page_identifier
+          in: path
+          type: string
+          required: true
+        - name: widget_id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-organization
+      path: /v1/organization
+      operations:
+      - name: get-v1-organization
+        method: GET
+        description: Get organization details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put-v1-organization
+        method: PUT
+        description: Change organization details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: port-rest
+    description: REST adapter for Port API.
+    resources:
+    - path: /v1/blueprints/{blueprint_identifier}/permissions
+      name: get-v1-blueprints-blueprint-identifier-permissio
+      operations:
+      - method: GET
+        name: get-v1-blueprints-blueprint-identifier-permissio
+        description: Get a blueprint's permissions
+        call: port.get-v1-blueprints-blueprint-identifier-permissio
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/permissions
+      name: patch-v1-blueprints-blueprint-identifier-permiss
+      operations:
+      - method: PATCH
+        name: patch-v1-blueprints-blueprint-identifier-permiss
+        description: Update a blueprint's permissions
+        call: port.patch-v1-blueprints-blueprint-identifier-permiss
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/permissions/simulate
+      name: post-v1-blueprints-blueprint-identifier-permissi
+      operations:
+      - method: POST
+        name: post-v1-blueprints-blueprint-identifier-permissi
+        description: Simulate permissions for a user
+        call: port.post-v1-blueprints-blueprint-identifier-permissi
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{page_identifier}/permissions
+      name: get-v1-pages-page-identifier-permissions
+      operations:
+      - method: GET
+        name: get-v1-pages-page-identifier-permissions
+        description: Get a page's permissions
+        call: port.get-v1-pages-page-identifier-permissions
+        with:
+          page_identifier: rest.page_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{page_identifier}/permissions
+      name: patch-v1-pages-page-identifier-permissions
+      operations:
+      - method: PATCH
+        name: patch-v1-pages-page-identifier-permissions
+        description: Update a page's permissions
+        call: port.patch-v1-pages-page-identifier-permissions
+        with:
+          page_identifier: rest.page_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/auth/access_token
+      name: post-v1-auth-access-token
+      operations:
+      - method: POST
+        name: post-v1-auth-access-token
+        description: Create an access token
+        call: port.post-v1-auth-access-token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities
+      name: post-v1-blueprints-blueprint-identifier-entities
+      operations:
+      - method: POST
+        name: post-v1-blueprints-blueprint-identifier-entities
+        description: Create an entity
+        call: port.post-v1-blueprints-blueprint-identifier-entities
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities
+      name: get-v1-blueprints-blueprint-identifier-entities
+      operations:
+      - method: GET
+        name: get-v1-blueprints-blueprint-identifier-entities
+        description: Get all entities of a blueprint
+        call: port.get-v1-blueprints-blueprint-identifier-entities
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities/bulk
+      name: post-v1-blueprints-blueprint-identifier-entities
+      operations:
+      - method: POST
+        name: post-v1-blueprints-blueprint-identifier-entities
+        description: Create multiple entities
+        call: port.post-v1-blueprints-blueprint-identifier-entities
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities/{entity_identifier}
+      name: patch-v1-blueprints-blueprint-identifier-entitie
+      operations:
+      - method: PATCH
+        name: patch-v1-blueprints-blueprint-identifier-entitie
+        description: Update an entity
+        call: port.patch-v1-blueprints-blueprint-identifier-entitie
+        with:
+          entity_identifier: rest.entity_identifier
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities/{entity_identifier}
+      name: put-v1-blueprints-blueprint-identifier-entities
+      operations:
+      - method: PUT
+        name: put-v1-blueprints-blueprint-identifier-entities-
+        description: Change an entity
+        call: port.put-v1-blueprints-blueprint-identifier-entities-
+        with:
+          entity_identifier: rest.entity_identifier
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities/{entity_identifier}
+      name: get-v1-blueprints-blueprint-identifier-entities
+      operations:
+      - method: GET
+        name: get-v1-blueprints-blueprint-identifier-entities-
+        description: Get an entity
+        call: port.get-v1-blueprints-blueprint-identifier-entities-
+        with:
+          entity_identifier: rest.entity_identifier
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities/{entity_identifier}
+      name: delete-v1-blueprints-blueprint-identifier-entiti
+      operations:
+      - method: DELETE
+        name: delete-v1-blueprints-blueprint-identifier-entiti
+        description: Delete an entity
+        call: port.delete-v1-blueprints-blueprint-identifier-entiti
+        with:
+          entity_identifier: rest.entity_identifier
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities-count
+      name: get-v1-blueprints-blueprint-identifier-entities
+      operations:
+      - method: GET
+        name: get-v1-blueprints-blueprint-identifier-entities-
+        description: Get a blueprint's entity count
+        call: port.get-v1-blueprints-blueprint-identifier-entities-
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/all-entities
+      name: delete-v1-blueprints-blueprint-identifier-all-en
+      operations:
+      - method: DELETE
+        name: delete-v1-blueprints-blueprint-identifier-all-en
+        description: Delete all entities of a blueprint
+        call: port.delete-v1-blueprints-blueprint-identifier-all-en
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/bulk/entities/delete
+      name: post-v1-blueprints-blueprint-identifier-bulk-ent
+      operations:
+      - method: POST
+        name: post-v1-blueprints-blueprint-identifier-bulk-ent
+        description: Delete multiple entities
+        call: port.post-v1-blueprints-blueprint-identifier-bulk-ent
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entities/search
+      name: post-v1-entities-search
+      operations:
+      - method: POST
+        name: post-v1-entities-search
+        description: Search entities
+        call: port.post-v1-entities-search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/entities/search
+      name: post-v1-blueprints-blueprint-identifier-entities
+      operations:
+      - method: POST
+        name: post-v1-blueprints-blueprint-identifier-entities
+        description: Search a blueprint's entities
+        call: port.post-v1-blueprints-blueprint-identifier-entities
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entities/aggregate
+      name: post-v1-entities-aggregate
+      operations:
+      - method: POST
+        name: post-v1-entities-aggregate
+        description: Aggregate entities
+        call: port.post-v1-entities-aggregate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entities/aggregate-over-time
+      name: post-v1-entities-aggregate-over-time
+      operations:
+      - method: POST
+        name: post-v1-entities-aggregate-over-time
+        description: Aggregate entities over time
+        call: port.post-v1-entities-aggregate-over-time
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/entities/properties-history
+      name: post-v1-entities-properties-history
+      operations:
+      - method: POST
+        name: post-v1-entities-properties-history
+        description: Fetch the history of an entity's properties
+        call: port.post-v1-entities-properties-history
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints
+      name: get-v1-blueprints
+      operations:
+      - method: GET
+        name: get-v1-blueprints
+        description: Get all blueprints
+        call: port.get-v1-blueprints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints
+      name: post-v1-blueprints
+      operations:
+      - method: POST
+        name: post-v1-blueprints
+        description: Create a blueprint
+        call: port.post-v1-blueprints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{identifier}
+      name: get-v1-blueprints-identifier
+      operations:
+      - method: GET
+        name: get-v1-blueprints-identifier
+        description: Get a blueprint
+        call: port.get-v1-blueprints-identifier
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{identifier}
+      name: put-v1-blueprints-identifier
+      operations:
+      - method: PUT
+        name: put-v1-blueprints-identifier
+        description: Change a blueprint
+        call: port.put-v1-blueprints-identifier
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{identifier}
+      name: patch-v1-blueprints-identifier
+      operations:
+      - method: PATCH
+        name: patch-v1-blueprints-identifier
+        description: Update a blueprint
+        call: port.patch-v1-blueprints-identifier
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{identifier}
+      name: delete-v1-blueprints-identifier
+      operations:
+      - method: DELETE
+        name: delete-v1-blueprints-identifier
+        description: Delete a blueprint
+        call: port.delete-v1-blueprints-identifier
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/properties/{property_identifier}/rename
+      name: patch-v1-blueprints-blueprint-identifier-propert
+      operations:
+      - method: PATCH
+        name: patch-v1-blueprints-blueprint-identifier-propert
+        description: Rename a property in a blueprint
+        call: port.patch-v1-blueprints-blueprint-identifier-propert
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          property_identifier: rest.property_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/mirror/{property_identifier}/rename
+      name: patch-v1-blueprints-blueprint-identifier-mirror
+      operations:
+      - method: PATCH
+        name: patch-v1-blueprints-blueprint-identifier-mirror-
+        description: Rename a blueprint's mirror property
+        call: port.patch-v1-blueprints-blueprint-identifier-mirror-
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          property_identifier: rest.property_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/relations/{relation_identifier}/rename
+      name: patch-v1-blueprints-blueprint-identifier-relatio
+      operations:
+      - method: PATCH
+        name: patch-v1-blueprints-blueprint-identifier-relatio
+        description: Rename a blueprint's relation
+        call: port.patch-v1-blueprints-blueprint-identifier-relatio
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          relation_identifier: rest.relation_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions
+      name: post-v1-actions
+      operations:
+      - method: POST
+        name: post-v1-actions
+        description: Create an action/automation
+        call: port.post-v1-actions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions
+      name: get-v1-actions
+      operations:
+      - method: GET
+        name: get-v1-actions
+        description: Get actions/automations
+        call: port.get-v1-actions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/{action_identifier}
+      name: put-v1-actions-action-identifier
+      operations:
+      - method: PUT
+        name: put-v1-actions-action-identifier
+        description: Change an action/automation
+        call: port.put-v1-actions-action-identifier
+        with:
+          action_identifier: rest.action_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/{action_identifier}
+      name: get-v1-actions-action-identifier
+      operations:
+      - method: GET
+        name: get-v1-actions-action-identifier
+        description: Get an action/automation
+        call: port.get-v1-actions-action-identifier
+        with:
+          action_identifier: rest.action_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/{action_identifier}
+      name: delete-v1-actions-action-identifier
+      operations:
+      - method: DELETE
+        name: delete-v1-actions-action-identifier
+        description: Delete an action/automation
+        call: port.delete-v1-actions-action-identifier
+        with:
+          action_identifier: rest.action_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/actions
+      name: post-v1-blueprints-blueprint-identifier-actions
+      operations:
+      - method: POST
+        name: post-v1-blueprints-blueprint-identifier-actions
+        description: This route is deprecated since November 20th 2024
+        call: port.post-v1-blueprints-blueprint-identifier-actions
+        with:
+          type: rest.type
+          nullable: rest.nullable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/actions
+      name: put-v1-blueprints-blueprint-identifier-actions
+      operations:
+      - method: PUT
+        name: put-v1-blueprints-blueprint-identifier-actions
+        description: This route is deprecated since November 20th 2024
+        call: port.put-v1-blueprints-blueprint-identifier-actions
+        with:
+          type: rest.type
+          nullable: rest.nullable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/actions
+      name: get-v1-blueprints-blueprint-identifier-actions
+      operations:
+      - method: GET
+        name: get-v1-blueprints-blueprint-identifier-actions
+        description: This route is deprecated since November 20th 2024
+        call: port.get-v1-blueprints-blueprint-identifier-actions
+        with:
+          type: rest.type
+          nullable: rest.nullable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/actions/{action_identifier}
+      name: put-v1-blueprints-blueprint-identifier-actions-a
+      operations:
+      - method: PUT
+        name: put-v1-blueprints-blueprint-identifier-actions-a
+        description: This route is deprecated since November 20th 2024
+        call: port.put-v1-blueprints-blueprint-identifier-actions-a
+        with:
+          type: rest.type
+          nullable: rest.nullable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/actions/{action_identifier}
+      name: get-v1-blueprints-blueprint-identifier-actions-a
+      operations:
+      - method: GET
+        name: get-v1-blueprints-blueprint-identifier-actions-a
+        description: This route is deprecated since November 20th 2024
+        call: port.get-v1-blueprints-blueprint-identifier-actions-a
+        with:
+          type: rest.type
+          nullable: rest.nullable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/blueprints/{blueprint_identifier}/actions/{action_identifier}
+      name: delete-v1-blueprints-blueprint-identifier-action
+      operations:
+      - method: DELETE
+        name: delete-v1-blueprints-blueprint-identifier-action
+        description: This route is deprecated since November 20th 2024
+        call: port.delete-v1-blueprints-blueprint-identifier-action
+        with:
+          type: rest.type
+          nullable: rest.nullable
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/{action_identifier}/runs
+      name: post-v1-actions-action-identifier-runs
+      operations:
+      - method: POST
+        name: post-v1-actions-action-identifier-runs
+        description: Execute a self-service action
+        call: port.post-v1-actions-action-identifier-runs
+        with:
+          action_identifier: rest.action_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/runs/{run_id}
+      name: patch-v1-actions-runs-run-id
+      operations:
+      - method: PATCH
+        name: patch-v1-actions-runs-run-id
+        description: Update an action run
+        call: port.patch-v1-actions-runs-run-id
+        with:
+          run_id: rest.run_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/runs/{run_id}
+      name: get-v1-actions-runs-run-id
+      operations:
+      - method: GET
+        name: get-v1-actions-runs-run-id
+        description: Get an action run's details
+        call: port.get-v1-actions-runs-run-id
+        with:
+          run_id: rest.run_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/runs/{run_id}/approval
+      name: patch-v1-actions-runs-run-id-approval
+      operations:
+      - method: PATCH
+        name: patch-v1-actions-runs-run-id-approval
+        description: Approve an action run
+        call: port.patch-v1-actions-runs-run-id-approval
+        with:
+          run_id: rest.run_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/runs
+      name: get-v1-actions-runs
+      operations:
+      - method: GET
+        name: get-v1-actions-runs
+        description: Get all action runs
+        call: port.get-v1-actions-runs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/runs/{run_id}/logs
+      name: post-v1-actions-runs-run-id-logs
+      operations:
+      - method: POST
+        name: post-v1-actions-runs-run-id-logs
+        description: Add a log to an action run
+        call: port.post-v1-actions-runs-run-id-logs
+        with:
+          run_id: rest.run_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/runs/{run_id}/logs
+      name: get-v1-actions-runs-run-id-logs
+      operations:
+      - method: GET
+        name: get-v1-actions-runs-run-id-logs
+        description: Get an action's run logs
+        call: port.get-v1-actions-runs-run-id-logs
+        with:
+          run_id: rest.run_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/actions/runs/{run_id}/approvers
+      name: get-v1-actions-runs-run-id-approvers
+      operations:
+      - method: GET
+        name: get-v1-actions-runs-run-id-approvers
+        description: Get an action run's approvers
+        call: port.get-v1-actions-runs-run-id-approvers
+        with:
+          run_id: rest.run_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages
+      name: get-v1-pages
+      operations:
+      - method: GET
+        name: get-v1-pages
+        description: Get all pages in your portal
+        call: port.get-v1-pages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages
+      name: post-v1-pages
+      operations:
+      - method: POST
+        name: post-v1-pages
+        description: Create pages in your portal
+        call: port.post-v1-pages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{identifier}
+      name: get-v1-pages-identifier
+      operations:
+      - method: GET
+        name: get-v1-pages-identifier
+        description: Get a page
+        call: port.get-v1-pages-identifier
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{identifier}
+      name: patch-v1-pages-identifier
+      operations:
+      - method: PATCH
+        name: patch-v1-pages-identifier
+        description: Patch a page
+        call: port.patch-v1-pages-identifier
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{identifier}
+      name: delete-v1-pages-identifier
+      operations:
+      - method: DELETE
+        name: delete-v1-pages-identifier
+        description: Delete a page
+        call: port.delete-v1-pages-identifier
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{identifier}/duplicate
+      name: post-v1-pages-identifier-duplicate
+      operations:
+      - method: POST
+        name: post-v1-pages-identifier-duplicate
+        description: Duplicate a page
+        call: port.post-v1-pages-identifier-duplicate
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{page_identifier}/widgets
+      name: post-v1-pages-page-identifier-widgets
+      operations:
+      - method: POST
+        name: post-v1-pages-page-identifier-widgets
+        description: Create a widget
+        call: port.post-v1-pages-page-identifier-widgets
+        with:
+          page_identifier: rest.page_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{page_identifier}/widgets/{widget_id}
+      name: patch-v1-pages-page-identifier-widgets-widget-id
+      operations:
+      - method: PATCH
+        name: patch-v1-pages-page-identifier-widgets-widget-id
+        description: Update a widget
+        call: port.patch-v1-pages-page-identifier-widgets-widget-id
+        with:
+          page_identifier: rest.page_identifier
+          widget_id: rest.widget_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{page_identifier}/widgets/{widget_id}
+      name: delete-v1-pages-page-identifier-widgets-widget-i
+      operations:
+      - method: DELETE
+        name: delete-v1-pages-page-identifier-widgets-widget-i
+        description: Delete a widget
+        call: port.delete-v1-pages-page-identifier-widgets-widget-i
+        with:
+          page_identifier: rest.page_identifier
+          widget_id: rest.widget_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organization
+      name: get-v1-organization
+      operations:
+      - method: GET
+        name: get-v1-organization
+        description: Get organization details
+        call: port.get-v1-organization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organization
+      name: put-v1-organization
+      operations:
+      - method: PUT
+        name: put-v1-organization
+        description: Change organization details
+        call: port.put-v1-organization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: port-mcp
+    transport: http
+    description: MCP adapter for Port API for AI agent use.
+    tools:
+    - name: get-v1-blueprints-blueprint-identifier-permissio
+      description: Get a blueprint's permissions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-blueprints-blueprint-identifier-permissio
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-blueprints-blueprint-identifier-permiss
+      description: Update a blueprint's permissions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-blueprints-blueprint-identifier-permiss
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-blueprints-blueprint-identifier-permissi
+      description: Simulate permissions for a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-blueprints-blueprint-identifier-permissi
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-pages-page-identifier-permissions
+      description: Get a page's permissions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-pages-page-identifier-permissions
+      with:
+        page_identifier: tools.page_identifier
+      inputParameters:
+      - name: page_identifier
+        type: string
+        description: page_identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-pages-page-identifier-permissions
+      description: Update a page's permissions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-pages-page-identifier-permissions
+      with:
+        page_identifier: tools.page_identifier
+      inputParameters:
+      - name: page_identifier
+        type: string
+        description: page_identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-auth-access-token
+      description: Create an access token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-auth-access-token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-blueprints-blueprint-identifier-entities
+      description: Create an entity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-blueprints-blueprint-identifier-entities
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        upsert: tools.upsert
+        validation_only: tools.validation_only
+        create_missing_related_entities: tools.create_missing_related_entities
+        merge: tools.merge
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: upsert
+        type: boolean
+        description: If `true`, this call will override the entire entity/ies, if it/they already exist/s.
+        required: true
+      - name: validation_only
+        type: boolean
+        description: If `true`, this call will only validate the entity/ies and return the validation errors.
+      - name: create_missing_related_entities
+        type: boolean
+        description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to create
+          an entity and its related entities in one call, or if
+      - name: merge
+        type: boolean
+        description: If `true` and `upsert` is also `true`, this call will update the entity/ies, if it/they already exist/s.
+      - name: run_id
+        type: string
+        description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+      - name: ocean_info_resync_id
+        type: string
+        description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+      - name: ocean_info_event_type
+        type: string
+        description: How the operation was triggered.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-blueprints-blueprint-identifier-entities
+      description: Get all entities of a blueprint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-blueprints-blueprint-identifier-entities
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        exclude_calculated_properties: tools.exclude_calculated_properties
+        include: tools.include
+        exclude: tools.exclude
+        attach_title_to_relation: tools.attach_title_to_relation
+        attach_identifier_to_title_mirror_properties: tools.attach_identifier_to_title_mirror_properties
+        allow_partial_results: tools.allow_partial_results
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: exclude_calculated_properties
+        type: boolean
+        description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+      - name: include
+        type: array
+        description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+          Only these values will be retu
+      - name: exclude
+        type: array
+        description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+          to be ommitted from the respons
+      - name: attach_title_to_relation
+        type: boolean
+        description: attach_title_to_relation
+      - name: attach_identifier_to_title_mirror_properties
+        type: boolean
+        description: attach_identifier_to_title_mirror_properties
+      - name: allow_partial_results
+        type: boolean
+        description: When enabled allows some of the blueprint searches to fail without failing the full request.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-blueprints-blueprint-identifier-entities
+      description: Create multiple entities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-blueprints-blueprint-identifier-entities
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        upsert: tools.upsert
+        validation_only: tools.validation_only
+        create_missing_related_entities: tools.create_missing_related_entities
+        merge: tools.merge
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: upsert
+        type: boolean
+        description: If `true`, this call will override the entire entity/ies, if it/they already exist/s.
+        required: true
+      - name: validation_only
+        type: boolean
+        description: If `true`, this call will only validate the entity/ies and return the validation errors.
+      - name: create_missing_related_entities
+        type: boolean
+        description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to create
+          an entity and its related entities in one call, or if
+      - name: merge
+        type: boolean
+        description: If `true` and `upsert` is also `true`, this call will update the entity/ies, if it/they already exist/s.
+      - name: run_id
+        type: string
+        description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+      - name: ocean_info_resync_id
+        type: string
+        description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+      - name: ocean_info_event_type
+        type: string
+        description: How the operation was triggered.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-blueprints-blueprint-identifier-entitie
+      description: Update an entity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-blueprints-blueprint-identifier-entitie
+      with:
+        entity_identifier: tools.entity_identifier
+        blueprint_identifier: tools.blueprint_identifier
+        create_missing_related_entities: tools.create_missing_related_entities
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+      inputParameters:
+      - name: entity_identifier
+        type: string
+        description: The identifier of the entity to operate on.
+        required: true
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: create_missing_related_entities
+        type: boolean
+        description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to create
+          an entity and its related entities in one call, or if
+      - name: run_id
+        type: string
+        description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+      - name: ocean_info_resync_id
+        type: string
+        description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+      - name: ocean_info_event_type
+        type: string
+        description: How the operation was triggered.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-v1-blueprints-blueprint-identifier-entities-
+      description: Change an entity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port.put-v1-blueprints-blueprint-identifier-entities-
+      with:
+        entity_identifier: tools.entity_identifier
+        blueprint_identifier: tools.blueprint_identifier
+        create_missing_related_entities: tools.create_missing_related_entities
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+      inputParameters:
+      - name: entity_identifier
+        type: string
+        description: The identifier of the entity to operate on.
+        required: true
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: create_missing_related_entities
+        type: boolean
+        description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to create
+          an entity and its related entities in one call, or if
+      - name: run_id
+        type: string
+        description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+      - name: ocean_info_resync_id
+        type: string
+        description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+      - name: ocean_info_event_type
+        type: string
+        description: How the operation was triggered.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-blueprints-blueprint-identifier-entities-
+      description: Get an entity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-blueprints-blueprint-identifier-entities-
+      with:
+        entity_identifier: tools.entity_identifier
+        blueprint_identifier: tools.blueprint_identifier
+        exclude_calculated_properties: tools.exclude_calculated_properties
+        include: tools.include
+        exclude: tools.exclude
+        attach_title_to_relation: tools.attach_title_to_relation
+        attach_identifier_to_title_mirror_properties: tools.attach_identifier_to_title_mirror_properties
+        allow_partial_results: tools.allow_partial_results
+      inputParameters:
+      - name: entity_identifier
+        type: string
+        description: The identifier of the entity to operate on.
+        required: true
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: exclude_calculated_properties
+        type: boolean
+        description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+      - name: include
+        type: array
+        description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+          Only these values will be retu
+      - name: exclude
+        type: array
+        description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+          to be ommitted from the respons
+      - name: attach_title_to_relation
+        type: boolean
+        description: attach_title_to_relation
+      - name: attach_identifier_to_title_mirror_properties
+        type: boolean
+        description: attach_identifier_to_title_mirror_properties
+      - name: allow_partial_results
+        type: boolean
+        description: When enabled allows some of the blueprint searches to fail without failing the full request.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-v1-blueprints-blueprint-identifier-entiti
+      description: Delete an entity
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port.delete-v1-blueprints-blueprint-identifier-entiti
+      with:
+        entity_identifier: tools.entity_identifier
+        blueprint_identifier: tools.blueprint_identifier
+        delete_dependents: tools.delete_dependents
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+      inputParameters:
+      - name: entity_identifier
+        type: string
+        description: The identifier of the entity to operate on.
+        required: true
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: delete_dependents
+        type: boolean
+        description: If `true`, this call will also delete all entities with a relation to the deleted entity.
+        required: true
+      - name: run_id
+        type: string
+        description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+      - name: ocean_info_resync_id
+        type: string
+        description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+      - name: ocean_info_event_type
+        type: string
+        description: How the operation was triggered.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-blueprints-blueprint-identifier-entities-
+      description: Get a blueprint's entity count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-blueprints-blueprint-identifier-entities-
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-v1-blueprints-blueprint-identifier-all-en
+      description: Delete all entities of a blueprint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port.delete-v1-blueprints-blueprint-identifier-all-en
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+        delete_blueprint: tools.delete_blueprint
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: run_id
+        type: string
+        description: You can provide a `run_id` to associate the deleted entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+      - name: ocean_info_resync_id
+        type: string
+        description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+      - name: ocean_info_event_type
+        type: string
+        description: How the operation was triggered.
+      - name: delete_blueprint
+        type: boolean
+        description: If `true`, this call will also delete the blueprint itself.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-blueprints-blueprint-identifier-bulk-ent
+      description: Delete multiple entities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-blueprints-blueprint-identifier-bulk-ent
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        delete_dependents: tools.delete_dependents
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint to operate on.
+        required: true
+      - name: delete_dependents
+        type: boolean
+        description: If `true`, this call will also delete all entities with a relation to the deleted entity.
+        required: true
+      - name: run_id
+        type: string
+        description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+      - name: ocean_info_resync_id
+        type: string
+        description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+      - name: ocean_info_event_type
+        type: string
+        description: How the operation was triggered.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-entities-search
+      description: Search entities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-entities-search
+      with:
+        exclude_calculated_properties: tools.exclude_calculated_properties
+        include: tools.include
+        exclude: tools.exclude
+        attach_title_to_relation: tools.attach_title_to_relation
+        attach_identifier_to_title_mirror_properties: tools.attach_identifier_to_title_mirror_properties
+        allow_partial_results: tools.allow_partial_results
+      inputParameters:
+      - name: exclude_calculated_properties
+        type: boolean
+        description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+      - name: include
+        type: array
+        description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+          Only these values will be retu
+      - name: exclude
+        type: array
+        description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+          to be ommitted from the respons
+      - name: attach_title_to_relation
+        type: boolean
+        description: attach_title_to_relation
+      - name: attach_identifier_to_title_mirror_properties
+        type: boolean
+        description: attach_identifier_to_title_mirror_properties
+      - name: allow_partial_results
+        type: boolean
+        description: When enabled allows some of the blueprint searches to fail without failing the full request.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-blueprints-blueprint-identifier-entities
+      description: Search a blueprint's entities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-blueprints-blueprint-identifier-entities
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint whose entities you want to search.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-entities-aggregate
+      description: Aggregate entities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-entities-aggregate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-entities-aggregate-over-time
+      description: Aggregate entities over time
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-entities-aggregate-over-time
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-entities-properties-history
+      description: Fetch the history of an entity's properties
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-entities-properties-history
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-blueprints
+      description: Get all blueprints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-blueprints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-blueprints
+      description: Create a blueprint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-blueprints
+      with:
+        create_catalog_page: tools.create_catalog_page
+      inputParameters:
+      - name: create_catalog_page
+        type: boolean
+        description: If true, a catalog page will be created for this blueprint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-blueprints-identifier
+      description: Get a blueprint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-blueprints-identifier
+      with:
+        identifier: tools.identifier
+      inputParameters:
+      - name: identifier
+        type: string
+        description: The unique identifier of the resource you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-v1-blueprints-identifier
+      description: Change a blueprint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port.put-v1-blueprints-identifier
+      with:
+        identifier: tools.identifier
+      inputParameters:
+      - name: identifier
+        type: string
+        description: The unique identifier of the resource you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-blueprints-identifier
+      description: Update a blueprint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-blueprints-identifier
+      with:
+        identifier: tools.identifier
+      inputParameters:
+      - name: identifier
+        type: string
+        description: The unique identifier of the resource you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-v1-blueprints-identifier
+      description: Delete a blueprint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port.delete-v1-blueprints-identifier
+      with:
+        identifier: tools.identifier
+        delete_actions: tools.delete_actions
+      inputParameters:
+      - name: identifier
+        type: string
+        description: The unique identifier of the resource you want to operate on.
+        required: true
+      - name: delete_actions
+        type: boolean
+        description: If `true`, all self-service actions associated with this blueprint will be deleted as well.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-blueprints-blueprint-identifier-propert
+      description: Rename a property in a blueprint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-blueprints-blueprint-identifier-propert
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        property_identifier: tools.property_identifier
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint you want to change.
+        required: true
+      - name: property_identifier
+        type: string
+        description: The identifier of the property you want to rename.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-blueprints-blueprint-identifier-mirror-
+      description: Rename a blueprint's mirror property
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-blueprints-blueprint-identifier-mirror-
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        property_identifier: tools.property_identifier
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint you want to change.
+        required: true
+      - name: property_identifier
+        type: string
+        description: The identifier of the property you want to rename.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-blueprints-blueprint-identifier-relatio
+      description: Rename a blueprint's relation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-blueprints-blueprint-identifier-relatio
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        relation_identifier: tools.relation_identifier
+      inputParameters:
+      - name: blueprint_identifier
+        type: string
+        description: The identifier of the blueprint you want to change.
+        required: true
+      - name: relation_identifier
+        type: string
+        description: The identifier of the relation you want to rename.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-actions
+      description: Create an action/automation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-actions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-actions
+      description: Get actions/automations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-actions
+      with:
+        action_identifier: tools.action_identifier
+        blueprint_identifier: tools.blueprint_identifier
+        operation: tools.operation
+        published: tools.published
+        trigger_type: tools.trigger_type
+        trigger_event: tools.trigger_event
+        trigger_event_action_identifier: tools.trigger_event_action_identifier
+        version: tools.version
+      inputParameters:
+      - name: action_identifier
+        type: array
+        description: The identifier/s of the action/s and/or automation/s you want to fetch.
+      - name: blueprint_identifier
+        type: array
+        description: The identifier/s of the blueprint/s whose actions/automations you wish to fetch.
+      - name: operation
+        type: array
+        description: The [operation type/s](https://docs.port.io/create-self-service-experiences/setup-ui-for-action/#basic-details)
+          of the action/s you want to fetch. Relevant only
+      - name: published
+        type: boolean
+        description: Only relevant for **automations**. If `true`, only published automations will be fetched.
+      - name: trigger_type
+        type: string
+        description: trigger_type
+      - name: trigger_event
+        type: array
+        description: The event/s that triggered the automation/s you want to fetch. Relevant only for automations.
+      - name: trigger_event_action_identifier
+        type: array
+        description: trigger_event_action_identifier
+      - name: version
+        type: string
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-v1-actions-action-identifier
+      description: Change an action/automation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port.put-v1-actions-action-identifier
+      with:
+        action_identifier: tools.action_identifier
+      inputParameters:
+      - name: action_identifier
+        type: string
+        description: The identifier of the action/automation you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-actions-action-identifier
+      description: Get an action/automation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-actions-action-identifier
+      with:
+        action_identifier: tools.action_identifier
+      inputParameters:
+      - name: action_identifier
+        type: string
+        description: The identifier of the action/automation you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-v1-actions-action-identifier
+      description: Delete an action/automation
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port.delete-v1-actions-action-identifier
+      with:
+        action_identifier: tools.action_identifier
+      inputParameters:
+      - name: action_identifier
+        type: string
+        description: The identifier of the action/automation you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-blueprints-blueprint-identifier-actions
+      description: This route is deprecated since November 20th 2024
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-blueprints-blueprint-identifier-actions
+      with:
+        type: tools.type
+        nullable: tools.nullable
+      inputParameters:
+      - name: type
+        type: string
+        description: type
+        required: true
+      - name: nullable
+        type: string
+        description: nullable
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-v1-blueprints-blueprint-identifier-actions
+      description: This route is deprecated since November 20th 2024
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port.put-v1-blueprints-blueprint-identifier-actions
+      with:
+        type: tools.type
+        nullable: tools.nullable
+      inputParameters:
+      - name: type
+        type: string
+        description: type
+        required: true
+      - name: nullable
+        type: string
+        description: nullable
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-blueprints-blueprint-identifier-actions
+      description: This route is deprecated since November 20th 2024
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-blueprints-blueprint-identifier-actions
+      with:
+        type: tools.type
+        nullable: tools.nullable
+      inputParameters:
+      - name: type
+        type: string
+        description: type
+        required: true
+      - name: nullable
+        type: string
+        description: nullable
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-v1-blueprints-blueprint-identifier-actions-a
+      description: This route is deprecated since November 20th 2024
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port.put-v1-blueprints-blueprint-identifier-actions-a
+      with:
+        type: tools.type
+        nullable: tools.nullable
+      inputParameters:
+      - name: type
+        type: string
+        description: type
+        required: true
+      - name: nullable
+        type: string
+        description: nullable
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-blueprints-blueprint-identifier-actions-a
+      description: This route is deprecated since November 20th 2024
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-blueprints-blueprint-identifier-actions-a
+      with:
+        type: tools.type
+        nullable: tools.nullable
+      inputParameters:
+      - name: type
+        type: string
+        description: type
+        required: true
+      - name: nullable
+        type: string
+        description: nullable
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-v1-blueprints-blueprint-identifier-action
+      description: This route is deprecated since November 20th 2024
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port.delete-v1-blueprints-blueprint-identifier-action
+      with:
+        type: tools.type
+        nullable: tools.nullable
+      inputParameters:
+      - name: type
+        type: string
+        description: type
+        required: true
+      - name: nullable
+        type: string
+        description: nullable
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-actions-action-identifier-runs
+      description: Execute a self-service action
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-actions-action-identifier-runs
+      with:
+        action_identifier: tools.action_identifier
+        run_as: tools.run_as
+      inputParameters:
+      - name: action_identifier
+        type: string
+        description: The identifier of the action/automation you want to operate on.
+        required: true
+      - name: run_as
+        type: string
+        description: The executing user of the action. If not provided, the action will be run on behalf of the user/machine
+          who initiated the action (identified by the bearer token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-actions-runs-run-id
+      description: Update an action run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-actions-runs-run-id
+      with:
+        run_id: tools.run_id
+        version: tools.version
+      inputParameters:
+      - name: run_id
+        type: string
+        description: The identifier of the action run.
+        required: true
+      - name: version
+        type: string
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-actions-runs-run-id
+      description: Get an action run's details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-actions-runs-run-id
+      with:
+        run_id: tools.run_id
+        version: tools.version
+      inputParameters:
+      - name: run_id
+        type: string
+        description: The identifier of the action run.
+        required: true
+      - name: version
+        type: string
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-actions-runs-run-id-approval
+      description: Approve an action run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-actions-runs-run-id-approval
+      with:
+        run_id: tools.run_id
+        version: tools.version
+      inputParameters:
+      - name: run_id
+        type: string
+        description: The identifier of the action run.
+        required: true
+      - name: version
+        type: string
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-actions-runs
+      description: Get all action runs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-actions-runs
+      with:
+        entity: tools.entity
+        blueprint: tools.blueprint
+        active: tools.active
+        user_email: tools.user_email
+        user_id: tools.user_id
+        limit: tools.limit
+        exclude: tools.exclude
+        external_run_id: tools.external_run_id
+        version: tools.version
+        action: tools.action
+        source: tools.source
+      inputParameters:
+      - name: entity
+        type: string
+        description: The identifier of the entity associated with the action run.
+      - name: blueprint
+        type: string
+        description: The identifier of the blueprint associated with the action run.
+      - name: active
+        type: boolean
+        description: If `true`, only running action runs will be fetched.
+      - name: user_email
+        type: string
+        description: The email of the user who initiated the action run.
+      - name: user_id
+        type: string
+        description: The id of the user who initiated the action run.
+      - name: limit
+        type: number
+        description: The maximum number of action runs to fetch.
+      - name: exclude
+        type: array
+        description: The fields to exclude from the response
+      - name: external_run_id
+        type: string
+        description: The run id of your backend, for example the id that GitHub gives the workflow. This can be used to identify
+          the action run instead of the `run_id`.
+      - name: version
+        type: string
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      - name: action
+        type: string
+        description: action
+      - name: source
+        type: array
+        description: source
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-actions-runs-run-id-logs
+      description: Add a log to an action run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-actions-runs-run-id-logs
+      with:
+        run_id: tools.run_id
+      inputParameters:
+      - name: run_id
+        type: string
+        description: The identifier of the action run.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-actions-runs-run-id-logs
+      description: Get an action's run logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-actions-runs-run-id-logs
+      with:
+        run_id: tools.run_id
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: run_id
+        type: string
+        description: The identifier of the action run.
+        required: true
+      - name: limit
+        type: number
+        description: The maximum number of logs to fetch.
+      - name: offset
+        type: number
+        description: The number of logs to skip.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-actions-runs-run-id-approvers
+      description: Get an action run's approvers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-actions-runs-run-id-approvers
+      with:
+        run_id: tools.run_id
+        include_pending_approvers: tools.include_pending_approvers
+      inputParameters:
+      - name: run_id
+        type: string
+        description: The identifier of the action run.
+        required: true
+      - name: include_pending_approvers
+        type: boolean
+        description: If `true`, the route will also return the users who have not yet approved the action run.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-pages
+      description: Get all pages in your portal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-pages
+      with:
+        compact: tools.compact
+      inputParameters:
+      - name: compact
+        type: boolean
+        description: compact
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-pages
+      description: Create pages in your portal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-pages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-pages-identifier
+      description: Get a page
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-pages-identifier
+      with:
+        identifier: tools.identifier
+      inputParameters:
+      - name: identifier
+        type: string
+        description: The unique identifier of the resource you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-pages-identifier
+      description: Patch a page
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-pages-identifier
+      with:
+        identifier: tools.identifier
+      inputParameters:
+      - name: identifier
+        type: string
+        description: The unique identifier of the resource you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-v1-pages-identifier
+      description: Delete a page
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port.delete-v1-pages-identifier
+      with:
+        identifier: tools.identifier
+      inputParameters:
+      - name: identifier
+        type: string
+        description: The unique identifier of the resource you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-pages-identifier-duplicate
+      description: Duplicate a page
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-pages-identifier-duplicate
+      with:
+        identifier: tools.identifier
+      inputParameters:
+      - name: identifier
+        type: string
+        description: The unique identifier of the resource you want to operate on.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-v1-pages-page-identifier-widgets
+      description: Create a widget
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.post-v1-pages-page-identifier-widgets
+      with:
+        page_identifier: tools.page_identifier
+      inputParameters:
+      - name: page_identifier
+        type: string
+        description: page_identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-v1-pages-page-identifier-widgets-widget-id
+      description: Update a widget
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port.patch-v1-pages-page-identifier-widgets-widget-id
+      with:
+        page_identifier: tools.page_identifier
+        widget_id: tools.widget_id
+      inputParameters:
+      - name: page_identifier
+        type: string
+        description: page_identifier
+        required: true
+      - name: widget_id
+        type: string
+        description: widget_id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-v1-pages-page-identifier-widgets-widget-i
+      description: Delete a widget
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port.delete-v1-pages-page-identifier-widgets-widget-i
+      with:
+        page_identifier: tools.page_identifier
+        widget_id: tools.widget_id
+      inputParameters:
+      - name: page_identifier
+        type: string
+        description: page_identifier
+        required: true
+      - name: widget_id
+        type: string
+        description: widget_id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-v1-organization
+      description: Get organization details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port.get-v1-organization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-v1-organization
+      description: Change organization details
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port.put-v1-organization
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    PORT_TOKEN: PORT_TOKEN
