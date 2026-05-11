@@ -84,6 +84,89 @@ common:
     url: https://app.getport.io
   - type: LinkedIn
     url: https://www.linkedin.com/company/getport
+integrations:
+  - name: Prometheus
+  - name: Rootly
+  - name: n8n
+  - name: Claude AI
+  - name: OpenAI
+  - name: Cursor
+  - name: ArmorCode
+  - name: Aikido
+  - name: Jira (self-hosted)
+  - name: Slack
+  - name: ServiceNow
+  - name: Wiz
+  - name: Falco Sidekick
+  - name: Linear
+  - name: SBOM
+  - name: Codecov
+  - name: Checkmarx
+  - name: Cookiecutter
+  - name: Amplication
+  - name: Trivy Operator
+  - name: Kyverno
+  - name: Statuspage
+  - name: FluxCD
+  - name: Split
+  - name: incident.io
+  - name: Terraform Cloud
+  - name: LaunchDarkly
+  - name: Humanitec
+  - name: Kratix (by Syntasso)
+  - name: Port Ocean
+  - name: Backstage
+  - name: GitOps
+  - name: Port S3
+  - name: Google Cloud Build
+  - name: Swagger
+  - name: GitHub Copilot
+  - name: JFrog
+  - name: Octopus Deploy
+  - name: MCP server
+  - name: Komodor
+  - name: Azure AD
+  - name: Azure
+  - name: Kafka
+  - name: AWS cost
+  - name: FireHydrant
+  - name: StackHawk
+  - name: OpenCost
+  - name: KubeCost
+  - name: Azure DevOps
+  - name: GitLab
+  - name: Bitbucket
+  - name: GitHub
+  - name: Red Hat OpenShift
+  - name: Google Workspace
+  - name: Snyk
+  - name: Datadog
+  - name: PagerDuty
+  - name: Knative
+  - name: Jenkins
+  - name: GCP
+  - name: JumpCloud
+  - name: GitLab Pipelines
+  - name: Webhook
+  - name: AWS
+  - name: Dynatrace
+  - name: Azure Pipelines
+  - name: GitHub Workflows
+  - name: Istio
+  - name: ArgoCD
+  - name: Kubernetes Exporter
+  - name: Grafana
+  - name: New Relic
+  - name: OpsGenie
+  - name: Sentry
+  - name: Jira
+  - name: SonarQube
+  - name: OneLogin
+  - name: Okta
+  - name: Pulumi
+  - name: Terraform
+  - name: CircleCI
+  - name: Codefresh
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
