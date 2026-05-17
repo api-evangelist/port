@@ -60,9 +60,9 @@ common:
     url: https://docs.port.io/guides/
   - type: Blog
     url: https://www.port.io/blog
-  - type: Changelog
+  - type: ChangeLog
     url: https://roadmap.port.io/changelog
-  - type: Status
+  - type: StatusPage
     url: https://status.port.io
   - type: Security
     url: https://www.port.io/security
