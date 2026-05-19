@@ -1,0 +1,581 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Port API — Blueprints
+  description: 'Port API — Blueprints. 12 operations. Lead operation: Get all blueprints. Self-contained Naftiko capability
+    covering one Port business surface.'
+  tags:
+  - Port
+  - Blueprints
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORT_API_KEY: PORT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: port-blueprints
+    baseUri: ''
+    description: Port API — Blueprints business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-blueprints
+      path: /v1/blueprints
+      operations:
+      - name: get
+        method: GET
+        description: Get all blueprints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post
+        method: POST
+        description: Create a blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: create_catalog_page
+          in: query
+          type: boolean
+          description: If true, a catalog page will be created for this blueprint
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-blueprints-blueprint_identifier-mirror-property_identifier-rename
+      path: /v1/blueprints/{blueprint_identifier}/mirror/{property_identifier}/rename
+      operations:
+      - name: patch
+        method: PATCH
+        description: Rename a blueprint's mirror property
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint you want to change.
+          required: true
+        - name: property_identifier
+          in: path
+          type: string
+          description: The identifier of the property you want to rename.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blueprints-blueprint_identifier-permissions
+      path: /v1/blueprints/{blueprint_identifier}/permissions
+      operations:
+      - name: get
+        method: GET
+        description: Get a blueprint's permissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+      - name: patch
+        method: PATCH
+        description: Update a blueprint's permissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blueprints-blueprint_identifier-permissions-simulate
+      path: /v1/blueprints/{blueprint_identifier}/permissions/simulate
+      operations:
+      - name: post
+        method: POST
+        description: Simulate permissions for a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-blueprints-blueprint_identifier-properties-property_identifier-rename
+      path: /v1/blueprints/{blueprint_identifier}/properties/{property_identifier}/rename
+      operations:
+      - name: patch
+        method: PATCH
+        description: Rename a property in a blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint you want to change.
+          required: true
+        - name: property_identifier
+          in: path
+          type: string
+          description: The identifier of the property you want to rename.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blueprints-blueprint_identifier-relations-relation_identifier-rename
+      path: /v1/blueprints/{blueprint_identifier}/relations/{relation_identifier}/rename
+      operations:
+      - name: patch
+        method: PATCH
+        description: Rename a blueprint's relation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint you want to change.
+          required: true
+        - name: relation_identifier
+          in: path
+          type: string
+          description: The identifier of the relation you want to rename.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blueprints-identifier
+      path: /v1/blueprints/{identifier}
+      operations:
+      - name: get
+        method: GET
+        description: Get a blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          description: The unique identifier of the resource you want to operate on.
+          required: true
+      - name: put
+        method: PUT
+        description: Change a blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          description: The unique identifier of the resource you want to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: patch
+        method: PATCH
+        description: Update a blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          description: The unique identifier of the resource you want to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: delete_actions
+          in: query
+          type: boolean
+          description: If `true`, all self-service actions associated with this blueprint will be deleted as well.
+        - name: identifier
+          in: path
+          type: string
+          description: The unique identifier of the resource you want to operate on.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.PORT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: port-blueprints-rest
+    port: 8080
+    description: REST adapter for Port API — Blueprints. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/blueprints
+      name: v1-blueprints
+      description: REST surface for v1-blueprints.
+      operations:
+      - method: GET
+        name: get
+        description: Get all blueprints
+        call: port-blueprints.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post
+        description: Create a blueprint
+        call: port-blueprints.post
+        with:
+          create_catalog_page: rest.create_catalog_page
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/mirror/{property-identifier}/rename
+      name: v1-blueprints-blueprint-identifier-mirror-property-identifier-rename
+      description: REST surface for v1-blueprints-blueprint_identifier-mirror-property_identifier-rename.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Rename a blueprint's mirror property
+        call: port-blueprints.patch
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          property_identifier: rest.property_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/permissions
+      name: v1-blueprints-blueprint-identifier-permissions
+      description: REST surface for v1-blueprints-blueprint_identifier-permissions.
+      operations:
+      - method: GET
+        name: get
+        description: Get a blueprint's permissions
+        call: port-blueprints.get
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: Update a blueprint's permissions
+        call: port-blueprints.patch
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/permissions/simulate
+      name: v1-blueprints-blueprint-identifier-permissions-simulate
+      description: REST surface for v1-blueprints-blueprint_identifier-permissions-simulate.
+      operations:
+      - method: POST
+        name: post
+        description: Simulate permissions for a user
+        call: port-blueprints.post
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/properties/{property-identifier}/rename
+      name: v1-blueprints-blueprint-identifier-properties-property-identifier-rename
+      description: REST surface for v1-blueprints-blueprint_identifier-properties-property_identifier-rename.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Rename a property in a blueprint
+        call: port-blueprints.patch
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          property_identifier: rest.property_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/relations/{relation-identifier}/rename
+      name: v1-blueprints-blueprint-identifier-relations-relation-identifier-rename
+      description: REST surface for v1-blueprints-blueprint_identifier-relations-relation_identifier-rename.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Rename a blueprint's relation
+        call: port-blueprints.patch
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          relation_identifier: rest.relation_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{identifier}
+      name: v1-blueprints-identifier
+      description: REST surface for v1-blueprints-identifier.
+      operations:
+      - method: GET
+        name: get
+        description: Get a blueprint
+        call: port-blueprints.get
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: Change a blueprint
+        call: port-blueprints.put
+        with:
+          identifier: rest.identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: Update a blueprint
+        call: port-blueprints.patch
+        with:
+          identifier: rest.identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a blueprint
+        call: port-blueprints.delete
+        with:
+          delete_actions: rest.delete_actions
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: port-blueprints-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Port API — Blueprints. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-all-blueprints
+      description: Get all blueprints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-blueprints.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-blueprint
+      description: Create a blueprint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-blueprints.post
+      with:
+        create_catalog_page: tools.create_catalog_page
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rename-blueprint-s-mirror-property
+      description: Rename a blueprint's mirror property
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-blueprints.patch
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        property_identifier: tools.property_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-blueprint-s-permissions
+      description: Get a blueprint's permissions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-blueprints.get
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-blueprint-s-permissions
+      description: Update a blueprint's permissions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-blueprints.patch
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: simulate-permissions-user
+      description: Simulate permissions for a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-blueprints.post
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rename-property-blueprint
+      description: Rename a property in a blueprint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-blueprints.patch
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        property_identifier: tools.property_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rename-blueprint-s-relation
+      description: Rename a blueprint's relation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-blueprints.patch
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        relation_identifier: tools.relation_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-blueprint
+      description: Get a blueprint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-blueprints.get
+      with:
+        identifier: tools.identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: change-blueprint
+      description: Change a blueprint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-blueprints.put
+      with:
+        identifier: tools.identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-blueprint
+      description: Update a blueprint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-blueprints.patch
+      with:
+        identifier: tools.identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-blueprint
+      description: Delete a blueprint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port-blueprints.delete
+      with:
+        delete_actions: tools.delete_actions
+        identifier: tools.identifier
+      outputParameters:
+      - type: object
+        mapping: $.

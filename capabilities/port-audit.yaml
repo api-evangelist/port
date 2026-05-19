@@ -1,0 +1,181 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Port API — Audit
+  description: 'Port API — Audit. 1 operations. Lead operation: Get audit logs. Self-contained Naftiko capability covering
+    one Port business surface.'
+  tags:
+  - Port
+  - Audit
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORT_API_KEY: PORT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: port-audit
+    baseUri: ''
+    description: Port API — Audit business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-audit-log
+      path: /v1/audit-log
+      operations:
+      - name: get
+        method: GET
+        description: Get audit logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: identifier
+          in: query
+          type: string
+          description: An identifier of the log event you want to fetch.
+        - name: entity
+          in: query
+          type: string
+          description: Fetch all audit logs related to the specified entity.
+        - name: include_deleted_entities
+          in: query
+          type: boolean
+          description: Include deleted entities when searching for audit logs. This requires the `entity`, `blueprint`, `status`,
+            `from` and `to` parameters. And the diff between `fro
+        - name: blueprint
+          in: query
+          type: string
+          description: Fetch all audit logs related to the specified blueprint.
+        - name: run_id
+          in: query
+          type: string
+          description: Fetch all audit logs related to the specified action run.
+        - name: webhookId
+          in: query
+          type: string
+          description: Fetch all audit logs related to the specified webhook.
+        - name: webhookEventId
+          in: query
+          type: string
+          description: Fetch all audit logs related to the specified webhook event.
+        - name: origin
+          in: query
+          type: array
+          description: Fetch all audit logs coming from the specified origin/s. This refers to the integration/s that triggered
+            the log. For operations performed via Port's UI, the or
+        - name: InstallationId
+          in: query
+          type: string
+          description: Fetch all audit logs related to the specified integration.
+        - name: resources
+          in: query
+          type: string
+          description: 'Fetch all audit logs related to the specified resource type/s.<br/>**Possible values**: [`blueprint`,
+            `entity`, `run`, `webhook`, `scorecard`, `action`, `integr'
+        - name: includes
+          in: query
+          type: array
+          description: The fields you want to include in the response. If used, only the specified fields will be included
+            in the response.
+        - name: from
+          in: query
+          type: string
+          description: The starting timestamp of the audit logs you want to fetch, in the ISO format `2022-04-23T18:25:43.511Z`.
+        - name: to
+          in: query
+          type: string
+          description: The ending timestamp of the audit logs you want to fetch, in the ISO format `2022-04-23T18:25:43.511Z`.
+        - name: action
+          in: query
+          type: string
+          description: Fetch all audit logs with the specified action type - `CREATE`, `UPDATE`, or `DELETE`.
+        - name: status
+          in: query
+          type: string
+          description: Fetch all audit logs with the specified status.
+        - name: limit
+          in: query
+          type: number
+          description: The maximum number of logs to return. Optional; defaults to `10000`. The previous default was `100000`,
+            which could cause `504 Gateway Timeout` on large account
+        - name: actionType
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.PORT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: port-audit-rest
+    port: 8080
+    description: REST adapter for Port API — Audit. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/v1/audit-log
+      name: v1-audit-log
+      description: REST surface for v1-audit-log.
+      operations:
+      - method: GET
+        name: get
+        description: Get audit logs
+        call: port-audit.get
+        with:
+          identifier: rest.identifier
+          entity: rest.entity
+          include_deleted_entities: rest.include_deleted_entities
+          blueprint: rest.blueprint
+          run_id: rest.run_id
+          webhookId: rest.webhookId
+          webhookEventId: rest.webhookEventId
+          origin: rest.origin
+          InstallationId: rest.InstallationId
+          resources: rest.resources
+          includes: rest.includes
+          from: rest.from
+          to: rest.to
+          action: rest.action
+          status: rest.status
+          limit: rest.limit
+          actionType: rest.actionType
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: port-audit-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Port API — Audit. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-audit-logs
+      description: Get audit logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-audit.get
+      with:
+        identifier: tools.identifier
+        entity: tools.entity
+        include_deleted_entities: tools.include_deleted_entities
+        blueprint: tools.blueprint
+        run_id: tools.run_id
+        webhookId: tools.webhookId
+        webhookEventId: tools.webhookEventId
+        origin: tools.origin
+        InstallationId: tools.InstallationId
+        resources: tools.resources
+        includes: tools.includes
+        from: tools.from
+        to: tools.to
+        action: tools.action
+        status: tools.status
+        limit: tools.limit
+        actionType: tools.actionType
+      outputParameters:
+      - type: object
+        mapping: $.

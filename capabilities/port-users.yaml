@@ -1,0 +1,249 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Port API — Users
+  description: 'Port API — Users. 5 operations. Lead operation: Get all users in your organization. Self-contained Naftiko
+    capability covering one Port business surface.'
+  tags:
+  - Port
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORT_API_KEY: PORT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: port-users
+    baseUri: ''
+    description: Port API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-users
+      path: /v1/users
+      operations:
+      - name: get
+        method: GET
+        description: Get all users in your organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: array
+          description: The fields you want to fetch for each user. If used, only the specified fields will be included in
+            the response.
+    - name: v1-users-invite
+      path: /v1/users/invite
+      operations:
+      - name: post
+        method: POST
+        description: Invite a user to your organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: notify
+          in: query
+          type: boolean
+          description: If `true`, the invitee will receive an email notification.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-users-user_email
+      path: /v1/users/{user_email}
+      operations:
+      - name: get
+        method: GET
+        description: Get a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_email
+          in: path
+          type: string
+          description: The email address of the user you want to operate on.
+          required: true
+      - name: patch
+        method: PATCH
+        description: Update a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_email
+          in: path
+          type: string
+          description: The email address of the user you want to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_email
+          in: path
+          type: string
+          description: The email address of the user you want to operate on.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.PORT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: port-users-rest
+    port: 8080
+    description: REST adapter for Port API — Users. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/v1/users
+      name: v1-users
+      description: REST surface for v1-users.
+      operations:
+      - method: GET
+        name: get
+        description: Get all users in your organization
+        call: port-users.get
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/users/invite
+      name: v1-users-invite
+      description: REST surface for v1-users-invite.
+      operations:
+      - method: POST
+        name: post
+        description: Invite a user to your organization
+        call: port-users.post
+        with:
+          notify: rest.notify
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/users/{user-email}
+      name: v1-users-user-email
+      description: REST surface for v1-users-user_email.
+      operations:
+      - method: GET
+        name: get
+        description: Get a user
+        call: port-users.get
+        with:
+          user_email: rest.user_email
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: Update a user
+        call: port-users.patch
+        with:
+          user_email: rest.user_email
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a user
+        call: port-users.delete
+        with:
+          user_email: rest.user_email
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: port-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Port API — Users. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-all-users-your-organization
+      description: Get all users in your organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-users.get
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: invite-user-your-organization
+      description: Invite a user to your organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-users.post
+      with:
+        notify: tools.notify
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user
+      description: Get a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-users.get
+      with:
+        user_email: tools.user_email
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user
+      description: Update a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-users.patch
+      with:
+        user_email: tools.user_email
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-user
+      description: Delete a user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port-users.delete
+      with:
+        user_email: tools.user_email
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,1032 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Port API — Entities
+  description: 'Port API — Entities. 15 operations. Lead operation: Delete all entities of a blueprint. Self-contained Naftiko
+    capability covering one Port business surface.'
+  tags:
+  - Port
+  - Entities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORT_API_KEY: PORT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: port-entities
+    baseUri: ''
+    description: Port API — Entities business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-blueprints-blueprint_identifier-all-entities
+      path: /v1/blueprints/{blueprint_identifier}/all-entities
+      operations:
+      - name: delete
+        method: DELETE
+        description: Delete all entities of a blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the deleted entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: delete_blueprint
+          in: query
+          type: boolean
+          description: If `true`, this call will also delete the blueprint itself.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+    - name: v1-blueprints-blueprint_identifier-bulk-entities-delete
+      path: /v1/blueprints/{blueprint_identifier}/bulk/entities/delete
+      operations:
+      - name: post
+        method: POST
+        description: Delete multiple entities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: delete_dependents
+          in: query
+          type: boolean
+          description: If `true`, this call will also delete all entities with a relation to the deleted entity.
+          required: true
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-blueprints-blueprint_identifier-entities
+      path: /v1/blueprints/{blueprint_identifier}/entities
+      operations:
+      - name: post
+        method: POST
+        description: Create an entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: upsert
+          in: query
+          type: boolean
+          description: If `true`, this call will override the entire entity/ies, if it/they already exist/s.
+          required: true
+        - name: validation_only
+          in: query
+          type: boolean
+          description: If `true`, this call will only validate the entity/ies and return the validation errors.
+        - name: create_missing_related_entities
+          in: query
+          type: boolean
+          description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to
+            create an entity and its related entities in one call, or if
+        - name: merge
+          in: query
+          type: boolean
+          description: If `true` and `upsert` is also `true`, this call will update the entity/ies, if it/they already exist/s.
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: get
+        method: GET
+        description: Get all entities of a blueprint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: exclude_calculated_properties
+          in: query
+          type: boolean
+          description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+        - name: include
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+            Only these values will be retu
+        - name: exclude
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+            to be ommitted from the respons
+        - name: attach_title_to_relation
+          in: query
+          type: boolean
+        - name: attach_identifier_to_title_mirror_properties
+          in: query
+          type: boolean
+        - name: allow_partial_results
+          in: query
+          type: boolean
+          description: When enabled allows some of the blueprint searches to fail without failing the full request.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+    - name: v1-blueprints-blueprint_identifier-entities-count
+      path: /v1/blueprints/{blueprint_identifier}/entities-count
+      operations:
+      - name: get
+        method: GET
+        description: Get a blueprint's entity count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+    - name: v1-blueprints-blueprint_identifier-entities-bulk
+      path: /v1/blueprints/{blueprint_identifier}/entities/bulk
+      operations:
+      - name: post
+        method: POST
+        description: Create multiple entities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: upsert
+          in: query
+          type: boolean
+          description: If `true`, this call will override the entire entity/ies, if it/they already exist/s.
+          required: true
+        - name: validation_only
+          in: query
+          type: boolean
+          description: If `true`, this call will only validate the entity/ies and return the validation errors.
+        - name: create_missing_related_entities
+          in: query
+          type: boolean
+          description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to
+            create an entity and its related entities in one call, or if
+        - name: merge
+          in: query
+          type: boolean
+          description: If `true` and `upsert` is also `true`, this call will update the entity/ies, if it/they already exist/s.
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-blueprints-blueprint_identifier-entities-search
+      path: /v1/blueprints/{blueprint_identifier}/entities/search
+      operations:
+      - name: post
+        method: POST
+        description: Search a blueprint's entities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint whose entities you want to search.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blueprints-blueprint_identifier-entities-entity_identifier
+      path: /v1/blueprints/{blueprint_identifier}/entities/{entity_identifier}
+      operations:
+      - name: patch
+        method: PATCH
+        description: Update an entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: create_missing_related_entities
+          in: query
+          type: boolean
+          description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to
+            create an entity and its related entities in one call, or if
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: entity_identifier
+          in: path
+          type: string
+          description: The identifier of the entity to operate on.
+          required: true
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: put
+        method: PUT
+        description: Change an entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: create_missing_related_entities
+          in: query
+          type: boolean
+          description: If `true`, this call will also create missing related entities.<br/>This is useful when you want to
+            create an entity and its related entities in one call, or if
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: entity_identifier
+          in: path
+          type: string
+          description: The identifier of the entity to operate on.
+          required: true
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: get
+        method: GET
+        description: Get an entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: exclude_calculated_properties
+          in: query
+          type: boolean
+          description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+        - name: include
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+            Only these values will be retu
+        - name: exclude
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+            to be ommitted from the respons
+        - name: attach_title_to_relation
+          in: query
+          type: boolean
+        - name: attach_identifier_to_title_mirror_properties
+          in: query
+          type: boolean
+        - name: allow_partial_results
+          in: query
+          type: boolean
+          description: When enabled allows some of the blueprint searches to fail without failing the full request.
+        - name: entity_identifier
+          in: path
+          type: string
+          description: The identifier of the entity to operate on.
+          required: true
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+      - name: delete
+        method: DELETE
+        description: Delete an entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: delete_dependents
+          in: query
+          type: boolean
+          description: If `true`, this call will also delete all entities with a relation to the deleted entity.
+          required: true
+        - name: run_id
+          in: query
+          type: string
+          description: You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-pr
+        - name: ocean_info_resync_id
+          in: query
+          type: string
+          description: Resync run identifier. Only valid when `ocean_info_event_type` is `resync`.
+        - name: ocean_info_event_type
+          in: query
+          type: string
+          description: How the operation was triggered.
+        - name: entity_identifier
+          in: path
+          type: string
+          description: The identifier of the entity to operate on.
+          required: true
+        - name: blueprint_identifier
+          in: path
+          type: string
+          description: The identifier of the blueprint to operate on.
+          required: true
+    - name: v1-entities-aggregate
+      path: /v1/entities/aggregate
+      operations:
+      - name: post
+        method: POST
+        description: Aggregate entities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-entities-aggregate-over-time
+      path: /v1/entities/aggregate-over-time
+      operations:
+      - name: post
+        method: POST
+        description: Aggregate entities over time
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-entities-properties-history
+      path: /v1/entities/properties-history
+      operations:
+      - name: post
+        method: POST
+        description: Fetch the history of an entity's properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-entities-search
+      path: /v1/entities/search
+      operations:
+      - name: post
+        method: POST
+        description: Search entities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: exclude_calculated_properties
+          in: query
+          type: boolean
+          description: If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/ca
+        - name: include
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure).
+            Only these values will be retu
+        - name: exclude
+          in: query
+          type: array
+          description: An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure)
+            to be ommitted from the respons
+        - name: attach_title_to_relation
+          in: query
+          type: boolean
+        - name: attach_identifier_to_title_mirror_properties
+          in: query
+          type: boolean
+        - name: allow_partial_results
+          in: query
+          type: boolean
+          description: When enabled allows some of the blueprint searches to fail without failing the full request.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.PORT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: port-entities-rest
+    port: 8080
+    description: REST adapter for Port API — Entities. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/v1/blueprints/{blueprint-identifier}/all-entities
+      name: v1-blueprints-blueprint-identifier-all-entities
+      description: REST surface for v1-blueprints-blueprint_identifier-all-entities.
+      operations:
+      - method: DELETE
+        name: delete
+        description: Delete all entities of a blueprint
+        call: port-entities.delete
+        with:
+          run_id: rest.run_id
+          ocean_info_resync_id: rest.ocean_info_resync_id
+          ocean_info_event_type: rest.ocean_info_event_type
+          delete_blueprint: rest.delete_blueprint
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/bulk/entities/delete
+      name: v1-blueprints-blueprint-identifier-bulk-entities-delete
+      description: REST surface for v1-blueprints-blueprint_identifier-bulk-entities-delete.
+      operations:
+      - method: POST
+        name: post
+        description: Delete multiple entities
+        call: port-entities.post
+        with:
+          delete_dependents: rest.delete_dependents
+          run_id: rest.run_id
+          ocean_info_resync_id: rest.ocean_info_resync_id
+          ocean_info_event_type: rest.ocean_info_event_type
+          blueprint_identifier: rest.blueprint_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/entities
+      name: v1-blueprints-blueprint-identifier-entities
+      description: REST surface for v1-blueprints-blueprint_identifier-entities.
+      operations:
+      - method: POST
+        name: post
+        description: Create an entity
+        call: port-entities.post
+        with:
+          upsert: rest.upsert
+          validation_only: rest.validation_only
+          create_missing_related_entities: rest.create_missing_related_entities
+          merge: rest.merge
+          run_id: rest.run_id
+          ocean_info_resync_id: rest.ocean_info_resync_id
+          ocean_info_event_type: rest.ocean_info_event_type
+          blueprint_identifier: rest.blueprint_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get
+        description: Get all entities of a blueprint
+        call: port-entities.get
+        with:
+          exclude_calculated_properties: rest.exclude_calculated_properties
+          include: rest.include
+          exclude: rest.exclude
+          attach_title_to_relation: rest.attach_title_to_relation
+          attach_identifier_to_title_mirror_properties: rest.attach_identifier_to_title_mirror_properties
+          allow_partial_results: rest.allow_partial_results
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/entities-count
+      name: v1-blueprints-blueprint-identifier-entities-count
+      description: REST surface for v1-blueprints-blueprint_identifier-entities-count.
+      operations:
+      - method: GET
+        name: get
+        description: Get a blueprint's entity count
+        call: port-entities.get
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/entities/bulk
+      name: v1-blueprints-blueprint-identifier-entities-bulk
+      description: REST surface for v1-blueprints-blueprint_identifier-entities-bulk.
+      operations:
+      - method: POST
+        name: post
+        description: Create multiple entities
+        call: port-entities.post
+        with:
+          upsert: rest.upsert
+          validation_only: rest.validation_only
+          create_missing_related_entities: rest.create_missing_related_entities
+          merge: rest.merge
+          run_id: rest.run_id
+          ocean_info_resync_id: rest.ocean_info_resync_id
+          ocean_info_event_type: rest.ocean_info_event_type
+          blueprint_identifier: rest.blueprint_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/entities/search
+      name: v1-blueprints-blueprint-identifier-entities-search
+      description: REST surface for v1-blueprints-blueprint_identifier-entities-search.
+      operations:
+      - method: POST
+        name: post
+        description: Search a blueprint's entities
+        call: port-entities.post
+        with:
+          blueprint_identifier: rest.blueprint_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blueprints/{blueprint-identifier}/entities/{entity-identifier}
+      name: v1-blueprints-blueprint-identifier-entities-entity-identifier
+      description: REST surface for v1-blueprints-blueprint_identifier-entities-entity_identifier.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Update an entity
+        call: port-entities.patch
+        with:
+          create_missing_related_entities: rest.create_missing_related_entities
+          run_id: rest.run_id
+          ocean_info_resync_id: rest.ocean_info_resync_id
+          ocean_info_event_type: rest.ocean_info_event_type
+          entity_identifier: rest.entity_identifier
+          blueprint_identifier: rest.blueprint_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: Change an entity
+        call: port-entities.put
+        with:
+          create_missing_related_entities: rest.create_missing_related_entities
+          run_id: rest.run_id
+          ocean_info_resync_id: rest.ocean_info_resync_id
+          ocean_info_event_type: rest.ocean_info_event_type
+          entity_identifier: rest.entity_identifier
+          blueprint_identifier: rest.blueprint_identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get
+        description: Get an entity
+        call: port-entities.get
+        with:
+          exclude_calculated_properties: rest.exclude_calculated_properties
+          include: rest.include
+          exclude: rest.exclude
+          attach_title_to_relation: rest.attach_title_to_relation
+          attach_identifier_to_title_mirror_properties: rest.attach_identifier_to_title_mirror_properties
+          allow_partial_results: rest.allow_partial_results
+          entity_identifier: rest.entity_identifier
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete an entity
+        call: port-entities.delete
+        with:
+          delete_dependents: rest.delete_dependents
+          run_id: rest.run_id
+          ocean_info_resync_id: rest.ocean_info_resync_id
+          ocean_info_event_type: rest.ocean_info_event_type
+          entity_identifier: rest.entity_identifier
+          blueprint_identifier: rest.blueprint_identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/entities/aggregate
+      name: v1-entities-aggregate
+      description: REST surface for v1-entities-aggregate.
+      operations:
+      - method: POST
+        name: post
+        description: Aggregate entities
+        call: port-entities.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/entities/aggregate-over-time
+      name: v1-entities-aggregate-over-time
+      description: REST surface for v1-entities-aggregate-over-time.
+      operations:
+      - method: POST
+        name: post
+        description: Aggregate entities over time
+        call: port-entities.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/entities/properties-history
+      name: v1-entities-properties-history
+      description: REST surface for v1-entities-properties-history.
+      operations:
+      - method: POST
+        name: post
+        description: Fetch the history of an entity's properties
+        call: port-entities.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/entities/search
+      name: v1-entities-search
+      description: REST surface for v1-entities-search.
+      operations:
+      - method: POST
+        name: post
+        description: Search entities
+        call: port-entities.post
+        with:
+          exclude_calculated_properties: rest.exclude_calculated_properties
+          include: rest.include
+          exclude: rest.exclude
+          attach_title_to_relation: rest.attach_title_to_relation
+          attach_identifier_to_title_mirror_properties: rest.attach_identifier_to_title_mirror_properties
+          allow_partial_results: rest.allow_partial_results
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: port-entities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Port API — Entities. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: delete-all-entities-blueprint
+      description: Delete all entities of a blueprint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port-entities.delete
+      with:
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+        delete_blueprint: tools.delete_blueprint
+        blueprint_identifier: tools.blueprint_identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-multiple-entities
+      description: Delete multiple entities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-entities.post
+      with:
+        delete_dependents: tools.delete_dependents
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+        blueprint_identifier: tools.blueprint_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-entity
+      description: Create an entity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-entities.post
+      with:
+        upsert: tools.upsert
+        validation_only: tools.validation_only
+        create_missing_related_entities: tools.create_missing_related_entities
+        merge: tools.merge
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+        blueprint_identifier: tools.blueprint_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-entities-blueprint
+      description: Get all entities of a blueprint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-entities.get
+      with:
+        exclude_calculated_properties: tools.exclude_calculated_properties
+        include: tools.include
+        exclude: tools.exclude
+        attach_title_to_relation: tools.attach_title_to_relation
+        attach_identifier_to_title_mirror_properties: tools.attach_identifier_to_title_mirror_properties
+        allow_partial_results: tools.allow_partial_results
+        blueprint_identifier: tools.blueprint_identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-blueprint-s-entity-count
+      description: Get a blueprint's entity count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-entities.get
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-multiple-entities
+      description: Create multiple entities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-entities.post
+      with:
+        upsert: tools.upsert
+        validation_only: tools.validation_only
+        create_missing_related_entities: tools.create_missing_related_entities
+        merge: tools.merge
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+        blueprint_identifier: tools.blueprint_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-blueprint-s-entities
+      description: Search a blueprint's entities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: port-entities.post
+      with:
+        blueprint_identifier: tools.blueprint_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-entity
+      description: Update an entity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-entities.patch
+      with:
+        create_missing_related_entities: tools.create_missing_related_entities
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+        entity_identifier: tools.entity_identifier
+        blueprint_identifier: tools.blueprint_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: change-entity
+      description: Change an entity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-entities.put
+      with:
+        create_missing_related_entities: tools.create_missing_related_entities
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+        entity_identifier: tools.entity_identifier
+        blueprint_identifier: tools.blueprint_identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-entity
+      description: Get an entity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-entities.get
+      with:
+        exclude_calculated_properties: tools.exclude_calculated_properties
+        include: tools.include
+        exclude: tools.exclude
+        attach_title_to_relation: tools.attach_title_to_relation
+        attach_identifier_to_title_mirror_properties: tools.attach_identifier_to_title_mirror_properties
+        allow_partial_results: tools.allow_partial_results
+        entity_identifier: tools.entity_identifier
+        blueprint_identifier: tools.blueprint_identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-entity
+      description: Delete an entity
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port-entities.delete
+      with:
+        delete_dependents: tools.delete_dependents
+        run_id: tools.run_id
+        ocean_info_resync_id: tools.ocean_info_resync_id
+        ocean_info_event_type: tools.ocean_info_event_type
+        entity_identifier: tools.entity_identifier
+        blueprint_identifier: tools.blueprint_identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aggregate-entities
+      description: Aggregate entities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-entities.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aggregate-entities-over-time
+      description: Aggregate entities over time
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-entities.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-history-entity-s-properties
+      description: Fetch the history of an entity's properties
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: port-entities.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-entities
+      description: Search entities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: port-entities.post
+      with:
+        exclude_calculated_properties: tools.exclude_calculated_properties
+        include: tools.include
+        exclude: tools.exclude
+        attach_title_to_relation: tools.attach_title_to_relation
+        attach_identifier_to_title_mirror_properties: tools.attach_identifier_to_title_mirror_properties
+        allow_partial_results: tools.allow_partial_results
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

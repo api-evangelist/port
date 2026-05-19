@@ -1,0 +1,300 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Port API — Webhook
+  description: 'Port API — Webhook. 7 operations. Lead operation: Create a webhook. Self-contained Naftiko capability covering
+    one Port business surface.'
+  tags:
+  - Port
+  - Webhook
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PORT_API_KEY: PORT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: port-webhook
+    baseUri: ''
+    description: Port API — Webhook business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-webhooks
+      path: /v1/webhooks
+      operations:
+      - name: post
+        method: POST
+        description: Create a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: get
+        method: GET
+        description: Get all webhooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-webhooks-metadata
+      path: /v1/webhooks/metadata
+      operations:
+      - name: get
+        method: GET
+        description: Get all webhooks meta-data (member view)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-webhooks-identifier
+      path: /v1/webhooks/{identifier}
+      operations:
+      - name: patch
+        method: PATCH
+        description: Update a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          description: The unique identifier of the resource you want to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: put
+        method: PUT
+        description: Change a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          description: The unique identifier of the resource you want to operate on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: get
+        method: GET
+        description: Get a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          description: The unique identifier of the resource you want to operate on.
+          required: true
+      - name: delete
+        method: DELETE
+        description: Delete a webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: identifier
+          in: path
+          type: string
+          description: The unique identifier of the resource you want to operate on.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.PORT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: port-webhook-rest
+    port: 8080
+    description: REST adapter for Port API — Webhook. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/v1/webhooks
+      name: v1-webhooks
+      description: REST surface for v1-webhooks.
+      operations:
+      - method: POST
+        name: post
+        description: Create a webhook
+        call: port-webhook.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get
+        description: Get all webhooks
+        call: port-webhook.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/webhooks/metadata
+      name: v1-webhooks-metadata
+      description: REST surface for v1-webhooks-metadata.
+      operations:
+      - method: GET
+        name: get
+        description: Get all webhooks meta-data (member view)
+        call: port-webhook.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/webhooks/{identifier}
+      name: v1-webhooks-identifier
+      description: REST surface for v1-webhooks-identifier.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Update a webhook
+        call: port-webhook.patch
+        with:
+          identifier: rest.identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: Change a webhook
+        call: port-webhook.put
+        with:
+          identifier: rest.identifier
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get
+        description: Get a webhook
+        call: port-webhook.get
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a webhook
+        call: port-webhook.delete
+        with:
+          identifier: rest.identifier
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: port-webhook-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Port API — Webhook. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-webhook
+      description: Create a webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: port-webhook.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-webhooks
+      description: Get all webhooks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-webhook.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-webhooks-meta-data
+      description: Get all webhooks meta-data (member view)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-webhook.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-webhook
+      description: Update a webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-webhook.patch
+      with:
+        identifier: tools.identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: change-webhook
+      description: Change a webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: port-webhook.put
+      with:
+        identifier: tools.identifier
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-webhook
+      description: Get a webhook
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: port-webhook.get
+      with:
+        identifier: tools.identifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-webhook
+      description: Delete a webhook
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: port-webhook.delete
+      with:
+        identifier: tools.identifier
+      outputParameters:
+      - type: object
+        mapping: $.
