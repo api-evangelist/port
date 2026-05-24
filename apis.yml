@@ -110,6 +110,8 @@ common:
   url: https://app.getport.io
 - type: LinkedIn
   url: https://www.linkedin.com/company/getport
+- type: LLMsTxt
+  url: https://docs.port.io/llms.txt
 integrations:
 - name: Prometheus
 - name: Rootly
