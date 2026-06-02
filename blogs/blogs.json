@@ -2,12 +2,20 @@
   "repo": "port",
   "feeds": [
     {
-      "source": "https://www.port.io/blog",
+      "source": "https://www.port.io/blog/rss.xml",
       "feed_url": "https://www.port.io/blog/rss.xml",
-      "title": "Developer Experience & Platform Engineering Blog | Port",
-      "saved": 1
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://docs.port.io/guides/",
+      "feed_url": "https://docs.port.io/guides/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 61,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 62,
+  "fetched": "2026-06-01T23:35:02Z"
 }
