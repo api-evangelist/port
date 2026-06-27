@@ -77,11 +77,11 @@ common:
     url: https://www.port.io/careers
   - type: Login
     url: https://app.getport.io
-  - type: SignUp
+  - type: Signup
     url: https://app.getport.io
   - type: LinkedIn
     url: https://www.linkedin.com/company/getport
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.port.io/llms.txt
 integrations:
   - name: Prometheus
