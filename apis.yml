@@ -45,6 +45,14 @@ apis:
       - type: OpenAPI
         url: openapi/port-openapi.yml
 common:
+  - type: TrustCenter
+    url: security/port-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/port-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/port-domain-security.yml
+  - type: Authentication
+    url: authentication/port-authentication.yml
   - type: Portal
     url: https://www.port.io/
   - type: Pricing
