@@ -45,6 +45,8 @@ apis:
       - type: OpenAPI
         url: openapi/port-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/port-agentic-access.yml
   - type: TrustCenter
     url: security/port-trust-center.yml
   - type: VulnerabilityDisclosure
