@@ -1,0 +1,775 @@
+openapi: 3.1.0
+info:
+  title: Port Action Runs Teams API
+  version: '1.0'
+tags:
+- name: Teams
+paths:
+  /v1/teams:
+    get:
+      summary: Get all teams in your organization
+      tags:
+      - Teams
+      description: This route allows you to fetch all of the teams in your Port organization.<br/><br/>To learn more about teams, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      parameters:
+      - schema:
+          type: array
+          items:
+            enum:
+            - id
+            - name
+            - createdAt
+            - updatedAt
+            - provider
+            - description
+            - users.firstName
+            - users.lastName
+            - users.email
+            - users.picture
+            - users.status
+        in: query
+        name: fields
+        required: false
+        description: The fields you want to fetch for each team. If used, only the specified fields will be included in the response.
+      security:
+      - bearer:
+        - read:teams
+      responses:
+        '200':
+          description: Retrieved successfully.
+          content:
+            application/json:
+              schema:
+                description: Retrieved successfully.
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                        provider:
+                          type: string
+                        description:
+                          type: string
+                        users:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              email:
+                                type: string
+                              firstName:
+                                type: string
+                              lastName:
+                                type: string
+                              picture:
+                                type: string
+                              status:
+                                type: string
+                required:
+                - teams
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+    post:
+      summary: Create a team
+      tags:
+      - Teams
+      description: This route allows you to create a new team in your Port organization.<br/><br/>To learn more about teams, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  pattern: ^[^;#/\?\s][^;#/\?]*[^;#/\?\s]$
+                  description: The name of the new team.
+                users:
+                  type: array
+                  items:
+                    type: string
+                  description: One or more e-mail addresses of users to add to the new team.
+                description:
+                  type: string
+                  description: The description of the new team.
+              required:
+              - name
+        required: true
+      security:
+      - bearer:
+        - create:teams
+      responses:
+        '200':
+          description: Created successfully.
+          content:
+            application/json:
+              schema:
+                description: Created successfully.
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  team:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      provider:
+                        type: string
+                      description:
+                        type: string
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                            firstName:
+                              type: string
+                            lastName:
+                              type: string
+                            picture:
+                              type: string
+                            status:
+                              type: string
+                required:
+                - team
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/teams/{name}:
+    get:
+      summary: Get a team
+      tags:
+      - Teams
+      description: This route allows you to fetch a specific team in your Port organization.<br/><br/>To learn more about teams, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      parameters:
+      - schema:
+          type: array
+          items:
+            enum:
+            - id
+            - name
+            - createdAt
+            - updatedAt
+            - provider
+            - description
+            - users.firstName
+            - users.lastName
+            - users.email
+            - users.picture
+            - users.status
+        in: query
+        name: fields
+        required: false
+        description: The fields you want to fetch for the team. If used, only the specified fields will be included in the response.
+      - schema:
+          type: string
+        in: path
+        name: name
+        required: true
+        description: The name of the team you want to fetch.
+      security:
+      - bearer:
+        - read:teams
+      responses:
+        '200':
+          description: Retrieved successfully.
+          content:
+            application/json:
+              schema:
+                description: Retrieved successfully.
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  team:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      provider:
+                        type: string
+                      description:
+                        type: string
+                required:
+                - team
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+    patch:
+      summary: Update a team
+      tags:
+      - Teams
+      description: This route allows you to update a team's details. This can be used to update the team's name, users, and description.<br/><br/>To learn more about teams, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The new name of the team.
+                users:
+                  type: array
+                  items:
+                    type: string
+                  description: One or more e-mail addresses of users to add to the new team. This will override the existing user list.
+                description:
+                  type:
+                  - string
+                  - 'null'
+                  description: The new description of the team.
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: name
+        required: true
+        description: The name of the team you want to update.
+      security:
+      - bearer:
+        - update:teams
+      responses:
+        '200':
+          description: Updated successfully.
+          content:
+            application/json:
+              schema:
+                description: Updated successfully.
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  team:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      provider:
+                        type: string
+                      description:
+                        type: string
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                            firstName:
+                              type: string
+                            lastName:
+                              type: string
+                            picture:
+                              type: string
+                            status:
+                              type: string
+                required:
+                - team
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    put:
+      summary: Change a team
+      tags:
+      - Teams
+      description: This route allows you to change a team's details. This can be used to update the team's name, users, and description.<br/><br/>To learn more about teams, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The new name of the team.
+                users:
+                  type: array
+                  items:
+                    type: string
+                  description: One or more e-mail addresses of users to add to the new team. This will override the existing user list.
+                description:
+                  type: string
+                  description: The new description of the team.
+              required:
+              - name
+        required: true
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: name
+        required: true
+        description: The name of the team you want to change.
+      security:
+      - bearer:
+        - update:teams
+      responses:
+        '200':
+          description: Updated successfully.
+          content:
+            application/json:
+              schema:
+                description: Updated successfully.
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  team:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      provider:
+                        type: string
+                      description:
+                        type: string
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                            firstName:
+                              type: string
+                            lastName:
+                              type: string
+                            picture:
+                              type: string
+                            status:
+                              type: string
+                required:
+                - team
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    delete:
+      summary: Delete a team
+      tags:
+      - Teams
+      description: This route allows you to delete a team in your Port organization.<br/><br/>To learn more about teams, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: name
+        required: true
+        description: The name of the team you want to delete.
+      security:
+      - bearer:
+        - delete:teams
+      responses:
+        '200':
+          description: Deleted successfully.
+          content:
+            application/json:
+              schema:
+                description: Deleted successfully.
+                properties:
+                  ok:
+                    enum:
+                    - true
+                required:
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header

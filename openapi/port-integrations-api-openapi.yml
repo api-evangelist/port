@@ -1,0 +1,911 @@
+openapi: 3.1.0
+info:
+  title: Port Action Runs Integrations API
+  version: '1.0'
+tags:
+- name: Integrations
+paths:
+  /v1/integration/metadata:
+    get:
+      summary: Get all integrations meta-data (member view)
+      tags:
+      - Integrations
+      description: This route allows members to fetch meta-data on all integrations in their Port organization.<br></br>The response includes each integration's identifier, installation ID, integration type, and last update timestamp.
+      security:
+      - bearer:
+        - read:integrations:basic
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+  /v1/integration:
+    get:
+      summary: Get all integrations
+      tags:
+      - Integrations
+      description: This route allows you to fetch all integrations in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac/users-and-teams/manage-users-teams/#roles--permissions).
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: actionsProcessingEnabled
+        required: false
+        description: filter by integrations that has actions processing enabled
+      security:
+      - bearer:
+        - read:integrations
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+  /v1/integration/{identifier}:
+    get:
+      summary: Get an integration
+      tags:
+      - Integrations
+      description: This route allows you to fetch a specific integration in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac/users-and-teams/manage-users-teams/#roles--permissions).
+      parameters:
+      - schema:
+          type: string
+          default: installationId
+          enum:
+          - installationId
+          - logIngestId
+        in: query
+        name: byField
+        required: false
+        description: The field used to identify the integration. When set to `logIngestId`, the `identifier` parameter should be changed accordingly.
+      - schema:
+          type: boolean
+        in: query
+        name: isPolling
+        required: false
+        description: Whether to return the integration in polling mode.
+      - schema:
+          type: string
+        in: query
+        name: oceanCoreVersion
+        required: false
+        description: The version of the core to use.
+      - schema:
+          type: string
+        in: path
+        name: identifier
+        required: true
+        description: The unique identifier of the resource you want to operate on.
+      security:
+      - bearer:
+        - read:integrations
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+    patch:
+      summary: Update an integration
+      tags:
+      - Integrations
+      description: This route allows you to modify an integration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Note:** To trigger a resync of an integration without changing its mapping, simply provide its identifier and leave the body empty.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  nullable: true
+                  description: The title of the integration. This will be displayed in the [data-sources page](https://app.getport.io/settings/data-sources) of your Port account.
+                installationAppType:
+                  type: string
+                  description: The name of the integrated tool/platform (e.g. `kubernetes`,`pagerduty`).
+                version:
+                  type: string
+                  description: The version of the integration.
+                pinnedVersion:
+                  type: string
+                  description: The pinned version of the integration. If provided, the integration will be pinned to this specific version in the Kubernetes manifest.
+                spec:
+                  type: object
+                  properties:
+                    appSpec:
+                      type: object
+                      additionalProperties: true
+                    integrationSpec:
+                      type: object
+                      additionalProperties: true
+                  additionalProperties: false
+                actionsProcessingEnabled:
+                  type: boolean
+                  description: If `true`, This integration will be able to process actions runs
+                config:
+                  type:
+                  - object
+                  - 'null'
+                  additionalProperties: true
+                  description: Various configuration options for the integration.
+                  properties:
+                    deleteDependentEntities:
+                      type: boolean
+                      description: If `true`, deleting an entity will also delete its dependent entities.
+                    createMissingRelatedEntities:
+                      type: boolean
+                      description: If `true`, creating an entity with a relation to a non-existing entity will also create the related entity.
+                    resources:
+                      type: array
+                      description: The mapping definition of resources from the integrated tool/platform into Port. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping).
+                      items:
+                        type: object
+                        required:
+                        - kind
+                        - selector
+                        - port
+                        properties:
+                          kind:
+                            type: string
+                            description: The kind of resource to map, as defined in API of the integrated tool/platorm.
+                          selector:
+                            type: object
+                            properties:
+                              query:
+                                type: string
+                                description: A `jq` query used to specify which resources to fetch from the integrated tool/platform. If set to `"true"`, all resources of the specified `kind` will be ingested. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#how-does-mapping-work).
+                          port:
+                            type: object
+                            required:
+                            - entity
+                            description: An object containing the mapping definitions of the `kind` resource into Port.
+                            properties:
+                              entity:
+                                type: object
+                                required:
+                                - mappings
+                                properties:
+                                  mappings:
+                                    description: The mapping definitions used to map the resource fields into Port entities. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                    oneOf:
+                                    - type: array
+                                      title: array
+                                      items:
+                                        type: object
+                                        required:
+                                        - identifier
+                                        - blueprint
+                                        properties:
+                                          identifier:
+                                            oneOf:
+                                            - type: string
+                                              title: String identifier
+                                              description: A `jq` expression used to get data from the integrated tool's API, to be used as an identifier for the entity.
+                                            - type: object
+                                              title: Search query identifier
+                                              description: A search query to define the entity's identifier based on a property of the entity.<br/>Read more [here](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#map-by-property).
+                                              properties:
+                                                combinator:
+                                                  type: string
+                                                rules:
+                                                  type: array
+                                                  items:
+                                                    type: object
+                                                    additionalProperties: true
+                                              additionalProperties: false
+                                              required:
+                                              - combinator
+                                              - rules
+                                          title:
+                                            type: string
+                                            description: A `jq` expression used to get data from the integrated tool's API, to be used as the title of the entity.
+                                          blueprint:
+                                            type: string
+                                            description: The identifier of the blueprint to map the data into.
+                                          properties:
+                                            type: object
+                                            additionalProperties: true
+                                            description: An object containing the properties of the entity and their values. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                          relations:
+                                            type: object
+                                            additionalProperties: true
+                                            description: An object containing the relations of the entity and their values. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                    - type: object
+                                      required:
+                                      - identifier
+                                      - blueprint
+                                      properties:
+                                        identifier:
+                                          oneOf:
+                                          - type: string
+                                            title: String identifier
+                                            description: A `jq` expression used to get data from the integrated tool's API, to be used as an identifier for the entity.
+                                          - type: object
+                                            title: Search query identifier
+                                            description: A search query to define the entity's identifier based on a property of the entity.<br/>Read more [here](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#map-by-property).
+                                            properties:
+                                              combinator:
+                                                type: string
+                                              rules:
+                                                type: array
+                                                items:
+                                                  type: object
+                                                  additionalProperties: true
+                                            additionalProperties: false
+                                            required:
+                                            - combinator
+                                            - rules
+                                        title:
+                                          type: string
+                                          description: A `jq` expression used to get data from the integrated tool's API, to be used as the title of the entity.
+                                        blueprint:
+                                          type: string
+                                          description: The identifier of the blueprint to map the data into.
+                                        properties:
+                                          type: object
+                                          additionalProperties: true
+                                          description: An object containing the properties of the entity and their values. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                        relations:
+                                          type: object
+                                          additionalProperties: true
+                                          description: An object containing the relations of the entity and their values. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                      title: object
+                changelogDestination:
+                  type: object
+                  description: The destination of the integration's changelog.
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - WEBHOOK
+                      - KAFKA
+                  oneOf:
+                  - type: object
+                    properties: {}
+                    additionalProperties: false
+                  - type: object
+                    title: Kafka
+                    description: The changelog will be sent to the Kafka topic connected to your Port account.
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                        - KAFKA
+                    required:
+                    - type
+                    additionalProperties: false
+                  - type: object
+                    title: Webhook
+                    description: The changelog will be sent to the specified webhook.
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                        - WEBHOOK
+                      agent:
+                        type: boolean
+                        description: If `true`, Port's execution agent will be used to send the changelog.
+                      url:
+                        type: string
+                        format: uri
+                        description: The URL of the webhook.
+                    required:
+                    - url
+                    - type
+                    additionalProperties: false
+                arePortResourcesInitialized:
+                  type: boolean
+                  description: Whether the Port resources are initialized for the integration.
+              additionalProperties: true
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: identifier
+        required: true
+        description: The unique identifier of the resource you want to operate on.
+      security:
+      - bearer:
+        - update:integrations
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    delete:
+      summary: Delete an integration
+      tags:
+      - Integrations
+      description: This route allows you to delete an integration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: identifier
+        required: true
+        description: The unique identifier of the resource you want to operate on.
+      security:
+      - bearer:
+        - delete:integrations
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/integration/{identifier}/logs:
+    get:
+      summary: Get an integration's event logs
+      tags:
+      - Integrations
+      description: This route allows you to fetch the event logs of a specific integration in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac/users-and-teams/manage-users-teams/#roles--permissions).
+      parameters:
+      - schema:
+          type: number
+          default: 100
+          minimum: 0
+          maximum: 300
+          nullable: false
+        in: query
+        name: limit
+        required: false
+        description: The number of logs to fetch per page.
+      - schema:
+          type: string
+        in: query
+        name: timestamp
+        required: false
+        description: The date of time from which to fetch the logs, in `ISO format IE 2022-04-23T18:25:43.511Z`.
+      - schema:
+          type: string
+        in: query
+        name: log_id
+        required: false
+        description: The identifier of the log.
+      - schema:
+          type: string
+          enum:
+          - up
+          - down
+        in: query
+        name: direction
+        required: false
+        description: Determines whether to fetch logs before or after the specified timestamp.
+      - schema:
+          type: string
+          nullable: true
+        in: query
+        name: event_id
+        required: false
+        description: Filter logs belonging to a specific event.
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - DEBUG
+            - INFO
+            - WARNING
+            - ERROR
+            - FATAL
+          minItems: 1
+          nullable: true
+        in: query
+        name: levels
+        required: false
+        description: Filter logs by severity level.
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - load
+            - extract
+            - transform
+          minItems: 1
+          nullable: true
+        in: query
+        name: etl_phases
+        required: false
+        description: Filter logs by ETL phases.
+      - schema:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          nullable: true
+        in: query
+        name: kinds
+        required: false
+        description: Filter logs by kinds (e.g `pull-request`, `branch` for GitHub, `issue` for Jira, etc.)
+      - schema:
+          type: string
+        in: path
+        name: identifier
+        required: true
+        description: The unique identifier of the resource you want to operate on.
+      security:
+      - bearer:
+        - read:integrations
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+  /v1/integration/{identifier}/config:
+    patch:
+      summary: Update an integration's config
+      tags:
+      - Integrations
+      description: This route allows you to modify an integration's configuration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  type:
+                  - object
+                  - 'null'
+                  additionalProperties: true
+                  description: Various configuration options for the integration.
+                  properties:
+                    deleteDependentEntities:
+                      type: boolean
+                      description: If `true`, deleting an entity will also delete its dependent entities.
+                    createMissingRelatedEntities:
+                      type: boolean
+                      description: If `true`, creating an entity with a relation to a non-existing entity will also create the related entity.
+                    resources:
+                      type: array
+                      description: The mapping definition of resources from the integrated tool/platform into Port. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping).
+                      items:
+                        type: object
+                        required:
+                        - kind
+                        - selector
+                        - port
+                        properties:
+                          kind:
+                            type: string
+                            description: The kind of resource to map, as defined in API of the integrated tool/platorm.
+                          selector:
+                            type: object
+                            properties:
+                              query:
+                                type: string
+                                description: A `jq` query used to specify which resources to fetch from the integrated tool/platform. If set to `"true"`, all resources of the specified `kind` will be ingested. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#how-does-mapping-work).
+                          port:
+                            type: object
+                            required:
+                            - entity
+                            description: An object containing the mapping definitions of the `kind` resource into Port.
+                            properties:
+                              entity:
+                                type: object
+                                required:
+                                - mappings
+                                properties:
+                                  mappings:
+                                    description: The mapping definitions used to map the resource fields into Port entities. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                    oneOf:
+                                    - type: array
+                                      title: array
+                                      items:
+                                        type: object
+                                        required:
+                                        - identifier
+                                        - blueprint
+                                        properties:
+                                          identifier:
+                                            oneOf:
+                                            - type: string
+                                              title: String identifier
+                                              description: A `jq` expression used to get data from the integrated tool's API, to be used as an identifier for the entity.
+                                            - type: object
+                                              title: Search query identifier
+                                              description: A search query to define the entity's identifier based on a property of the entity.<br/>Read more [here](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#map-by-property).
+                                              properties:
+                                                combinator:
+                                                  type: string
+                                                rules:
+                                                  type: array
+                                                  items:
+                                                    type: object
+                                                    additionalProperties: true
+                                              additionalProperties: false
+                                              required:
+                                              - combinator
+                                              - rules
+                                          title:
+                                            type: string
+                                            description: A `jq` expression used to get data from the integrated tool's API, to be used as the title of the entity.
+                                          blueprint:
+                                            type: string
+                                            description: The identifier of the blueprint to map the data into.
+                                          properties:
+                                            type: object
+                                            additionalProperties: true
+                                            description: An object containing the properties of the entity and their values. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                          relations:
+                                            type: object
+                                            additionalProperties: true
+                                            description: An object containing the relations of the entity and their values. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                    - type: object
+                                      required:
+                                      - identifier
+                                      - blueprint
+                                      properties:
+                                        identifier:
+                                          oneOf:
+                                          - type: string
+                                            title: String identifier
+                                            description: A `jq` expression used to get data from the integrated tool's API, to be used as an identifier for the entity.
+                                          - type: object
+                                            title: Search query identifier
+                                            description: A search query to define the entity's identifier based on a property of the entity.<br/>Read more [here](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#map-by-property).
+                                            properties:
+                                              combinator:
+                                                type: string
+                                              rules:
+                                                type: array
+                                                items:
+                                                  type: object
+                                                  additionalProperties: true
+                                            additionalProperties: false
+                                            required:
+                                            - combinator
+                                            - rules
+                                        title:
+                                          type: string
+                                          description: A `jq` expression used to get data from the integrated tool's API, to be used as the title of the entity.
+                                        blueprint:
+                                          type: string
+                                          description: The identifier of the blueprint to map the data into.
+                                        properties:
+                                          type: object
+                                          additionalProperties: true
+                                          description: An object containing the properties of the entity and their values. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                        relations:
+                                          type: object
+                                          additionalProperties: true
+                                          description: An object containing the relations of the entity and their values. For more information and examples, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-mapping#configuration-structure).
+                                      title: object
+              additionalProperties: false
+              required:
+              - config
+        required: true
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: identifier
+        required: true
+        description: The unique identifier of the resource you want to operate on.
+      security:
+      - bearer:
+        - update:integrations
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header

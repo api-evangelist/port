@@ -1,0 +1,1798 @@
+openapi: 3.1.0
+info:
+  title: Port Action Runs API
+  version: '1.0'
+tags:
+- name: Action Runs
+paths:
+  /v1/actions/{action_identifier}/runs:
+    post:
+      summary: Execute a self-service action
+      tags:
+      - Action Runs
+      description: This route allows you to execute a self-service action, thus creating an action run.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                properties:
+                  type: object
+                  description: The action's user inputs, in `"key"`:`"value"` pairs, where the key is the input's identifier and the value is the input's value.
+                entity:
+                  type: string
+                  description: The identifier of the entity that the action will be executed on, if relevant.
+              additionalProperties: false
+              required:
+              - properties
+        required: true
+      parameters:
+      - schema:
+          type: string
+          format: email
+        in: query
+        name: run_as
+        required: false
+        description: The executing user of the action. If not provided, the action will be run on behalf of the user/machine who initiated the action (identified by the bearer token used to execute this route).
+      - schema:
+          type: string
+          minLength: 1
+        in: path
+        name: action_identifier
+        required: true
+        description: The identifier of the action/automation you want to operate on.
+      security:
+      - bearer: []
+      responses:
+        '202':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  run:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      blueprint:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      entity:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      action:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      properties:
+                        type: object
+                      rawProperties:
+                        type: object
+                      endedAt:
+                        type: string
+                        format: date-time
+                      source:
+                        type:
+                        - string
+                        - object
+                      requiredApproval:
+                        type:
+                        - boolean
+                        - object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - ALL
+                            - ANY
+                        required:
+                        - type
+                      status:
+                        type: string
+                      statusLabel:
+                        type:
+                        - string
+                        - 'null'
+                      link:
+                        type:
+                        - array
+                        - string
+                        items:
+                          type: string
+                      summary:
+                        type: string
+                      approval:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          description:
+                            type: string
+                          userId:
+                            type:
+                            - string
+                            - 'null'
+                          impersonatedUserId:
+                            type:
+                            - string
+                            - 'null'
+                          state:
+                            type: string
+                      payload:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          type:
+                            type: string
+                          url:
+                            type: string
+                            format: uri
+                          agent:
+                            type: boolean
+                          synchronized:
+                            type: boolean
+                          method:
+                            type: string
+                          headers:
+                            type: object
+                            properties:
+                              RUN_ID:
+                                type: string
+                          body:
+                            type: object
+                            properties:
+                              port_context:
+                                type: object
+                                properties:
+                                  runId:
+                                    type: string
+                      response:
+                        type:
+                        - string
+                        - array
+                        - object
+                        items: {}
+                      pendingExecution:
+                        type: boolean
+                      claimedUntil:
+                        type: string
+                        format: date-time
+                      installationId:
+                        type: string
+                      createdBy:
+                        type: string
+                      impersonatedBy:
+                        type: string
+                      impersonatedUserId:
+                        type: string
+                      updatedBy:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - action
+                    - properties
+                    - requiredApproval
+                    - source
+                    - status
+                required:
+                - ok
+                additionalProperties: false
+                description: OK
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/actions/runs/{run_id}:
+    patch:
+      summary: Update an action run
+      tags:
+      - Action Runs
+      description: This route allows you to update an action run's details. This can be used to update the run's status & label, and add links to it (e.g. external logs of the job runner).<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - SUCCESS
+                  - FAILURE
+                statusLabel:
+                  type: string
+                  description: A label to describe the status of the action run.
+                link:
+                  description: One or more links to be displayed in the run's page in Port. For example, a link to the external logs of the job runner.
+                  oneOf:
+                  - type: string
+                    title: string
+                  - type: array
+                    title: array
+                    items:
+                      type: string
+                message:
+                  type: object
+                  deprecated: true
+                summary:
+                  type: string
+                  description: A summary of the action run, which will be displayed in the run's page in Port.
+                externalRunId:
+                  type: string
+                  description: The run id of your backend, for example the id that GitHub gives the workflow. This can be used to identify the action run instead of the `run_id`.
+              additionalProperties: false
+      parameters:
+      - schema:
+          type: string
+          enum:
+          - v1
+          - v2
+        in: query
+        name: version
+        required: false
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      - schema:
+          type: string
+        in: path
+        name: run_id
+        required: true
+        description: The identifier of the action run.
+      security:
+      - bearer: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  run:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      blueprint:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      entity:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      action:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      properties:
+                        type: object
+                      rawProperties:
+                        type: object
+                      endedAt:
+                        type: string
+                        format: date-time
+                      source:
+                        type:
+                        - string
+                        - object
+                      requiredApproval:
+                        type:
+                        - boolean
+                        - object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - ALL
+                            - ANY
+                        required:
+                        - type
+                      status:
+                        type: string
+                      statusLabel:
+                        type:
+                        - string
+                        - 'null'
+                      link:
+                        type:
+                        - array
+                        - string
+                        items:
+                          type: string
+                      summary:
+                        type: string
+                      approval:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          description:
+                            type: string
+                          userId:
+                            type:
+                            - string
+                            - 'null'
+                          impersonatedUserId:
+                            type:
+                            - string
+                            - 'null'
+                          state:
+                            type: string
+                      payload:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          type:
+                            type: string
+                          url:
+                            type: string
+                            format: uri
+                          agent:
+                            type: boolean
+                          synchronized:
+                            type: boolean
+                          method:
+                            type: string
+                          headers:
+                            type: object
+                            properties:
+                              RUN_ID:
+                                type: string
+                          body:
+                            type: object
+                            properties:
+                              port_context:
+                                type: object
+                                properties:
+                                  runId:
+                                    type: string
+                      response:
+                        type:
+                        - string
+                        - array
+                        - object
+                        items: {}
+                      pendingExecution:
+                        type: boolean
+                      claimedUntil:
+                        type: string
+                        format: date-time
+                      installationId:
+                        type: string
+                      createdBy:
+                        type: string
+                      impersonatedBy:
+                        type: string
+                      impersonatedUserId:
+                        type: string
+                      updatedBy:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - action
+                    - properties
+                    - requiredApproval
+                    - source
+                    - status
+                required:
+                - ok
+                additionalProperties: false
+                description: OK
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    get:
+      summary: Get an action run's details
+      tags:
+      - Action Runs
+      description: 'This route allows you to fetch the details of an action run.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).<br/><br/>:::info Version parameter<br/>Set the `version` parameter to `v2` for the latest version of the API.<br/>:::'
+      parameters:
+      - schema:
+          type: string
+          enum:
+          - v1
+          - v2
+        in: query
+        name: version
+        required: false
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      - schema:
+          type: string
+        in: path
+        name: run_id
+        required: true
+        description: The identifier of the action run.
+      security:
+      - bearer:
+        - read:runs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  run:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      blueprint:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      entity:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      action:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      properties:
+                        type: object
+                      rawProperties:
+                        type: object
+                      endedAt:
+                        type: string
+                        format: date-time
+                      source:
+                        type:
+                        - string
+                        - object
+                      requiredApproval:
+                        type:
+                        - boolean
+                        - object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - ALL
+                            - ANY
+                        required:
+                        - type
+                      status:
+                        type: string
+                      statusLabel:
+                        type:
+                        - string
+                        - 'null'
+                      link:
+                        type:
+                        - array
+                        - string
+                        items:
+                          type: string
+                      summary:
+                        type: string
+                      approval:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          description:
+                            type: string
+                          userId:
+                            type:
+                            - string
+                            - 'null'
+                          impersonatedUserId:
+                            type:
+                            - string
+                            - 'null'
+                          state:
+                            type: string
+                      payload:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          type:
+                            type: string
+                          url:
+                            type: string
+                            format: uri
+                          agent:
+                            type: boolean
+                          synchronized:
+                            type: boolean
+                          method:
+                            type: string
+                          headers:
+                            type: object
+                            properties:
+                              RUN_ID:
+                                type: string
+                          body:
+                            type: object
+                            properties:
+                              port_context:
+                                type: object
+                                properties:
+                                  runId:
+                                    type: string
+                      response:
+                        type:
+                        - string
+                        - array
+                        - object
+                        items: {}
+                      pendingExecution:
+                        type: boolean
+                      claimedUntil:
+                        type: string
+                        format: date-time
+                      installationId:
+                        type: string
+                      createdBy:
+                        type: string
+                      impersonatedBy:
+                        type: string
+                      impersonatedUserId:
+                        type: string
+                      updatedBy:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - action
+                    - properties
+                    - requiredApproval
+                    - source
+                    - status
+                required:
+                - ok
+                additionalProperties: false
+                description: OK
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+  /v1/actions/runs/{run_id}/approval:
+    patch:
+      summary: Approve an action run
+      tags:
+      - Action Runs
+      description: 'This route allows you to approve or decline a request to execute an action that requires approval.<br/><br/>To learn more about manual approval for actions, check out the [documentation](https://docs.port.io/create-self-service-experiences/set-self-service-actions-rbac/#configure-manual-approval-for-actions).<br/><br/>:::info Version parameter value<br/>Set the `version` parameter to `v2` for the latest version of the API.<br/>:::'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - DECLINE
+                  - APPROVE
+                description:
+                  type: string
+                  description: A description and/or reason for the given status.
+              additionalProperties: false
+              required:
+              - status
+        required: true
+      parameters:
+      - schema:
+          type: string
+          enum:
+          - v1
+          - v2
+        in: query
+        name: version
+        required: false
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      - schema:
+          type: string
+        in: path
+        name: run_id
+        required: true
+        description: The identifier of the action run.
+      security:
+      - bearer: []
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  run:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      blueprint:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      entity:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      action:
+                        type: object
+                        properties:
+                          identifier:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          icon:
+                            type:
+                            - string
+                            - 'null'
+                          deleted:
+                            type: boolean
+                        required:
+                        - identifier
+                      properties:
+                        type: object
+                      rawProperties:
+                        type: object
+                      endedAt:
+                        type: string
+                        format: date-time
+                      source:
+                        type:
+                        - string
+                        - object
+                      requiredApproval:
+                        type:
+                        - boolean
+                        - object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - ALL
+                            - ANY
+                        required:
+                        - type
+                      status:
+                        type: string
+                      statusLabel:
+                        type:
+                        - string
+                        - 'null'
+                      link:
+                        type:
+                        - array
+                        - string
+                        items:
+                          type: string
+                      summary:
+                        type: string
+                      approval:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          description:
+                            type: string
+                          userId:
+                            type:
+                            - string
+                            - 'null'
+                          impersonatedUserId:
+                            type:
+                            - string
+                            - 'null'
+                          state:
+                            type: string
+                      payload:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          type:
+                            type: string
+                          url:
+                            type: string
+                            format: uri
+                          agent:
+                            type: boolean
+                          synchronized:
+                            type: boolean
+                          method:
+                            type: string
+                          headers:
+                            type: object
+                            properties:
+                              RUN_ID:
+                                type: string
+                          body:
+                            type: object
+                            properties:
+                              port_context:
+                                type: object
+                                properties:
+                                  runId:
+                                    type: string
+                      response:
+                        type:
+                        - string
+                        - array
+                        - object
+                        items: {}
+                      pendingExecution:
+                        type: boolean
+                      claimedUntil:
+                        type: string
+                        format: date-time
+                      installationId:
+                        type: string
+                      createdBy:
+                        type: string
+                      impersonatedBy:
+                        type: string
+                      impersonatedUserId:
+                        type: string
+                      updatedBy:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - action
+                    - properties
+                    - requiredApproval
+                    - source
+                    - status
+                required:
+                - ok
+                additionalProperties: false
+                description: OK
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/actions/runs:
+    get:
+      summary: Get all action runs
+      tags:
+      - Action Runs
+      description: 'This route allows you to fetch all action runs in your Port account. The route will perform a logical `AND` between all query parameters below, and return all action runs that match the criteria.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).<br/><br/>:::info Version parameter<br/>Set the `version` parameter to `v2` for the latest version of the API.<br/>:::'
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: entity
+        required: false
+        description: The identifier of the entity associated with the action run.
+      - schema:
+          type: string
+        in: query
+        name: blueprint
+        required: false
+        description: The identifier of the blueprint associated with the action run.
+      - schema:
+          type: boolean
+        in: query
+        name: active
+        required: false
+        description: If `true`, only running action runs will be fetched.
+      - schema:
+          type: string
+        in: query
+        name: user_email
+        required: false
+        description: The email of the user who initiated the action run.
+      - schema:
+          type: string
+        in: query
+        name: user_id
+        required: false
+        description: The id of the user who initiated the action run.
+      - schema:
+          type: number
+          minimum: 1
+          maximum: 1000
+        in: query
+        name: limit
+        required: false
+        description: The maximum number of action runs to fetch.
+      - schema:
+          type: array
+          items:
+            type: string
+        in: query
+        name: exclude
+        required: false
+        description: The fields to exclude from the response
+      - schema:
+          type: string
+        in: query
+        name: external_run_id
+        required: false
+        description: The run id of your backend, for example the id that GitHub gives the workflow. This can be used to identify the action run instead of the `run_id`.
+      - schema:
+          type: string
+          enum:
+          - v1
+          - v2
+        in: query
+        name: version
+        required: false
+        description: Specifies the API version to use. Please use `v2` for the latest version of the API.
+      - schema:
+          type: string
+        in: query
+        name: action
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - UI
+            - API
+            - AUTOMATION
+        in: query
+        name: source
+        required: false
+      security:
+      - bearer:
+        - read:runs
+      responses:
+        '200':
+          description: Retrieved successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  runs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        blueprint:
+                          type: object
+                          properties:
+                            identifier:
+                              type: string
+                            title:
+                              type:
+                              - string
+                              - 'null'
+                            icon:
+                              type:
+                              - string
+                              - 'null'
+                            deleted:
+                              type: boolean
+                          required:
+                          - identifier
+                        entity:
+                          type: object
+                          properties:
+                            identifier:
+                              type: string
+                            title:
+                              type:
+                              - string
+                              - 'null'
+                            icon:
+                              type:
+                              - string
+                              - 'null'
+                            deleted:
+                              type: boolean
+                          required:
+                          - identifier
+                        action:
+                          type: object
+                          properties:
+                            identifier:
+                              type: string
+                            title:
+                              type:
+                              - string
+                              - 'null'
+                            icon:
+                              type:
+                              - string
+                              - 'null'
+                            deleted:
+                              type: boolean
+                          required:
+                          - identifier
+                        properties:
+                          type: object
+                        rawProperties:
+                          type: object
+                        endedAt:
+                          type: string
+                          format: date-time
+                        source:
+                          type:
+                          - string
+                          - object
+                        requiredApproval:
+                          type:
+                          - boolean
+                          - object
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                              - ALL
+                              - ANY
+                          required:
+                          - type
+                        status:
+                          type: string
+                        statusLabel:
+                          type:
+                          - string
+                          - 'null'
+                        link:
+                          type:
+                          - array
+                          - string
+                          items:
+                            type: string
+                        summary:
+                          type: string
+                        approval:
+                          type:
+                          - object
+                          - 'null'
+                          properties:
+                            description:
+                              type: string
+                            userId:
+                              type:
+                              - string
+                              - 'null'
+                            impersonatedUserId:
+                              type:
+                              - string
+                              - 'null'
+                            state:
+                              type: string
+                        payload:
+                          type:
+                          - object
+                          - 'null'
+                          properties:
+                            type:
+                              type: string
+                            url:
+                              type: string
+                              format: uri
+                            agent:
+                              type: boolean
+                            synchronized:
+                              type: boolean
+                            method:
+                              type: string
+                            headers:
+                              type: object
+                              properties:
+                                RUN_ID:
+                                  type: string
+                            body:
+                              type: object
+                              properties:
+                                port_context:
+                                  type: object
+                                  properties:
+                                    runId:
+                                      type: string
+                        response:
+                          type:
+                          - string
+                          - array
+                          - object
+                          items: {}
+                        pendingExecution:
+                          type: boolean
+                        claimedUntil:
+                          type: string
+                          format: date-time
+                        installationId:
+                          type: string
+                        createdBy:
+                          type: string
+                        impersonatedBy:
+                          type: string
+                        impersonatedUserId:
+                          type: string
+                        updatedBy:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - id
+                      - action
+                      - properties
+                      - requiredApproval
+                      - source
+                      - status
+                required:
+                - ok
+                additionalProperties: false
+                description: Retrieved successfully.
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+  /v1/actions/runs/{run_id}/logs:
+    post:
+      summary: Add a log to an action run
+      tags:
+      - Action Runs
+      description: This route allows you to send a log message back to Port, which will be displayed in the action run's page. You can also use this route to update the run's termination status (SUCCESS/FAILURE) and label describing the status.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                terminationStatus:
+                  type: string
+                  enum:
+                  - SUCCESS
+                  - FAILURE
+                  description: The termination status of the action run. Can be left blank if you only want to send a log message.
+                statusLabel:
+                  type: string
+                  description: A label to describe the status of the action run. Can be left blank if you only want to send a log message.
+                message:
+                  type: string
+                  description: The log message to send back to Port.
+              additionalProperties: false
+              required:
+              - message
+        required: true
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: run_id
+        required: true
+        description: The identifier of the action run.
+      security:
+      - bearer: []
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  runLog:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      runId:
+                        type: string
+                      message:
+                        type: string
+                      createdBy:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - runId
+                    - message
+                    - createdBy
+                    - createdAt
+                required:
+                - ok
+                additionalProperties: false
+                description: OK
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    get:
+      summary: Get an action's run logs
+      tags:
+      - Action Runs
+      description: This route allows you to fetch the logs from an action run.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).
+      parameters:
+      - schema:
+          type: number
+          minimum: 1
+          maximum: 50
+        in: query
+        name: limit
+        required: false
+        description: The maximum number of logs to fetch.
+      - schema:
+          type: number
+        in: query
+        name: offset
+        required: false
+        description: The number of logs to skip.
+      - schema:
+          type: string
+        in: path
+        name: run_id
+        required: true
+        description: The identifier of the action run.
+      security:
+      - bearer: []
+      responses:
+        '200':
+          description: Retrieved successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  runLogs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        runId:
+                          type: string
+                        message:
+                          type: string
+                        createdBy:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - id
+                      - runId
+                      - message
+                      - createdBy
+                      - createdAt
+                required:
+                - ok
+                additionalProperties: false
+                description: Retrieved successfully.
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+  /v1/actions/runs/{run_id}/approvers:
+    get:
+      summary: Get an action run's approvers
+      tags:
+      - Action Runs
+      description: This route allows you to fetch the approvers of a specific action run.<br/><br/>To learn more about manual approval for actions, check out the [documentation](https://docs.port.io/create-self-service-experiences/set-self-service-actions-rbac/#configure-manual-approval-for-actions).
+      parameters:
+      - schema:
+          type: boolean
+          default: false
+        in: query
+        name: include_pending_approvers
+        required: true
+        description: If `true`, the route will also return the users who have not yet approved the action run.
+      - schema:
+          type: string
+        in: path
+        name: run_id
+        required: true
+        description: The identifier of the action run.
+      security:
+      - bearer:
+        - read:runs
+      responses:
+        '200':
+          description: Retrieved successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  approvers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        userId:
+                          type: string
+                        state:
+                          type: string
+                        description:
+                          type: string
+                          nullable: true
+                      required:
+                      - userId
+                      - state
+                required:
+                - ok
+                additionalProperties: false
+                description: Retrieved successfully.
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header

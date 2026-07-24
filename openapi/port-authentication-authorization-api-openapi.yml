@@ -1,0 +1,215 @@
+openapi: 3.1.0
+info:
+  title: Port Action Runs Authentication / Authorization API
+  version: '1.0'
+tags:
+- name: Authentication / Authorization
+paths:
+  /v1/auth/access_token:
+    post:
+      summary: Create an access token
+      tags:
+      - Authentication / Authorization
+      description: This route allows you to create an access token for your Port account. You can use this token to authenticate your requests to the Port API.<br/><br/>To obtain your client ID and client secret, go to your [Port application](https://app.getport.io), click on the `...` button in the top right corner, then click `Credentials`.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clientId:
+                  type: string
+                  description: Your Port client ID
+                clientSecret:
+                  type: string
+                  description: Your Port client secret
+              additionalProperties: false
+              required:
+              - clientId
+              - clientSecret
+        required: true
+      responses:
+        '200':
+          description: Authorized successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  accessToken:
+                    type: string
+                  expiresIn:
+                    type: number
+                    description: The number of seconds until the access token expires
+                  tokenType:
+                    type: string
+                additionalProperties: false
+                required:
+                - accessToken
+                - expiresIn
+                - tokenType
+                description: Authorized successfully
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/rotate-credentials/{user_email}:
+    post:
+      summary: Rotate a user's credentials
+      tags:
+      - Authentication / Authorization
+      description: This route allows you to rotate a user's credentials and generate new ones.
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: user_email
+        required: true
+        description: The email address of the user you want to operate on.
+      security:
+      - bearer:
+        - update:users
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header

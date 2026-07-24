@@ -1,0 +1,792 @@
+openapi: 3.1.0
+info:
+  title: Port Action Runs Organization API
+  version: '1.0'
+tags:
+- name: Organization
+paths:
+  /v1/organization:
+    get:
+      summary: Get organization details
+      tags:
+      - Organization
+      description: This route allows you to fetch the details of your Port organization, such as its name, id, and hidden blueprints.
+      security:
+      - bearer: []
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+    put:
+      summary: Change organization details
+      tags:
+      - Organization
+      description: This route allows you to change the details of your Port organization, such as its name and hidden blueprints.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the organization.
+                settings:
+                  type: object
+                  properties:
+                    hiddenBlueprints:
+                      type: array
+                      items:
+                        type: string
+                      description: An array of blueprint identifiers that should be hidden.
+                    federatedLogout:
+                      type: boolean
+                    portalIcon:
+                      type: string
+                    portalTitle:
+                      type: string
+                      maxLength: 30
+                announcement:
+                  type: object
+                  required:
+                  - content
+                  properties:
+                    enabled:
+                      type: boolean
+                    content:
+                      type: string
+                      maxLength: 300
+                      minLength: 1
+                    link:
+                      type:
+                      - string
+                      - 'null'
+                      maxLength: 300
+                    color:
+                      type: string
+                      enum:
+                      - blue
+                      - red
+                      - green
+                      - yellow
+                      - orange
+                      - pink
+                      - purple
+                      - turquoise
+              additionalProperties: false
+              required:
+              - name
+        required: true
+      security:
+      - bearer:
+        - update:organization
+      responses:
+        '200':
+          description: Updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                additionalProperties: false
+                required:
+                - ok
+                description: Updated successfully.
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    patch:
+      summary: Update organization details
+      tags:
+      - Organization
+      description: This route allows you to update the details of your Port organization, such as its name and hidden blueprints.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the organization.
+                settings:
+                  type: object
+                  properties:
+                    hiddenBlueprints:
+                      type: array
+                      items:
+                        type: string
+                      description: An array of blueprint identifiers that should be hidden.
+                    federatedLogout:
+                      type: boolean
+                    portalIcon:
+                      type: string
+                    portalTitle:
+                      type: string
+                      maxLength: 30
+                    supportUserPermission:
+                      type: string
+                      enum:
+                      - OPT_OUT
+                      - OPT_IN
+                      description: Permission level for Port support users accessing this organization
+                    supportUserTTL:
+                      type: string
+                      enum:
+                      - ONE_DAY
+                      - ONE_WEEK
+                      - ONE_MONTH
+                      - FOREVER
+                      description: Time-to-live for Port support user access
+                    supportUserExpiresAt:
+                      type: string
+                      format: date-time
+                      description: Expiration date for Port support user access
+                    portAgentStreamerName:
+                      type: string
+                      enum:
+                      - KAFKA
+                      - POLLING
+                      description: Streamer name for Port agent (KAFKA or POLLING).
+                    includeBlueprintsInGlobalSearchByDefault:
+                      type: boolean
+                      description: The org-level default for whether blueprints are included in global search. Individual blueprints can override this via includeInGlobalSearch.
+                isOnboarded:
+                  type: boolean
+                toolSelectionProvisioning:
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      enum:
+                      - IN_PROGRESS
+                      - DONE
+                  additionalProperties: false
+                  required:
+                  - status
+                announcement:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    content:
+                      type: string
+                      maxLength: 300
+                      minLength: 1
+                    link:
+                      type:
+                      - string
+                      - 'null'
+                      maxLength: 300
+                    color:
+                      type: string
+                      enum:
+                      - blue
+                      - red
+                      - green
+                      - yellow
+                      - orange
+                      - pink
+                      - purple
+                      - turquoise
+              additionalProperties: false
+      security:
+      - bearer:
+        - update:organization
+      responses:
+        '200':
+          description: Updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                additionalProperties: false
+                required:
+                - ok
+                description: Updated successfully.
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/organization/secrets:
+    get:
+      summary: Get all organization secrets' metadata
+      tags:
+      - Organization
+      description: This route allows you to retrieve metadata about all secrets in your organization. Note that this endpoint returns only the metadata of the secrets, not the secret content itself.<br/><br/>To learn more about secrets management in Port, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets).
+      security:
+      - bearer:
+        - read:secrets
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+    post:
+      summary: Create an organization secret
+      tags:
+      - Organization
+      description: This route allows you to create an organization secret.<br/><br/>To learn more about secrets management in Port, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                secretName:
+                  type: string
+                  maxLength: 100
+                  minLength: 1
+                  pattern: ^[A-Za-z0-9-_]*$
+                  description: The name of the new secret.
+                secretValue:
+                  type: string
+                  description: The value of the new secret.
+                description:
+                  type: string
+                  maxLength: 200
+                  description: An optional description of the new secret.
+              additionalProperties: false
+              required:
+              - secretName
+              - secretValue
+        required: true
+      security:
+      - bearer:
+        - create:secrets
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/organization/secrets/{secret_name}:
+    get:
+      summary: Get an organization secret's metadata
+      tags:
+      - Organization
+      description: This route allows you to retrieve metadata about a specific secret in your organization. Note that this endpoint returns only the metadata of the secret, not the secret content itself.<br/><br/>To learn more about secrets management in Port, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets).
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: secret_name
+        required: true
+        description: The name of the secret you want to operate on.
+      security:
+      - bearer:
+        - read:secrets
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                  secret:
+                    type: object
+                    properties:
+                      secretName:
+                        type: string
+                      description:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                required:
+                - ok
+                - secret
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+    patch:
+      summary: Update an organization secret
+      tags:
+      - Organization
+      description: This route allows you to update an organization secret.<br/><br/>To learn more about secrets management, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                secretValue:
+                  type: string
+                  description: The new value of the secret.
+                description:
+                  type: string
+                  maxLength: 200
+                  description: The new description of the secret.
+              additionalProperties: false
+              required: []
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: secret_name
+        required: true
+        description: The name of the secret you want to operate on.
+      security:
+      - bearer:
+        - update:secrets
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    delete:
+      summary: Delete an organization secret
+      tags:
+      - Organization
+      description: This route allows you to delete an organization secret.<br/><br/>To learn more about secrets management in Port, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets).
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: secret_name
+        required: true
+        description: The name of the secret you want to operate on.
+      security:
+      - bearer:
+        - delete:secrets
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header

@@ -1,0 +1,733 @@
+openapi: 3.1.0
+info:
+  title: Port Action Runs Users API
+  version: '1.0'
+tags:
+- name: Users
+paths:
+  /v1/users:
+    get:
+      summary: Get all users in your organization
+      tags:
+      - Users
+      description: This route allows you to fetch all of the users in your Port organization.<br/><br/>To learn more about users, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      parameters:
+      - schema:
+          type: array
+          style: form
+          explode: true
+          items:
+            type: string
+            enum:
+            - id
+            - email
+            - firstName
+            - isInvisible
+            - lastName
+            - picture
+            - status
+            - supportLevel
+            - type
+            - providers
+            - managedByScim
+            - createdAt
+            - updatedAt
+            - teams.name
+            - teams.provider
+            - teams.createdAt
+            - teams.updatedAt
+            - roles.name
+            - roles.description
+            - roles.isAdmin
+            - roles.protected
+            - roles.orgId
+            - roles.createdAt
+            - roles.updatedAt
+            - orgMembers.orgId
+            - orgMembers.status
+            - orgMembers.lastLoginAt
+        in: query
+        name: fields
+        required: false
+        description: The fields you want to fetch for each user. If used, only the specified fields will be included in the response.
+      security:
+      - bearer:
+        - read:users
+      responses:
+        '200':
+          description: Retrieved successfully.
+          content:
+            application/json:
+              schema:
+                description: Retrieved successfully.
+                type: object
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  users:
+                    type: array
+                    items:
+                      properties:
+                        email:
+                          type: string
+                        firstName:
+                          type: string
+                        lastName:
+                          type: string
+                        picture:
+                          type: string
+                        status:
+                          type: string
+                        id:
+                          type: string
+                        type:
+                          type: string
+                        providers:
+                          type: array
+                          items:
+                            type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                        orgs:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                            required:
+                            - id
+                        teams:
+                          type: array
+                          items:
+                            type: string
+                        roles:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                            required:
+                            - name
+                        orgMembers:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              orgId:
+                                type: string
+                              status:
+                                type: string
+                              lastLoginAt:
+                                type: string
+                                format: date-time
+                            required:
+                            - orgId
+                            - status
+                            - lastLoginAt
+                        termsAccepted:
+                          type: boolean
+                          default: null
+                        managedByScim:
+                          type: boolean
+                          default: null
+                required:
+                - users
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+  /v1/users/invite:
+    post:
+      summary: Invite a user to your organization
+      tags:
+      - Users
+      description: This route allows you to invite a user to your Port organization.<br/><br/>To learn more about users, roles, and teams, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                invitee:
+                  type: object
+                  description: The details of the user you want to invite.
+                  properties:
+                    email:
+                      type: string
+                      pattern: ^[^;#/\?\s][^;#/\?]*[^;#/\?\s]$
+                      description: The user's email address.
+                    roles:
+                      type: array
+                      items:
+                        type: string
+                      description: The roles you want to assign to the user.
+                    teams:
+                      type: array
+                      items:
+                        type: string
+                      description: The names of the teams you want to assign the user to.
+                  required:
+                  - email
+              additionalProperties: false
+              required:
+              - invitee
+        required: true
+      parameters:
+      - schema:
+          type: boolean
+          default: true
+        in: query
+        name: notify
+        required: false
+        description: If `true`, the invitee will receive an email notification.
+      security:
+      - bearer:
+        - create:users
+      responses:
+        '200':
+          description: Created successfully.
+          content:
+            application/json:
+              schema:
+                description: Created successfully.
+                properties:
+                  ok:
+                    enum:
+                    - true
+                required:
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/users/{user_email}:
+    get:
+      summary: Get a user
+      tags:
+      - Users
+      description: This route allows you to fetch a specific user in your Port organization.<br/><br/>To learn more about users, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: user_email
+        required: true
+        description: The email address of the user you want to operate on.
+      security:
+      - bearer:
+        - read:users
+      responses:
+        '200':
+          description: Retrieved successfully.
+          content:
+            application/json:
+              schema:
+                description: Retrieved successfully.
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  user:
+                    properties:
+                      email:
+                        type: string
+                      firstName:
+                        type: string
+                      lastName:
+                        type: string
+                      picture:
+                        type: string
+                      status:
+                        type: string
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      providers:
+                        type: array
+                        items:
+                          type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      orgs:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                          required:
+                          - id
+                      teams:
+                        type: array
+                        items:
+                          type: string
+                      roles:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                          required:
+                          - name
+                      orgMembers:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            orgId:
+                              type: string
+                            status:
+                              type: string
+                            lastLoginAt:
+                              type: string
+                              format: date-time
+                          required:
+                          - orgId
+                          - status
+                          - lastLoginAt
+                      termsAccepted:
+                        type: boolean
+                        default: null
+                      managedByScim:
+                        type: boolean
+                        default: null
+                      teamsIdentifiers:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+    patch:
+      summary: Update a user
+      tags:
+      - Users
+      description: This route allows you to update a user's details. This can be used to update the user's role/s and team/s.<br/><br/>To learn more about users, roles, and teams, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roles:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                  description: The roles you want to assign to the user.
+                teams:
+                  type: array
+                  items:
+                    type: string
+                  description: The names of the teams you want to assign the user to.
+              additionalProperties: false
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: user_email
+        required: true
+        description: The email address of the user you want to operate on.
+      security:
+      - bearer:
+        - update:users
+      responses:
+        '200':
+          description: Updated successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  email:
+                    type: string
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  picture:
+                    type: string
+                  status:
+                    type: string
+                  id:
+                    type: string
+                  type:
+                    type: string
+                  providers:
+                    type: array
+                    items:
+                      type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  orgs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                      required:
+                      - id
+                  teams:
+                    type: array
+                    items:
+                      type: string
+                  roles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                      required:
+                      - name
+                  orgMembers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        orgId:
+                          type: string
+                        status:
+                          type: string
+                        lastLoginAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - orgId
+                      - status
+                      - lastLoginAt
+                  termsAccepted:
+                    type: boolean
+                    default: null
+                  managedByScim:
+                    type: boolean
+                    default: null
+                description: Updated successfully.
+                required:
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    delete:
+      summary: Delete a user
+      tags:
+      - Users
+      description: This route allows you to delete a user in your Port organization.<br/><br/>To learn more about users, check out the [documentation](https://docs.port.io/sso-rbac/rbac-overview/).
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: user_email
+        required: true
+        description: The email address of the user you want to operate on.
+      security:
+      - bearer:
+        - delete:users
+      responses:
+        '200':
+          description: Deleted successfully.
+          content:
+            application/json:
+              schema:
+                description: Deleted successfully.
+                properties:
+                  ok:
+                    enum:
+                    - true
+                required:
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header

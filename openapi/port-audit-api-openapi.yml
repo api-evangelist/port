@@ -1,0 +1,206 @@
+openapi: 3.1.0
+info:
+  title: Port Action Runs Audit API
+  version: '1.0'
+tags:
+- name: Audit
+paths:
+  /v1/audit-log:
+    get:
+      summary: Get audit logs
+      tags:
+      - Audit
+      description: Fetch audit logs from your Port account (also viewable in [Port's UI](https://app.getport.io/settings/AuditLog)).<br/><br/>All query parameters are combined with logical `AND`.<br/><br/>**Non-admin users** have limited access. They can only:<br/>- Pass an `identifier` to access a specific log.<br/>- Pass an `entity` to retrieve logs of entities they have access to.<br/>- Pass a `run_id` to retrieve logs of action runs they have access to.<br/><br/>Non-admin users **cannot** view logs of deleted entities.<br/><br/>**Performance:** The optional `limit` parameter defaults to `10000`. Omitting `limit` previously used a default of `100000`, which often caused `504 Gateway Timeout` on large accounts. For very broad queries you may still need a lower `limit` or narrower `from`/`to` time windows.
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: identifier
+        required: false
+        description: An identifier of the log event you want to fetch.
+      - schema:
+          type: string
+        in: query
+        name: entity
+        required: false
+        description: Fetch all audit logs related to the specified entity.
+      - schema:
+          type: boolean
+        in: query
+        name: include_deleted_entities
+        required: false
+        description: Include deleted entities when searching for audit logs. This requires the `entity`, `blueprint`, `status`, `from` and `to` parameters. And the diff between `from` & `to` is limited to 1 day.
+      - schema:
+          type: string
+        in: query
+        name: blueprint
+        required: false
+        description: Fetch all audit logs related to the specified blueprint.
+      - schema:
+          type: string
+        in: query
+        name: run_id
+        required: false
+        description: Fetch all audit logs related to the specified action run.
+      - schema:
+          type: string
+        in: query
+        name: webhookId
+        required: false
+        description: Fetch all audit logs related to the specified webhook.
+      - schema:
+          type: string
+        in: query
+        name: webhookEventId
+        required: false
+        description: Fetch all audit logs related to the specified webhook event.
+      - schema:
+          type: array
+          items:
+            type: string
+        in: query
+        name: origin
+        required: false
+        description: Fetch all audit logs coming from the specified origin/s. This refers to the integration/s that triggered the log. For operations performed via Port's UI, the origin will be `UI`.
+      - schema:
+          type: string
+        in: query
+        name: InstallationId
+        required: false
+        description: Fetch all audit logs related to the specified integration.
+      - schema:
+          anyOf:
+          - type: array
+            items:
+              type: string
+              enum:
+              - entity
+              - blueprint_permission
+              - blueprint
+              - run
+              - webhook
+              - action
+              - action_permission
+              - scorecard
+              - integration
+              - secret
+          - type: string
+            enum:
+            - entity
+            - blueprint_permission
+            - blueprint
+            - run
+            - webhook
+            - action
+            - action_permission
+            - scorecard
+            - integration
+            - secret
+        in: query
+        name: resources
+        required: false
+        description: 'Fetch all audit logs related to the specified resource type/s.<br/>**Possible values**: [`blueprint`, `entity`, `run`, `webhook`, `scorecard`, `action`, `integration`]<br/>The `integration` value is **experimental** and may change in future API versions.'
+      - schema:
+          type: array
+          items:
+            enum:
+            - action
+            - context
+            - diff
+            - identifier
+            - resourceType
+            - status
+            - trigger
+            - additionalData
+            - message
+        in: query
+        name: includes
+        required: false
+        description: The fields you want to include in the response. If used, only the specified fields will be included in the response.
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: from
+        required: false
+        description: The starting timestamp of the audit logs you want to fetch, in the ISO format `2022-04-23T18:25:43.511Z`.
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: to
+        required: false
+        description: The ending timestamp of the audit logs you want to fetch, in the ISO format `2022-04-23T18:25:43.511Z`.
+      - schema:
+          type: string
+        in: query
+        name: action
+        required: false
+        description: Fetch all audit logs with the specified action type - `CREATE`, `UPDATE`, or `DELETE`.
+      - schema:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+        in: query
+        name: status
+        required: false
+        description: Fetch all audit logs with the specified status.
+      - schema:
+          type: number
+        in: query
+        name: limit
+        required: false
+        description: The maximum number of logs to return. Optional; defaults to `10000`. The previous default was `100000`, which could cause `504 Gateway Timeout` on large accounts. Use a lower value or narrow `from` and `to` if you still hit timeouts.
+      - schema:
+          type: string
+          enum:
+          - automation
+          - self-service
+        in: query
+        name: actionType
+        required: false
+      security:
+      - bearer:
+        - read:audit-log
+      responses:
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header

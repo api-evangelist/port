@@ -1,0 +1,448 @@
+openapi: 3.1.0
+info:
+  title: Port Action Runs Apps API
+  version: '1.0'
+tags:
+- name: Apps
+paths:
+  /v1/apps:
+    get:
+      summary: Get all credentials
+      tags:
+      - Apps
+      description: This route allows you to fetch all credentials in your Port organization.
+      parameters:
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - id
+            - name
+            - createdAt
+            - updatedAt
+            - secret
+            - enabled
+        in: query
+        name: fields
+        required: false
+        description: The fields to include in the response. If not specified, all fields will be included.
+      security:
+      - bearer:
+        - read:apps
+      responses:
+        '200':
+          description: Retrieved successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  apps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        enabled:
+                          type: boolean
+                        id:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                        secret:
+                          type: string
+                required:
+                - ok
+                additionalProperties: false
+                description: Retrieved successfully.
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+  /v1/apps/{id}/rotate-secret:
+    post:
+      summary: Rotate secret
+      tags:
+      - Apps
+      description: This route allows you to rotate the secret of a set of credentials in your Port organization.
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+        description: The `id` of the credentials set you want to operate on.
+      security:
+      - bearer:
+        - update:apps
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  app:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      enabled:
+                        type: boolean
+                      id:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      secret:
+                        type: string
+                required:
+                - ok
+                additionalProperties: false
+                description: OK
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+  /v1/apps/{id}:
+    delete:
+      summary: Delete credentials
+      tags:
+      - Apps
+      description: This route allows you to delete a set of credentials in your Port organization.
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+        description: The `id` of the credentials set you want to operate on.
+      security:
+      - bearer:
+        - update:apps
+      responses:
+        '200':
+          description: Deleted successfully.
+          content:
+            application/json:
+              schema:
+                description: Deleted successfully.
+                properties:
+                  ok:
+                    enum:
+                    - true
+                required:
+                - ok
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+    put:
+      summary: Change the name of a credentials set
+      tags:
+      - Apps
+      description: This route allows you to change the name of a set of credentials in your Port organization.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The new name of the credentials set.
+              additionalProperties: false
+              required:
+              - name
+        required: true
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+        description: The `id` of the credentials set you want to operate on.
+      security:
+      - bearer:
+        - update:apps
+      responses:
+        '200':
+          description: Updated successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    enum:
+                    - true
+                  app:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      enabled:
+                        type: boolean
+                      id:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      secret:
+                        type: string
+                required:
+                - ok
+                additionalProperties: false
+                description: Updated successfully.
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+        '404':
+          description: A resource with the provided identifier was not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: A resource with the provided identifier was not found
+        '413':
+          description: Request body is too large (limit is 1MiB)
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                additionalProperties: false
+                description: Request body is too large (limit is 1MiB)
+        '422':
+          description: The json provided does not match the route's schema
+          content:
+            application/json:
+              schema:
+                properties:
+                  ok:
+                    const: false
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - ok
+                - error
+                - message
+                additionalProperties: false
+                description: The json provided does not match the route's schema
+components:
+  securitySchemes:
+    bearer:
+      type: apiKey
+      name: Authorization
+      in: header
