@@ -4,9 +4,22 @@ segments:
   - Experience
 description: This API is documented in the OpenAPI format and provides programmatic access to Port and its components.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/port.png
 tags:
   - Automations
   - Developer Portals
@@ -20,30 +33,247 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/port/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: port:port
-    name: Port API
-    description: >-
-      This API is documented in the OpenAPI format and provides programmatic access to Port and its components. It
-      covers blueprints, entities, actions, action runs, workflows, teams, users, audit, scorecards, organization,
-      integrations, webhooks, migrations, AI, and pages.
-    humanURL: https://docs.getport.io/api-reference/port-api/
-    baseURL: https://api.getport.io
-    tags:
-      - Actions
-      - Blueprints
-      - Entities
-      - Integrations
-      - Scorecards
-      - Software Catalog
-    properties:
-      - type: Documentation
-        url: https://docs.getport.io/api-reference/port-api/
-      - type: APIGettingStarted
-        url: https://docs.port.io/getting-started/overview/
-      - type: Authentication
-        url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
-      - type: OpenAPI
-        url: openapi/port-openapi.yml
+- aid: port:port-action-runs-api
+  name: Port Action Runs API
+  description: The Action Runs API from Port — 6 operation(s) for action runs.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Action Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/port-action-runs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-actions-api
+  name: Port Actions API
+  description: The Actions API from Port — 5 operation(s) for actions.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/port-actions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-apps-api
+  name: Port Apps API
+  description: The Apps API from Port — 3 operation(s) for apps.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/port-apps-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-audit-api
+  name: Port Audit API
+  description: The Audit API from Port — 1 operation(s) for audit.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Audit
+  properties:
+  - type: OpenAPI
+    url: openapi/port-audit-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-authentication-authorization-api
+  name: Port Authentication / Authorization API
+  description: >-
+    The Authentication / Authorization API from Port — 2 operation(s) for authentication / authorization.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Authentication / Authorization
+  properties:
+  - type: OpenAPI
+    url: openapi/port-authentication-authorization-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-blueprints-api
+  name: Port Blueprints API
+  description: The Blueprints API from Port — 7 operation(s) for blueprints.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Blueprints
+  properties:
+  - type: OpenAPI
+    url: openapi/port-blueprints-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-entities-api
+  name: Port Entities API
+  description: The Entities API from Port — 11 operation(s) for entities.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Entities
+  properties:
+  - type: OpenAPI
+    url: openapi/port-entities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-integrations-api
+  name: Port Integrations API
+  description: The Integrations API from Port — 5 operation(s) for integrations.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/port-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-migrations-api
+  name: Port Migrations API
+  description: The Migrations API from Port — 3 operation(s) for migrations.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Migrations
+  properties:
+  - type: OpenAPI
+    url: openapi/port-migrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-organization-api
+  name: Port Organization API
+  description: The Organization API from Port — 3 operation(s) for organization.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Organization
+  properties:
+  - type: OpenAPI
+    url: openapi/port-organization-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-pages-api
+  name: Port Pages API
+  description: The Pages API from Port — 6 operation(s) for pages.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/port-pages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-scorecards-api
+  name: Port Scorecards API
+  description: The Scorecards API from Port — 3 operation(s) for scorecards.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Scorecards
+  properties:
+  - type: OpenAPI
+    url: openapi/port-scorecards-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-teams-api
+  name: Port Teams API
+  description: The Teams API from Port — 2 operation(s) for teams.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/port-teams-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-users-api
+  name: Port Users API
+  description: The Users API from Port — 3 operation(s) for users.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/port-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
+- aid: port:port-webhook-api
+  name: Port Webhook API
+  description: The Webhook API from Port — 3 operation(s) for webhook.
+  humanURL: https://docs.getport.io/api-reference/port-api/
+  baseURL: https://api.getport.io
+  tags:
+  - Webhook
+  properties:
+  - type: OpenAPI
+    url: openapi/port-webhook-api-openapi.yml
+  - type: Documentation
+    url: https://docs.getport.io/api-reference/port-api/
+  - type: APIGettingStarted
+    url: https://docs.port.io/getting-started/overview/
+  - type: Authentication
+    url: https://docs.port.io/build-your-software-catalog/custom-integration/api/
 common:
   - type: AgenticAccess
     url: agentic-access/port-agentic-access.yml
