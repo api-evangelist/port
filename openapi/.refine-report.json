@@ -1,0 +1,42 @@
+{
+  "provider": "port",
+  "sources": [
+    "port-action-runs-api-openapi.yml",
+    "port-actions-api-openapi.yml",
+    "port-apps-api-openapi.yml",
+    "port-audit-api-openapi.yml",
+    "port-authentication-authorization-api-openapi.yml",
+    "port-blueprints-api-openapi.yml",
+    "port-entities-api-openapi.yml",
+    "port-integrations-api-openapi.yml",
+    "port-migrations-api-openapi.yml",
+    "port-organization-api-openapi.yml",
+    "port-pages-api-openapi.yml",
+    "port-scorecards-api-openapi.yml",
+    "port-teams-api-openapi.yml",
+    "port-users-api-openapi.yml",
+    "port-webhook-api-openapi.yml"
+  ],
+  "outputs": [
+    "port-action-runs-api-openapi.yml",
+    "port-actions-api-openapi.yml",
+    "port-apps-api-openapi.yml",
+    "port-audit-api-openapi.yml",
+    "port-authentication-authorization-api-openapi.yml",
+    "port-blueprints-api-openapi.yml",
+    "port-entities-api-openapi.yml",
+    "port-integrations-api-openapi.yml",
+    "port-migrations-api-openapi.yml",
+    "port-organization-api-openapi.yml",
+    "port-pages-api-openapi.yml",
+    "port-scorecards-api-openapi.yml",
+    "port-teams-api-openapi.yml",
+    "port-users-api-openapi.yml",
+    "port-webhook-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
