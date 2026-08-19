@@ -1,0 +1,2867 @@
+{
+  "item": [
+    {
+      "id": "2565bcea-6f7c-4e66-90b9-2db2ba418076",
+      "name": "Action Runs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9226239-7c16-4fcc-a382-a37fa8208497",
+          "name": "Execute a self-service action",
+          "request": {
+            "name": "Execute a self-service action",
+            "description": {
+              "content": "This route allows you to execute a self-service action, thus creating an action run.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                ":action_identifier",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "run_as",
+                  "value": "<email>",
+                  "description": "The executing user of the action. If not provided, the action will be run on behalf of the user/machine who initiated the action (identified by the bearer token used to execute this route)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action_identifier",
+                  "description": "(Required) The identifier of the action/automation you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": \"<object>\",\n  \"entity\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f1ee2452-d760-4a9e-9325-c5c4ff745dfd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_as",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": \"<object>\",\n  \"entity\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": false,\n  \"run\": {\n    \"id\": \"string\",\n    \"action\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": false\n    },\n    \"properties\": {},\n    \"requiredApproval\": {\n      \"type\": \"ANY\"\n    },\n    \"source\": {},\n    \"status\": \"string\",\n    \"blueprint\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": true\n    },\n    \"entity\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": true\n    },\n    \"rawProperties\": {},\n    \"endedAt\": \"1999-07-10T15:54:37.779Z\",\n    \"statusLabel\": \"string\",\n    \"link\": [\n      \"string\",\n      \"string\"\n    ],\n    \"summary\": \"string\",\n    \"approval\": {\n      \"description\": \"string\",\n      \"userId\": \"string\",\n      \"impersonatedUserId\": \"string\",\n      \"state\": \"string\"\n    },\n    \"payload\": {\n      \"type\": \"string\",\n      \"url\": \"https://RPXHLUZGOJPXJkiylUMvpFeTHfcPugU.oduajxUXhvt7oFf01Tkfn-mOeyQbpFRxbVDO7foHslVSWm4c948ah9BHJPWYPP9H3Rl8rLZ\",\n      \"agent\": true,\n      \"synchronized\": true,\n      \"method\": \"string\",\n      \"headers\": {\n        \"RUN_ID\": \"string\"\n      },\n      \"body\": {\n        \"port_context\": {\n          \"runId\": \"string\"\n        }\n      }\n    },\n    \"response\": {},\n    \"pendingExecution\": false,\n    \"claimedUntil\": \"2006-06-21T19:12:58.553Z\",\n    \"installationId\": \"string\",\n    \"createdBy\": \"string\",\n    \"impersonatedBy\": \"string\",\n    \"impersonatedUserId\": \"string\",\n    \"updatedBy\": \"string\",\n    \"createdAt\": \"1974-01-03T04:05:14.471Z\",\n    \"updatedAt\": \"1966-03-18T14:33:16.563Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29540194-4d0f-4417-afe6-dd11601bab01",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_as",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": \"<object>\",\n  \"entity\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e41d5705-2969-4da8-b55b-d33da88c510c",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_as",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": \"<object>\",\n  \"entity\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9dd9847b-0c7b-41a9-a16b-48797cbe570a",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_as",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": \"<object>\",\n  \"entity\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17cb36c3-9925-4bf4-95fd-1039d0b23000",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "run_as",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": \"<object>\",\n  \"entity\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc8d680b-f507-430e-89c2-2f25240e231d",
+          "name": "Update an action run",
+          "request": {
+            "name": "Update an action run",
+            "description": {
+              "content": "This route allows you to update an action run's details. This can be used to update the run's status & label, and add links to it (e.g. external logs of the job runner).<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                "runs",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Specifies the API version to use. Please use `v2` for the latest version of the API."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "run_id",
+                  "description": "(Required) The identifier of the action run."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"statusLabel\": \"<string>\",\n  \"link\": \"<string>\",\n  \"message\": \"<object>\",\n  \"summary\": \"<string>\",\n  \"externalRunId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "76511093-f78a-44a4-9244-ac44faf133d8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"statusLabel\": \"<string>\",\n  \"link\": \"<string>\",\n  \"message\": \"<object>\",\n  \"summary\": \"<string>\",\n  \"externalRunId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": false,\n  \"run\": {\n    \"id\": \"string\",\n    \"action\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": false\n    },\n    \"properties\": {},\n    \"requiredApproval\": {\n      \"type\": \"ANY\"\n    },\n    \"source\": {},\n    \"status\": \"string\",\n    \"blueprint\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": true\n    },\n    \"entity\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": true\n    },\n    \"rawProperties\": {},\n    \"endedAt\": \"1999-07-10T15:54:37.779Z\",\n    \"statusLabel\": \"string\",\n    \"link\": [\n      \"string\",\n      \"string\"\n    ],\n    \"summary\": \"string\",\n    \"approval\": {\n      \"description\": \"string\",\n      \"userId\": \"string\",\n      \"impersonatedUserId\": \"string\",\n      \"state\": \"string\"\n    },\n    \"payload\": {\n      \"type\": \"string\",\n      \"url\": \"https://RPXHLUZGOJPXJkiylUMvpFeTHfcPugU.oduajxUXhvt7oFf01Tkfn-mOeyQbpFRxbVDO7foHslVSWm4c948ah9BHJPWYPP9H3Rl8rLZ\",\n      \"agent\": true,\n      \"synchronized\": true,\n      \"method\": \"string\",\n      \"headers\": {\n        \"RUN_ID\": \"string\"\n      },\n      \"body\": {\n        \"port_context\": {\n          \"runId\": \"string\"\n        }\n      }\n    },\n    \"response\": {},\n    \"pendingExecution\": false,\n    \"claimedUntil\": \"2006-06-21T19:12:58.553Z\",\n    \"installationId\": \"string\",\n    \"createdBy\": \"string\",\n    \"impersonatedBy\": \"string\",\n    \"impersonatedUserId\": \"string\",\n    \"updatedBy\": \"string\",\n    \"createdAt\": \"1974-01-03T04:05:14.471Z\",\n    \"updatedAt\": \"1966-03-18T14:33:16.563Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dcc86b7-9e84-44b2-a044-6497704d13d5",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"statusLabel\": \"<string>\",\n  \"link\": \"<string>\",\n  \"message\": \"<object>\",\n  \"summary\": \"<string>\",\n  \"externalRunId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd5ed74a-abe0-4a7a-b469-1bfcef2b788a",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"statusLabel\": \"<string>\",\n  \"link\": \"<string>\",\n  \"message\": \"<object>\",\n  \"summary\": \"<string>\",\n  \"externalRunId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17233136-2f1b-4bdf-8142-845531d20912",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"statusLabel\": \"<string>\",\n  \"link\": \"<string>\",\n  \"message\": \"<object>\",\n  \"summary\": \"<string>\",\n  \"externalRunId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06cea062-80f2-4b7e-b8fd-05285daf14ae",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"statusLabel\": \"<string>\",\n  \"link\": \"<string>\",\n  \"message\": \"<object>\",\n  \"summary\": \"<string>\",\n  \"externalRunId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ec156b9-7696-45b2-ae38-cb1adb739de2",
+          "name": "Get an action run's details",
+          "request": {
+            "name": "Get an action run's details",
+            "description": {
+              "content": "This route allows you to fetch the details of an action run.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).<br/><br/>:::info Version parameter<br/>Set the `version` parameter to `v2` for the latest version of the API.<br/>:::",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                "runs",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Specifies the API version to use. Please use `v2` for the latest version of the API."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "run_id",
+                  "description": "(Required) The identifier of the action run."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6f4de8b-d547-45c6-9a5a-1f567e383a79",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": false,\n  \"run\": {\n    \"id\": \"string\",\n    \"action\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": false\n    },\n    \"properties\": {},\n    \"requiredApproval\": {\n      \"type\": \"ANY\"\n    },\n    \"source\": {},\n    \"status\": \"string\",\n    \"blueprint\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": true\n    },\n    \"entity\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": true\n    },\n    \"rawProperties\": {},\n    \"endedAt\": \"1999-07-10T15:54:37.779Z\",\n    \"statusLabel\": \"string\",\n    \"link\": [\n      \"string\",\n      \"string\"\n    ],\n    \"summary\": \"string\",\n    \"approval\": {\n      \"description\": \"string\",\n      \"userId\": \"string\",\n      \"impersonatedUserId\": \"string\",\n      \"state\": \"string\"\n    },\n    \"payload\": {\n      \"type\": \"string\",\n      \"url\": \"https://RPXHLUZGOJPXJkiylUMvpFeTHfcPugU.oduajxUXhvt7oFf01Tkfn-mOeyQbpFRxbVDO7foHslVSWm4c948ah9BHJPWYPP9H3Rl8rLZ\",\n      \"agent\": true,\n      \"synchronized\": true,\n      \"method\": \"string\",\n      \"headers\": {\n        \"RUN_ID\": \"string\"\n      },\n      \"body\": {\n        \"port_context\": {\n          \"runId\": \"string\"\n        }\n      }\n    },\n    \"response\": {},\n    \"pendingExecution\": false,\n    \"claimedUntil\": \"2006-06-21T19:12:58.553Z\",\n    \"installationId\": \"string\",\n    \"createdBy\": \"string\",\n    \"impersonatedBy\": \"string\",\n    \"impersonatedUserId\": \"string\",\n    \"updatedBy\": \"string\",\n    \"createdAt\": \"1974-01-03T04:05:14.471Z\",\n    \"updatedAt\": \"1966-03-18T14:33:16.563Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1784261d-d1e6-439f-a6a9-6a54f3218d50",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd49888f-ff78-4e96-938f-96660d316168",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6190ecd6-c4e6-40dd-bf89-e243bd5576fb",
+          "name": "Approve an action run",
+          "request": {
+            "name": "Approve an action run",
+            "description": {
+              "content": "This route allows you to approve or decline a request to execute an action that requires approval.<br/><br/>To learn more about manual approval for actions, check out the [documentation](https://docs.port.io/create-self-service-experiences/set-self-service-actions-rbac/#configure-manual-approval-for-actions).<br/><br/>:::info Version parameter value<br/>Set the `version` parameter to `v2` for the latest version of the API.<br/>:::",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                "runs",
+                ":run_id",
+                "approval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Specifies the API version to use. Please use `v2` for the latest version of the API."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "run_id",
+                  "description": "(Required) The identifier of the action run."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cb09a0a-9ea6-417e-bd5e-dfc0fe193e52",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": false,\n  \"run\": {\n    \"id\": \"string\",\n    \"action\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": false\n    },\n    \"properties\": {},\n    \"requiredApproval\": {\n      \"type\": \"ANY\"\n    },\n    \"source\": {},\n    \"status\": \"string\",\n    \"blueprint\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": true\n    },\n    \"entity\": {\n      \"identifier\": \"string\",\n      \"title\": \"string\",\n      \"icon\": \"string\",\n      \"deleted\": true\n    },\n    \"rawProperties\": {},\n    \"endedAt\": \"1999-07-10T15:54:37.779Z\",\n    \"statusLabel\": \"string\",\n    \"link\": [\n      \"string\",\n      \"string\"\n    ],\n    \"summary\": \"string\",\n    \"approval\": {\n      \"description\": \"string\",\n      \"userId\": \"string\",\n      \"impersonatedUserId\": \"string\",\n      \"state\": \"string\"\n    },\n    \"payload\": {\n      \"type\": \"string\",\n      \"url\": \"https://RPXHLUZGOJPXJkiylUMvpFeTHfcPugU.oduajxUXhvt7oFf01Tkfn-mOeyQbpFRxbVDO7foHslVSWm4c948ah9BHJPWYPP9H3Rl8rLZ\",\n      \"agent\": true,\n      \"synchronized\": true,\n      \"method\": \"string\",\n      \"headers\": {\n        \"RUN_ID\": \"string\"\n      },\n      \"body\": {\n        \"port_context\": {\n          \"runId\": \"string\"\n        }\n      }\n    },\n    \"response\": {},\n    \"pendingExecution\": false,\n    \"claimedUntil\": \"2006-06-21T19:12:58.553Z\",\n    \"installationId\": \"string\",\n    \"createdBy\": \"string\",\n    \"impersonatedBy\": \"string\",\n    \"impersonatedUserId\": \"string\",\n    \"updatedBy\": \"string\",\n    \"createdAt\": \"1974-01-03T04:05:14.471Z\",\n    \"updatedAt\": \"1966-03-18T14:33:16.563Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb05e1cd-521b-4176-8d10-609c4193c61d",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7c41060-c356-4f3b-bb3f-d81bcd6bdc5d",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1a1ca51-41f4-4578-aafb-57b204c31a74",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47734a77-0ee2-48e8-8d19-17e92dd43194",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a225b131-9546-4b50-9af2-0edf2a27c492",
+          "name": "Get all action runs",
+          "request": {
+            "name": "Get all action runs",
+            "description": {
+              "content": "This route allows you to fetch all action runs in your Port account. The route will perform a logical `AND` between all query parameters below, and return all action runs that match the criteria.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).<br/><br/>:::info Version parameter<br/>Set the `version` parameter to `v2` for the latest version of the API.<br/>:::",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "entity",
+                  "value": "<string>",
+                  "description": "The identifier of the entity associated with the action run."
+                },
+                {
+                  "disabled": false,
+                  "key": "blueprint",
+                  "value": "<string>",
+                  "description": "The identifier of the blueprint associated with the action run."
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>",
+                  "description": "If `true`, only running action runs will be fetched."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_email",
+                  "value": "<string>",
+                  "description": "The email of the user who initiated the action run."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "The id of the user who initiated the action run."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "The maximum number of action runs to fetch."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude",
+                  "value": "<string>",
+                  "description": "The fields to exclude from the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude",
+                  "value": "<string>",
+                  "description": "The fields to exclude from the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_run_id",
+                  "value": "<string>",
+                  "description": "The run id of your backend, for example the id that GitHub gives the workflow. This can be used to identify the action run instead of the `run_id`."
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Specifies the API version to use. Please use `v2` for the latest version of the API."
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "936fb75f-0435-4c53-96df-5e82eabd5306",
+              "name": "Retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blueprint",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "user_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_run_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": false,\n  \"runs\": [\n    {\n      \"id\": \"string\",\n      \"action\": {\n        \"identifier\": \"string\",\n        \"title\": \"string\",\n        \"icon\": \"string\",\n        \"deleted\": false\n      },\n      \"properties\": {},\n      \"requiredApproval\": {\n        \"type\": \"ANY\"\n      },\n      \"source\": {},\n      \"status\": \"string\",\n      \"blueprint\": {\n        \"identifier\": \"string\",\n        \"title\": \"string\",\n        \"icon\": \"string\",\n        \"deleted\": true\n      },\n      \"entity\": {\n        \"identifier\": \"string\",\n        \"title\": \"string\",\n        \"icon\": \"string\",\n        \"deleted\": false\n      },\n      \"rawProperties\": {},\n      \"endedAt\": \"1976-05-30T13:35:38.344Z\",\n      \"statusLabel\": \"string\",\n      \"link\": [\n        \"string\",\n        \"string\"\n      ],\n      \"summary\": \"string\",\n      \"approval\": {\n        \"description\": \"string\",\n        \"userId\": \"string\",\n        \"impersonatedUserId\": \"string\",\n        \"state\": \"string\"\n      },\n      \"payload\": {\n        \"type\": \"string\",\n        \"url\": \"https://bbVNHTbEZOVRuYTFcYPwKjbff.engg5W-,2buMhBLPC5Z-N\",\n        \"agent\": true,\n        \"synchronized\": true,\n        \"method\": \"string\",\n        \"headers\": {\n          \"RUN_ID\": \"string\"\n        },\n        \"body\": {\n          \"port_context\": {\n            \"runId\": \"string\"\n          }\n        }\n      },\n      \"response\": {},\n      \"pendingExecution\": true,\n      \"claimedUntil\": \"1968-06-18T04:20:45.597Z\",\n      \"installationId\": \"string\",\n      \"createdBy\": \"string\",\n      \"impersonatedBy\": \"string\",\n      \"impersonatedUserId\": \"string\",\n      \"updatedBy\": \"string\",\n      \"createdAt\": \"1975-05-21T09:00:29.022Z\",\n      \"updatedAt\": \"2004-11-11T08:51:26.840Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"action\": {\n        \"identifier\": \"string\",\n        \"title\": \"string\",\n        \"icon\": \"string\",\n        \"deleted\": true\n      },\n      \"properties\": {},\n      \"requiredApproval\": {\n        \"type\": \"ALL\"\n      },\n      \"source\": {},\n      \"status\": \"string\",\n      \"blueprint\": {\n        \"identifier\": \"string\",\n        \"title\": \"string\",\n        \"icon\": \"string\",\n        \"deleted\": false\n      },\n      \"entity\": {\n        \"identifier\": \"string\",\n        \"title\": \"string\",\n        \"icon\": \"string\",\n        \"deleted\": false\n      },\n      \"rawProperties\": {},\n      \"endedAt\": \"1988-10-23T20:33:49.753Z\",\n      \"statusLabel\": \"string\",\n      \"link\": [\n        \"string\",\n        \"string\"\n      ],\n      \"summary\": \"string\",\n      \"approval\": {\n        \"description\": \"string\",\n        \"userId\": \"string\",\n        \"impersonatedUserId\": \"string\",\n        \"state\": \"string\"\n      },\n      \"payload\": {\n        \"type\": \"string\",\n        \"url\": \"http://izIraHZfqHJlQPXioqNmykfJokHX.clrH9fpKZo9tA0cMGTDF.eTG2\",\n        \"agent\": false,\n        \"synchronized\": false,\n        \"method\": \"string\",\n        \"headers\": {\n          \"RUN_ID\": \"string\"\n        },\n        \"body\": {\n          \"port_context\": {\n            \"runId\": \"string\"\n          }\n        }\n      },\n      \"response\": {},\n      \"pendingExecution\": false,\n      \"claimedUntil\": \"1991-11-27T12:44:04.745Z\",\n      \"installationId\": \"string\",\n      \"createdBy\": \"string\",\n      \"impersonatedBy\": \"string\",\n      \"impersonatedUserId\": \"string\",\n      \"updatedBy\": \"string\",\n      \"createdAt\": \"2017-09-26T11:34:42.368Z\",\n      \"updatedAt\": \"1984-04-18T14:37:59.633Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fc7a95f-f470-4f88-b814-3233d5e30156",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blueprint",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "user_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_run_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bff57a37-4082-41ec-afd2-d7b716e52c4f",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blueprint",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "user_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_run_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a30f1fe3-cd29-4192-a94a-87d012c70231",
+          "name": "Add a log to an action run",
+          "request": {
+            "name": "Add a log to an action run",
+            "description": {
+              "content": "This route allows you to send a log message back to Port, which will be displayed in the action run's page. You can also use this route to update the run's termination status (SUCCESS/FAILURE) and label describing the status.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                "runs",
+                ":run_id",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "run_id",
+                  "description": "(Required) The identifier of the action run."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\",\n  \"terminationStatus\": \"<string>\",\n  \"statusLabel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "15f09ec6-df28-4e8c-b9fc-80ee2c0f4e3e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"terminationStatus\": \"<string>\",\n  \"statusLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": true,\n  \"runLog\": {\n    \"id\": \"string\",\n    \"runId\": \"string\",\n    \"message\": \"string\",\n    \"createdBy\": \"string\",\n    \"createdAt\": \"1982-10-26T09:01:27.575Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0be01505-1a8e-4631-adc4-31cf0b705e1d",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"terminationStatus\": \"<string>\",\n  \"statusLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a917eb64-5731-47e1-84c7-157d54f0cb55",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"terminationStatus\": \"<string>\",\n  \"statusLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "918a8f56-0d9f-4d7a-98fd-d9fb6e0fb740",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"terminationStatus\": \"<string>\",\n  \"statusLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e64ae29-9672-4b87-818d-66975ce6573f",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"terminationStatus\": \"<string>\",\n  \"statusLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "303573a0-64c6-44f3-92fa-aa563cbbf4df",
+          "name": "Get an action's run logs",
+          "request": {
+            "name": "Get an action's run logs",
+            "description": {
+              "content": "This route allows you to fetch the logs from an action run.<br/><br/>To learn more about action runs, check out the [documentation](https://docs.port.io/create-self-service-experiences/reflect-action-progress/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                "runs",
+                ":run_id",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "The maximum number of logs to fetch."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>",
+                  "description": "The number of logs to skip."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "run_id",
+                  "description": "(Required) The identifier of the action run."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "776675cf-cfa6-4c41-98d4-2c8649ac2d03",
+              "name": "Retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": false,\n  \"runLogs\": [\n    {\n      \"id\": \"string\",\n      \"runId\": \"string\",\n      \"message\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdAt\": \"1979-12-26T07:02:19.579Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"runId\": \"string\",\n      \"message\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdAt\": \"1956-10-14T22:55:43.212Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d278dac6-5c0e-4388-b2db-ad5e9b1aa96d",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6590380-d548-44d7-92ba-88f41dd94823",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "efe7a011-d27c-4fb8-a69d-6a206bf04390",
+          "name": "Get an action run's approvers",
+          "request": {
+            "name": "Get an action run's approvers",
+            "description": {
+              "content": "This route allows you to fetch the approvers of a specific action run.<br/><br/>To learn more about manual approval for actions, check out the [documentation](https://docs.port.io/create-self-service-experiences/set-self-service-actions-rbac/#configure-manual-approval-for-actions).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                "runs",
+                ":run_id",
+                "approvers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_pending_approvers",
+                  "value": "false",
+                  "description": "(Required) If `true`, the route will also return the users who have not yet approved the action run."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "run_id",
+                  "description": "(Required) The identifier of the action run."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc14b7e2-f982-452a-b608-255ca3fb7590",
+              "name": "Retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "approvers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_pending_approvers",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": true,\n  \"approvers\": [\n    {\n      \"userId\": \"string\",\n      \"state\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"userId\": \"string\",\n      \"state\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17b00c90-d147-4f96-b082-97999bea6ab8",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "approvers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_pending_approvers",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6a16a74-da8d-48ba-b795-8a6abc53ebac",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    "runs",
+                    ":run_id",
+                    "approvers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_pending_approvers",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "run_id",
+                      "description": "(Required) The identifier of the action run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0db89717-2056-4b5e-878f-dd696ef8c9f7",
+    "name": "Port Action Runs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1863 @@
+{
+  "item": [
+    {
+      "id": "1d83285d-c78f-4544-974a-84e624a35c6b",
+      "name": "Scorecards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf85b174-4af8-4104-9983-8650f0f14e1e",
+          "name": "Create a scorecard",
+          "request": {
+            "name": "Create a scorecard",
+            "description": {
+              "content": "This route allows you to create a scorecard for a given blueprint. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "scorecards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blueprint_identifier",
+                  "description": "(Required) The identifier of the blueprint to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aac12cf5-f58d-4f64-8dbc-d15f224a733d",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80cd5d98-10cd-496c-a042-769e8e705445",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c68116f-0cb9-4016-9497-b5c510489620",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ea86fcd-bda4-492f-be74-c54cb0939bdf",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5469b158-72d6-4029-8be6-7ebfa597559c",
+          "name": "Change scorecards",
+          "request": {
+            "name": "Change scorecards",
+            "description": {
+              "content": "This route allows you to modify one or more scorecards of a given blueprint. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "scorecards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blueprint_identifier",
+                  "description": "(Required) The identifier of the blueprint to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c16e4228-f3fd-47d8-a406-f6f350b5169d",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ee45cde-110c-4cfa-b90d-f367b2d847fa",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf05815f-c430-4072-8768-33effaf778b5",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "127b94e8-02a5-4a3d-a37d-dfbb5903de94",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  },\n  {\n    \"identifier\": \"<string>\",\n    \"title\": \"<string>\",\n    \"rules\": [\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      },\n      {\n        \"identifier\": \"<string>\",\n        \"title\": \"<string>\",\n        \"level\": \"<string>\",\n        \"query\": {\n          \"combinator\": \"<string>\",\n          \"conditions\": [\n            {\n              \"property\": \"<string>\",\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"from\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        },\n        \"description\": \"<string>\"\n      }\n    ],\n    \"filter\": {\n      \"combinator\": \"<string>\",\n      \"conditions\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ]\n    },\n    \"properties\": \"<object>\",\n    \"levels\": [\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      },\n      {\n        \"title\": \"<string>\",\n        \"color\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5f13d6e-c258-4953-bbec-b54cde6da7f0",
+          "name": "Get a blueprint's scorecards",
+          "request": {
+            "name": "Get a blueprint's scorecards",
+            "description": {
+              "content": "This route allows you to fetch all scorecards for a given blueprint. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "scorecards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blueprint_identifier",
+                  "description": "(Required) The identifier of the blueprint to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "243c2fdd-e93a-4772-a6e5-8c2d14c44e75",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed719896-83df-46ec-89a5-2c834f28ab78",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c301b9e3-bdf5-48c2-9fa5-6b0ca1fab728",
+          "name": "Change a scorecard",
+          "request": {
+            "name": "Change a scorecard",
+            "description": {
+              "content": "This route allows you to modify a specific scorecard. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "scorecards",
+                ":scorecard_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scorecard_identifier",
+                  "description": "(Required) The identifier of the scorecard to operate on."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blueprint_identifier",
+                  "description": "(Required) The identifier of the blueprint containing the scorecard."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70c281a7-fc0e-4bbc-8e64-4e40aef1043b",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1af39676-9f5e-48d2-9d3f-93722537f68f",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b34274a-0b40-484b-8f8c-d7837b451eae",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04054c1e-de19-4aa9-94a1-41cbb3d8b211",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"title\": \"<string>\",\n  \"rules\": [\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"title\": \"<string>\",\n      \"level\": \"<string>\",\n      \"query\": {\n        \"combinator\": \"<string>\",\n        \"conditions\": [\n          {\n            \"property\": \"<string>\",\n            \"operator\": \"<string>\",\n            \"value\": {\n              \"from\": \"<dateTime>\",\n              \"to\": \"<dateTime>\"\n            }\n          }\n        ]\n      },\n      \"description\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"combinator\": \"<string>\",\n    \"conditions\": [\n      {\n        \"property\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": {\n          \"from\": \"<dateTime>\",\n          \"to\": \"<dateTime>\"\n        }\n      }\n    ]\n  },\n  \"properties\": \"<object>\",\n  \"levels\": [\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"color\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c1beaa3-bfb4-42a1-8f6f-911048cb24ea",
+          "name": "Get a scorecard",
+          "request": {
+            "name": "Get a scorecard",
+            "description": {
+              "content": "This route allows you to fetch a specific scorecard. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "scorecards",
+                ":scorecard_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scorecard_identifier",
+                  "description": "(Required) The identifier of the scorecard to operate on."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blueprint_identifier",
+                  "description": "(Required) The identifier of the blueprint containing the scorecard."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "07351e00-eed8-4559-bbd5-b59e7d33de10",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d66a321b-2844-4cb7-952e-206614f5b36a",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "965cef5e-bd68-41eb-a671-de39d503d7d7",
+          "name": "Delete a scorecard",
+          "request": {
+            "name": "Delete a scorecard",
+            "description": {
+              "content": "This route allows you to delete a specific scorecard. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "scorecards",
+                ":scorecard_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scorecard_identifier",
+                  "description": "(Required) The identifier of the scorecard to operate on."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "blueprint_identifier",
+                  "description": "(Required) The identifier of the blueprint containing the scorecard."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2ce4a494-2884-42b7-88ff-374a7416c7be",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c38954a-3a7c-4246-8d46-61a35eb00044",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c837b60b-58ff-4f2b-8631-492a6753d485",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4278c08-2729-48ff-8597-5dee28439440",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "scorecards",
+                    ":scorecard_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scorecard_identifier",
+                      "description": "(Required) The identifier of the scorecard to operate on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "blueprint_identifier",
+                      "description": "(Required) The identifier of the blueprint containing the scorecard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74f4abe2-1371-4807-b057-09c4890c5a69",
+          "name": "Get all scorecards",
+          "request": {
+            "name": "Get all scorecards",
+            "description": {
+              "content": "This route allows you to fetch all scorecards in your Port organization.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "scorecards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "86db5417-c83c-4b8f-ad5a-c312e8d75ade",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba969849-895c-42db-8a3a-700734a168e3",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "259cf236-2553-492f-85c9-d6d3365b392f",
+    "name": "Port Action Runs Scorecards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

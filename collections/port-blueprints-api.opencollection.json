@@ -1,0 +1,366 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Blueprints API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blueprints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a blueprint's permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/permissions",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to retrieve the permissions of a blueprint.<br/><br/>To learn more about permissions, check out the [documentation](https://docs.port.io/build-your-software-catalog/set-catalog-rbac/examples)."
+        },
+        {
+          "info": {
+            "name": "Update a blueprint's permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/permissions",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to update the permissions of a blueprint.<br/><br/>To learn more about permissions, check out the [documentation](https://docs.port.io/build-your-software-catalog/set-catalog-rbac/examples)."
+        },
+        {
+          "info": {
+            "name": "Simulate permissions for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/permissions/simulate",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to simulate what permissions a specific user would have for entities in a blueprint.<br/>Provide a userIdentifier and operation to see which entities are accessible, or additionally provide an entityIdentifier to see detailed permission checks for that specific entity.<br/><br/>To learn more, see the [permission simulator documentation](https://docs.port.io/build-your-software-catalog/set-catalog-rbac#permission-simulator)."
+        },
+        {
+          "info": {
+            "name": "Get all blueprints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch all blueprints in your Port account.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/)."
+        },
+        {
+          "info": {
+            "name": "Create a blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/blueprints",
+            "params": [
+              {
+                "name": "create_catalog_page",
+                "value": "",
+                "type": "query",
+                "description": "If true, a catalog page will be created for this blueprint"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create a new blueprint in your data model.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/)."
+        },
+        {
+          "info": {
+            "name": "Get a blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch a specific blueprint in your Port account.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/)."
+        },
+        {
+          "info": {
+            "name": "Change a blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/blueprints/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to change a specific blueprint in your Port account.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/).<br/><br/>**Modifying system blueprints** <br/>System blueprints (such as `_team`, `_user`, etc.) are managed by Port and their schemas may change over time. It is recommended to use the [PATCH route](https://docs.port.io/api-reference/update-"
+        },
+        {
+          "info": {
+            "name": "Update a blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/blueprints/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to update a specific blueprint in your Port account.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/)."
+        },
+        {
+          "info": {
+            "name": "Delete a blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/blueprints/:identifier",
+            "params": [
+              {
+                "name": "delete_actions",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, all self-service actions associated with this blueprint will be deleted as well."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete a specific blueprint in your Port account.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/).<br/><br/> **Note:** Before deleting a blueprint, make sure all associated entities have been deleted. Entity deletion may take a few seconds to complete, so plan accordingly when using the [**Delete an entity**](https://docs.port.io/api-refer"
+        },
+        {
+          "info": {
+            "name": "Rename a property in a blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/properties/:property_identifier/rename",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint you want to change."
+              },
+              {
+                "name": "property_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the property you want to rename."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to change the identifier of a property in a specific blueprint in your Port account.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/)."
+        },
+        {
+          "info": {
+            "name": "Rename a blueprint's mirror property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/mirror/:property_identifier/rename",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint you want to change."
+              },
+              {
+                "name": "property_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the property you want to rename."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to change the identifier of a mirror property in a specific blueprint in your Port account.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/)."
+        },
+        {
+          "info": {
+            "name": "Rename a blueprint's relation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/relations/:relation_identifier/rename",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint you want to change."
+              },
+              {
+                "name": "relation_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the relation you want to rename."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to change the identifier of a relation in a specific blueprint in your Port account.<br/><br/>To learn more about blueprints, check out the [documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

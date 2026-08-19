@@ -1,0 +1,259 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Integrations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all integrations meta-data (member view)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/integration/metadata",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows members to fetch meta-data on all integrations in their Port organization.<br></br>The response includes each integration's identifier, installation ID, integration type, and last update timestamp."
+        },
+        {
+          "info": {
+            "name": "Get all integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/integration",
+            "params": [
+              {
+                "name": "actionsProcessingEnabled",
+                "value": "",
+                "type": "query",
+                "description": "filter by integrations that has actions processing enabled"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch all integrations in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac/users-and-teams/manage-"
+        },
+        {
+          "info": {
+            "name": "Get an integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/integration/:identifier",
+            "params": [
+              {
+                "name": "byField",
+                "value": "",
+                "type": "query",
+                "description": "The field used to identify the integration. When set to `logIngestId`, the `identifier` parameter should be changed accordingly."
+              },
+              {
+                "name": "isPolling",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return the integration in polling mode."
+              },
+              {
+                "name": "oceanCoreVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the core to use."
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch a specific integration in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac/users-and-teams/m"
+        },
+        {
+          "info": {
+            "name": "Update an integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/integration/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to modify an integration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Note:** To trigger a resync of an integration without changing its mapping, simply provide its identifier and leave the body empty."
+        },
+        {
+          "info": {
+            "name": "Delete an integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/integration/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete an integration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/)."
+        },
+        {
+          "info": {
+            "name": "Get an integration's event logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/integration/:identifier/logs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of logs to fetch per page."
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query",
+                "description": "The date of time from which to fetch the logs, in `ISO format IE 2022-04-23T18:25:43.511Z`."
+              },
+              {
+                "name": "log_id",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the log."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Determines whether to fetch logs before or after the specified timestamp."
+              },
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs belonging to a specific event."
+              },
+              {
+                "name": "levels",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs by severity level."
+              },
+              {
+                "name": "etl_phases",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs by ETL phases."
+              },
+              {
+                "name": "kinds",
+                "value": "",
+                "type": "query",
+                "description": "Filter logs by kinds (e.g `pull-request`, `branch` for GitHub, `issue` for Jira, etc.)"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch the event logs of a specific integration in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac"
+        },
+        {
+          "info": {
+            "name": "Update an integration's config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/integration/:identifier/config",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to modify an integration's configuration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

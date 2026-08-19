@@ -1,0 +1,194 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Organization API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/organization",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch the details of your Port organization, such as its name, id, and hidden blueprints."
+        },
+        {
+          "info": {
+            "name": "Change organization details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/organization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to change the details of your Port organization, such as its name and hidden blueprints."
+        },
+        {
+          "info": {
+            "name": "Update organization details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/organization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to update the details of your Port organization, such as its name and hidden blueprints."
+        },
+        {
+          "info": {
+            "name": "Get all organization secrets' metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/organization/secrets",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to retrieve metadata about all secrets in your organization. Note that this endpoint returns only the metadata of the secrets, not the secret content itself.<br/><br/>To learn more about secrets management in Port, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets)."
+        },
+        {
+          "info": {
+            "name": "Create an organization secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/organization/secrets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create an organization secret.<br/><br/>To learn more about secrets management in Port, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets)."
+        },
+        {
+          "info": {
+            "name": "Get an organization secret's metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/organization/secrets/:secret_name",
+            "params": [
+              {
+                "name": "secret_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the secret you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to retrieve metadata about a specific secret in your organization. Note that this endpoint returns only the metadata of the secret, not the secret content itself.<br/><br/>To learn more about secrets management in Port, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets)."
+        },
+        {
+          "info": {
+            "name": "Update an organization secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/organization/secrets/:secret_name",
+            "params": [
+              {
+                "name": "secret_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the secret you want to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to update an organization secret.<br/><br/>To learn more about secrets management, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets)."
+        },
+        {
+          "info": {
+            "name": "Delete an organization secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/organization/secrets/:secret_name",
+            "params": [
+              {
+                "name": "secret_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the secret you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete an organization secret.<br/><br/>To learn more about secrets management in Port, check out the [documentation](https://docs.port.io/sso-rbac/port-secrets)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

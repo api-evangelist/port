@@ -1,0 +1,215 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Scorecards API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scorecards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a blueprint's scorecards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/scorecards",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch all scorecards for a given blueprint. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview)."
+        },
+        {
+          "info": {
+            "name": "Create a scorecard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/scorecards",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create a scorecard for a given blueprint. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview)."
+        },
+        {
+          "info": {
+            "name": "Change scorecards",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/scorecards",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to modify one or more scorecards of a given blueprint. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview)."
+        },
+        {
+          "info": {
+            "name": "Get a scorecard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/scorecards/:scorecard_identifier",
+            "params": [
+              {
+                "name": "scorecard_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the scorecard to operate on."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint containing the scorecard."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch a specific scorecard. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview)."
+        },
+        {
+          "info": {
+            "name": "Change a scorecard",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/scorecards/:scorecard_identifier",
+            "params": [
+              {
+                "name": "scorecard_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the scorecard to operate on."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint containing the scorecard."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to modify a specific scorecard. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview)."
+        },
+        {
+          "info": {
+            "name": "Delete a scorecard",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/scorecards/:scorecard_identifier",
+            "params": [
+              {
+                "name": "scorecard_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the scorecard to operate on."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint containing the scorecard."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete a specific scorecard. A scorecard is a set of rules that define the quality of a blueprint.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview)."
+        },
+        {
+          "info": {
+            "name": "Get all scorecards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/scorecards",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch all scorecards in your Port organization.<br/><br/>To learn more about scorecards, check out the [documentation](https://docs.port.io/scorecards/overview)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

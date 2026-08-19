@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Authentication / Authorization API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication / Authorization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/auth/access_token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This route allows you to create an access token for your Port account. You can use this token to authenticate your requests to the Port API.<br/><br/>To obtain your client ID and client secret, go to your [Port application](https://app.getport.io), click on the `...` button in the top right corner, then click `Credentials`."
+        },
+        {
+          "info": {
+            "name": "Rotate a user's credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/rotate-credentials/:user_email",
+            "params": [
+              {
+                "name": "user_email",
+                "value": "",
+                "type": "path",
+                "description": "The email address of the user you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to rotate a user's credentials and generate new ones."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

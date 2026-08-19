@@ -1,0 +1,733 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Entities API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all entities of a blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities",
+            "params": [
+              {
+                "name": "exclude_calculated_properties",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/calculation-property/) will be excluded from the entities."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure). Only these values will be returned in the response.<br/>For example: `{ \"properties.propertyIdentifier\",\"identifier\"}`."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure) to be ommitted from the response.<br/>For example: `{ \"properties.propertyIdentifier\",\"identifier\"}`"
+              },
+              {
+                "name": "attach_title_to_relation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "attach_identifier_to_title_mirror_properties",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "allow_partial_results",
+                "value": "",
+                "type": "query",
+                "description": "When enabled allows some of the blueprint searches to fail without failing the full request."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch all entities in your software catalog based on a given blueprint.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Create an entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities",
+            "params": [
+              {
+                "name": "upsert",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will override the entire entity/ies, if it/they already exist/s."
+              },
+              {
+                "name": "validation_only",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will only validate the entity/ies and return the validation errors."
+              },
+              {
+                "name": "create_missing_related_entities",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will also create missing related entities.<br/>This is useful when you want to create an entity and its related entities in one call, or if you want to create an entity whose related entity does not exist yet."
+              },
+              {
+                "name": "merge",
+                "value": "",
+                "type": "query",
+                "description": "If `true` and `upsert` is also `true`, this call will update the entity/ies, if it/they already exist/s."
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "query",
+                "description": "You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-progress/#tying-entities-to-an-action-run)."
+              },
+              {
+                "name": "ocean_info_resync_id",
+                "value": "",
+                "type": "query",
+                "description": "Resync run identifier. Only valid when `ocean_info_event_type` is `resync`."
+              },
+              {
+                "name": "ocean_info_event_type",
+                "value": "",
+                "type": "query",
+                "description": "How the operation was triggered."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create an entity in your software catalog based on an existing blueprint in your data model. It can also be used to overwrite or update an existing entity.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Create multiple entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities/bulk",
+            "params": [
+              {
+                "name": "upsert",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will override the entire entity/ies, if it/they already exist/s."
+              },
+              {
+                "name": "validation_only",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will only validate the entity/ies and return the validation errors."
+              },
+              {
+                "name": "create_missing_related_entities",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will also create missing related entities.<br/>This is useful when you want to create an entity and its related entities in one call, or if you want to create an entity whose related entity does not exist yet."
+              },
+              {
+                "name": "merge",
+                "value": "",
+                "type": "query",
+                "description": "If `true` and `upsert` is also `true`, this call will update the entity/ies, if it/they already exist/s."
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "query",
+                "description": "You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-progress/#tying-entities-to-an-action-run)."
+              },
+              {
+                "name": "ocean_info_resync_id",
+                "value": "",
+                "type": "query",
+                "description": "Resync run identifier. Only valid when `ocean_info_event_type` is `resync`."
+              },
+              {
+                "name": "ocean_info_event_type",
+                "value": "",
+                "type": "query",
+                "description": "How the operation was triggered."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create multiple entities (No more than 20 entities per request) in your software catalog based on an existing blueprint in your data model. It can also be used to overwrite or update existing entities.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities).<br/><br/> **Note:** A failure response does not necessarily mean that all entities failed. A `207 Multi-Status` response i"
+        },
+        {
+          "info": {
+            "name": "Get an entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities/:entity_identifier",
+            "params": [
+              {
+                "name": "exclude_calculated_properties",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/calculation-property/) will be excluded from the entities."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure). Only these values will be returned in the response.<br/>For example: `{ \"properties.propertyIdentifier\",\"identifier\"}`."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure) to be ommitted from the response.<br/>For example: `{ \"properties.propertyIdentifier\",\"identifier\"}`"
+              },
+              {
+                "name": "attach_title_to_relation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "attach_identifier_to_title_mirror_properties",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "allow_partial_results",
+                "value": "",
+                "type": "query",
+                "description": "When enabled allows some of the blueprint searches to fail without failing the full request."
+              },
+              {
+                "name": "entity_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the entity to operate on."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch a specific entity in your software catalog.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Change an entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities/:entity_identifier",
+            "params": [
+              {
+                "name": "create_missing_related_entities",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will also create missing related entities.<br/>This is useful when you want to create an entity and its related entities in one call, or if you want to create an entity whose related entity does not exist yet."
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "query",
+                "description": "You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-progress/#tying-entities-to-an-action-run)."
+              },
+              {
+                "name": "ocean_info_resync_id",
+                "value": "",
+                "type": "query",
+                "description": "Resync run identifier. Only valid when `ocean_info_event_type` is `resync`."
+              },
+              {
+                "name": "ocean_info_event_type",
+                "value": "",
+                "type": "query",
+                "description": "How the operation was triggered."
+              },
+              {
+                "name": "entity_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the entity to operate on."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to edit a specific entity in your software catalog and update its properties.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Update an entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities/:entity_identifier",
+            "params": [
+              {
+                "name": "create_missing_related_entities",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will also create missing related entities.<br/>This is useful when you want to create an entity and its related entities in one call, or if you want to create an entity whose related entity does not exist yet."
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "query",
+                "description": "You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-progress/#tying-entities-to-an-action-run)."
+              },
+              {
+                "name": "ocean_info_resync_id",
+                "value": "",
+                "type": "query",
+                "description": "Resync run identifier. Only valid when `ocean_info_event_type` is `resync`."
+              },
+              {
+                "name": "ocean_info_event_type",
+                "value": "",
+                "type": "query",
+                "description": "How the operation was triggered."
+              },
+              {
+                "name": "entity_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the entity to operate on."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to edit a specific entity in your software catalog and update its properties.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Delete an entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities/:entity_identifier",
+            "params": [
+              {
+                "name": "delete_dependents",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will also delete all entities with a relation to the deleted entity."
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "query",
+                "description": "You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-progress/#tying-entities-to-an-action-run)."
+              },
+              {
+                "name": "ocean_info_resync_id",
+                "value": "",
+                "type": "query",
+                "description": "Resync run identifier. Only valid when `ocean_info_event_type` is `resync`."
+              },
+              {
+                "name": "ocean_info_event_type",
+                "value": "",
+                "type": "query",
+                "description": "How the operation was triggered."
+              },
+              {
+                "name": "entity_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the entity to operate on."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete a specific entity in your software catalog.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Get a blueprint's entity count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities-count",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to count the number of entities in a specific blueprint in your software catalog.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Delete all entities of a blueprint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/all-entities",
+            "params": [
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "query",
+                "description": "You can provide a `run_id` to associate the deleted entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-progress/#tying-entities-to-an-action-run)."
+              },
+              {
+                "name": "ocean_info_resync_id",
+                "value": "",
+                "type": "query",
+                "description": "Resync run identifier. Only valid when `ocean_info_event_type` is `resync`."
+              },
+              {
+                "name": "ocean_info_event_type",
+                "value": "",
+                "type": "query",
+                "description": "How the operation was triggered."
+              },
+              {
+                "name": "delete_blueprint",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will also delete the blueprint itself."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete all entities of a specific blueprint in your software catalog.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Delete multiple entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/bulk/entities/delete",
+            "params": [
+              {
+                "name": "delete_dependents",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, this call will also delete all entities with a relation to the deleted entity."
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "query",
+                "description": "You can provide a `run_id` to associate the created entities with a specific [action run](https://docs.port.io/create-self-service-experiences/reflect-action-progress/#tying-entities-to-an-action-run)."
+              },
+              {
+                "name": "ocean_info_resync_id",
+                "value": "",
+                "type": "query",
+                "description": "Resync run identifier. Only valid when `ocean_info_event_type` is `resync`."
+              },
+              {
+                "name": "ocean_info_event_type",
+                "value": "",
+                "type": "query",
+                "description": "How the operation was triggered."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete multiple entities (up to 100 entities per request) from a specific blueprint in your software catalog. All entities must belong to the same blueprint.<br/><br/>If any entity has dependent entities and delete_dependents is false, the entire operation will fail and no entities will be deleted.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        },
+        {
+          "info": {
+            "name": "Search entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/entities/search",
+            "params": [
+              {
+                "name": "exclude_calculated_properties",
+                "value": "",
+                "type": "query",
+                "description": "If `true`, [calculated properties](https://docs.getport.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/calculation-property/) will be excluded from the entities."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure). Only these values will be returned in the response.<br/>For example: `{ \"properties.propertyIdentifier\",\"identifier\"}`."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "An array of values from the [entity JSON](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#json-structure) to be ommitted from the response.<br/>For example: `{ \"properties.propertyIdentifier\",\"identifier\"}`"
+              },
+              {
+                "name": "attach_title_to_relation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "attach_identifier_to_title_mirror_properties",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "allow_partial_results",
+                "value": "",
+                "type": "query",
+                "description": "When enabled allows some of the blueprint searches to fail without failing the full request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to search for entities in your software catalog based on a given set of rules.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities).<br/><br/>For more details about Port's search mechanism, rules, and operators - see the [search & query documentation](https://docs.port.io/search-and-query/overview)."
+        },
+        {
+          "info": {
+            "name": "Search a blueprint's entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/entities/search",
+            "params": [
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the blueprint whose entities you want to search."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to search your software catalog for a specific blueprint's entities, based on a given set of rules.<br/>The returned entities are paginated for improved performance.<br/><br/>To learn more about entities, check out the [entity documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities).<br/><br/>For more details about Port's search mechanism, rules, and operators - see the [search & query documentation](https://docs.port.io/search-and-que"
+        },
+        {
+          "info": {
+            "name": "Aggregate entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/entities/aggregate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to perform an aggregation function on a blueprint's entities based on a given set of rules.<br/><br/>To learn more about entities, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities).<br/><br/>For more details about Port's search mechanism, rules, and operators - see the [search & query documentation](https://docs.port.io/search-and-query/overview)."
+        },
+        {
+          "info": {
+            "name": "Aggregate entities over time",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/entities/aggregate-over-time",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to perform an aggregation function on a blueprint's entities over a given time range.<br/><br/>To learn more about entities, check out the [entity documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities).<br/><br/>For more details about Port's search mechanism, rules, and operators - see the [search & query documentation](https://docs.port.io/search-and-query/overview)."
+        },
+        {
+          "info": {
+            "name": "Fetch the history of an entity's properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/entities/properties-history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to retrieve historical values for a selected list of an entity's properties over a given time range.<br/><br/>To learn more about entities, check out the [entity documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/#entities)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

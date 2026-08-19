@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Migrations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Migrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all migrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/migrations",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "actor",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the user who initiated the migration. You can use the [Get user](https://docs.port.io/api-reference/get-a-user/) route to get a user's identifier."
+              },
+              {
+                "name": "blueprint",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the blueprint associated with the migration."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch all migrations (both past and present) in your Port organization.<br/><br/>The call will perform a logical `AND` operation on the query parameters below, and return all migrations that match the criteria."
+        },
+        {
+          "info": {
+            "name": "Create a migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/migrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create a migration in your Port organization. You can use this to migrate data from one blueprint to another.<br/><br/>**Note** that it is not possible to directly change the data type of an existing property via the UI or the API. The type field setting of a property (**number**, **string**, etc.) is permanent and cannot be changed after creation.<br/><br/>However, you can create a new property with the desired type and migrate the old values to it. Refer to the [docume"
+        },
+        {
+          "info": {
+            "name": "Get a migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/migrations/:migration_id",
+            "params": [
+              {
+                "name": "migration_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the migration you want to fetch."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch a specific migration in your Port organization."
+        },
+        {
+          "info": {
+            "name": "Cancel a migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/migrations/:migration_id/cancel",
+            "params": [
+              {
+                "name": "migration_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the migration you want to cancel."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to cancel a running migration in your Port organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

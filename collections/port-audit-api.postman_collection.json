@@ -1,0 +1,454 @@
+{
+  "item": [
+    {
+      "id": "5f3a04cb-0e9c-49c0-bc29-5afa89c9725b",
+      "name": "Audit",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "121cbaf4-6839-45ac-b5ee-2a42a778e5d3",
+          "name": "Get audit logs",
+          "request": {
+            "name": "Get audit logs",
+            "description": {
+              "content": "Fetch audit logs from your Port account (also viewable in [Port's UI](https://app.getport.io/settings/AuditLog)).<br/><br/>All query parameters are combined with logical `AND`.<br/><br/>**Non-admin users** have limited access. They can only:<br/>- Pass an `identifier` to access a specific log.<br/>- Pass an `entity` to retrieve logs of entities they have access to.<br/>- Pass a `run_id` to retrieve logs of action runs they have access to.<br/><br/>Non-admin users **cannot** view logs of deleted entities.<br/><br/>**Performance:** The optional `limit` parameter defaults to `10000`. Omitting `limit` previously used a default of `100000`, which often caused `504 Gateway Timeout` on large accounts. For very broad queries you may still need a lower `limit` or narrower `from`/`to` time windows.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "audit-log"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "identifier",
+                  "value": "<string>",
+                  "description": "An identifier of the log event you want to fetch."
+                },
+                {
+                  "disabled": false,
+                  "key": "entity",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs related to the specified entity."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_deleted_entities",
+                  "value": "<boolean>",
+                  "description": "Include deleted entities when searching for audit logs. This requires the `entity`, `blueprint`, `status`, `from` and `to` parameters. And the diff between `from` & `to` is limited to 1 day."
+                },
+                {
+                  "disabled": false,
+                  "key": "blueprint",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs related to the specified blueprint."
+                },
+                {
+                  "disabled": false,
+                  "key": "run_id",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs related to the specified action run."
+                },
+                {
+                  "disabled": false,
+                  "key": "webhookId",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs related to the specified webhook."
+                },
+                {
+                  "disabled": false,
+                  "key": "webhookEventId",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs related to the specified webhook event."
+                },
+                {
+                  "disabled": false,
+                  "key": "origin",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs coming from the specified origin/s. This refers to the integration/s that triggered the log. For operations performed via Port's UI, the origin will be `UI`."
+                },
+                {
+                  "disabled": false,
+                  "key": "origin",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs coming from the specified origin/s. This refers to the integration/s that triggered the log. For operations performed via Port's UI, the origin will be `UI`."
+                },
+                {
+                  "disabled": false,
+                  "key": "InstallationId",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs related to the specified integration."
+                },
+                {
+                  "disabled": false,
+                  "key": "resources",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs related to the specified resource type/s.<br/>**Possible values**: [`blueprint`, `entity`, `run`, `webhook`, `scorecard`, `action`, `integration`]<br/>The `integration` value is **experimental** and may change in future API versions."
+                },
+                {
+                  "disabled": false,
+                  "key": "resources",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs related to the specified resource type/s.<br/>**Possible values**: [`blueprint`, `entity`, `run`, `webhook`, `scorecard`, `action`, `integration`]<br/>The `integration` value is **experimental** and may change in future API versions."
+                },
+                {
+                  "disabled": false,
+                  "key": "includes",
+                  "value": "<string>",
+                  "description": "The fields you want to include in the response. If used, only the specified fields will be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "includes",
+                  "value": "<string>",
+                  "description": "The fields you want to include in the response. If used, only the specified fields will be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "The starting timestamp of the audit logs you want to fetch, in the ISO format `2022-04-23T18:25:43.511Z`."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "The ending timestamp of the audit logs you want to fetch, in the ISO format `2022-04-23T18:25:43.511Z`."
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs with the specified action type - `CREATE`, `UPDATE`, or `DELETE`."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Fetch all audit logs with the specified status."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "The maximum number of logs to return. Optional; defaults to `10000`. The previous default was `100000`, which could cause `504 Gateway Timeout` on large accounts. Use a lower value or narrow `from` and `to` if you still hit timeouts."
+                },
+                {
+                  "disabled": false,
+                  "key": "actionType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2d8c1a53-1326-4d16-bf3e-e05a63fe0695",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "audit-log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_deleted_entities",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "blueprint",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "run_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookEventId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "InstallationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "actionType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20c21731-3cdc-4ac8-83dc-69cc0e683cbb",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "audit-log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_deleted_entities",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "blueprint",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "run_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookEventId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "InstallationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "actionType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cd4f9c56-60a3-4ac9-a8f7-64d085dfbc62",
+    "name": "Port Action Runs Audit API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

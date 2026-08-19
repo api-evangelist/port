@@ -1,0 +1,3660 @@
+{
+  "item": [
+    {
+      "id": "f0b0a2cc-cf48-4745-a4a3-fcabe23ab7ce",
+      "name": "Actions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90d359b1-1384-4459-bef9-61c0f59e2610",
+          "name": "Create an action/automation",
+          "request": {
+            "name": "Create an action/automation",
+            "description": {
+              "content": "This route allows you to create a new self-service action or automation in your Port account.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"<string>\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6eb4e9b6-ff92-4246-bea9-ecf001defcac",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"string\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44154001-4781-4a9f-a482-79cfda108e39",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"string\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82fcefd5-74b2-48aa-ad40-be81bea385ee",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"string\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2334ae0-7650-4052-b92a-73ef44e80c69",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"string\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0423c83-6244-41bd-9f4e-5fb2bf522d96",
+          "name": "Get actions/automations",
+          "request": {
+            "name": "Get actions/automations",
+            "description": {
+              "content": "This route allows you to fetch one or more self-service actions and/or automations in your Port account.<br/><br/>The call will perform a logical `AND` between all query parameters below, and return all actions and automations that match the criteria.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/).<br/><br/>:::info Version parameter<br/>Set the `version` parameter to `v2` for the latest version of the API.:::",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action_identifier",
+                  "value": "<string>",
+                  "description": "The identifier/s of the action/s and/or automation/s you want to fetch."
+                },
+                {
+                  "disabled": false,
+                  "key": "action_identifier",
+                  "value": "<string>",
+                  "description": "The identifier/s of the action/s and/or automation/s you want to fetch."
+                },
+                {
+                  "disabled": false,
+                  "key": "blueprint_identifier",
+                  "value": "<string>",
+                  "description": "The identifier/s of the blueprint/s whose actions/automations you wish to fetch."
+                },
+                {
+                  "disabled": false,
+                  "key": "blueprint_identifier",
+                  "value": "<string>",
+                  "description": "The identifier/s of the blueprint/s whose actions/automations you wish to fetch."
+                },
+                {
+                  "disabled": false,
+                  "key": "operation",
+                  "value": "<string>",
+                  "description": "The [operation type/s](https://docs.port.io/create-self-service-experiences/setup-ui-for-action/#basic-details) of the action/s you want to fetch. Relevant only for self-service actions."
+                },
+                {
+                  "disabled": false,
+                  "key": "operation",
+                  "value": "<string>",
+                  "description": "The [operation type/s](https://docs.port.io/create-self-service-experiences/setup-ui-for-action/#basic-details) of the action/s you want to fetch. Relevant only for self-service actions."
+                },
+                {
+                  "disabled": false,
+                  "key": "published",
+                  "value": "<boolean>",
+                  "description": "Only relevant for **automations**. If `true`, only published automations will be fetched."
+                },
+                {
+                  "disabled": false,
+                  "key": "trigger_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "trigger_event",
+                  "value": "<string>",
+                  "description": "The event/s that triggered the automation/s you want to fetch. Relevant only for automations."
+                },
+                {
+                  "disabled": false,
+                  "key": "trigger_event",
+                  "value": "<string>",
+                  "description": "The event/s that triggered the automation/s you want to fetch. Relevant only for automations."
+                },
+                {
+                  "disabled": false,
+                  "key": "trigger_event_action_identifier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "trigger_event_action_identifier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Specifies the API version to use. Please use `v2` for the latest version of the API."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "690f607a-d0af-4c0b-8609-35cac67a337a",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blueprint_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blueprint_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "operation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "operation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "published",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "trigger_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trigger_event",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trigger_event",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trigger_event_action_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trigger_event_action_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68919cef-3fb5-4847-9cdb-c87676af1fa9",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blueprint_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "blueprint_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "operation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "operation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "published",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "trigger_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trigger_event",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trigger_event",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trigger_event_action_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trigger_event_action_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d85745d-d29f-4376-9b9b-912bd1640623",
+          "name": "Change an action/automation",
+          "request": {
+            "name": "Change an action/automation",
+            "description": {
+              "content": "This route allows you to change the details of an existing self-service action or automation in your Port account.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                ":action_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action_identifier",
+                  "description": "(Required) The identifier of the action/automation you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"<string>\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"<string>\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "177a1f91-8576-4643-8f25-de1959f57e46",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"string\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acfbc437-7613-432e-a4ac-4b5b7ac01586",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"string\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c07a48b4-61e0-42de-8b73-922e622a3c3e",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"string\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fca2cb40-16f9-4502-b849-c159664b2385",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identifier\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"userInputs\": {\n      \"properties\": {\n        \"key_0\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": \"<string>\",\n          \"jqQuery\": \"<null>\",\n          \"format\": \"<string>\",\n          \"blueprint\": \"<string>\",\n          \"dependsOn\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"visible\": {\n            \"jqQuery\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"icon\": \"<string>\",\n          \"dataset\": {\n            \"combinator\": \"string\",\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sort\": {\n            \"property\": \"<string>\",\n            \"order\": \"<string>\"\n          }\n        }\n      },\n      \"titles\": {\n        \"key_0\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"title\": \"<string>\",\n          \"description\": \"<string>\",\n          \"visible\": \"<boolean>\"\n        }\n      },\n      \"required\": {\n        \"jqQuery\": \"string\"\n      }\n    },\n    \"operation\": \"<string>\",\n    \"blueprintIdentifier\": \"<string>\",\n    \"actionCardButtonText\": \"<string>\",\n    \"executeActionButtonText\": \"<string>\",\n    \"condition\": {\n      \"type\": \"<string>\",\n      \"rules\": [\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        },\n        {\n          \"property\": \"<string>\",\n          \"operator\": \"<string>\",\n          \"value\": {\n            \"from\": \"<dateTime>\",\n            \"to\": \"<dateTime>\"\n          }\n        }\n      ],\n      \"combinator\": \"<string>\"\n    }\n  },\n  \"invocationMethod\": {\n    \"type\": \"<string>\",\n    \"payload\": \"<array>\"\n  },\n  \"title\": \"<string>\",\n  \"icon\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requiredApproval\": {\n    \"type\": \"<string>\"\n  },\n  \"approvalNotification\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"format\": \"<string>\"\n  },\n  \"publish\": \"<boolean>\",\n  \"allowAnyoneToViewRuns\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed1612cd-7b80-410e-b0f5-f439b670855e",
+          "name": "Get an action/automation",
+          "request": {
+            "name": "Get an action/automation",
+            "description": {
+              "content": "This route allows you to fetch the details of a self-service action or automation.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                ":action_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action_identifier",
+                  "description": "(Required) The identifier of the action/automation you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b44083d5-66a9-4921-a042-d46479c221ac",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eff50639-b5eb-4088-874c-df43d383cfd0",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "475d6b53-ee8f-47f1-bb79-15106d7a05a7",
+          "name": "Delete an action/automation",
+          "request": {
+            "name": "Delete an action/automation",
+            "description": {
+              "content": "This route allows you to delete a self-service action or automation.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                ":action_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action_identifier",
+                  "description": "(Required) The identifier of the action/automation you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9d08729b-1bf9-48ee-86b8-cb05a8640fab",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7447f9a2-0f50-4e97-974c-3979cf2b4455",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74174eef-513c-4af9-bb4e-9ef9bdc9d324",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff2c06ed-2d5e-4c51-9ea9-fa5ef2afb953",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a87cdcd-e1bc-4dcb-8dee-bb09fd3c72ea",
+          "name": "This route is deprecated since November 20th 2024",
+          "request": {
+            "name": "This route is deprecated since November 20th 2024",
+            "description": {
+              "content": "This route is deprecated since November 20th 2024",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "nullable",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2686893b-9e02-4cdf-93f8-978688c4b85a",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03724df9-0d35-4263-84a7-c3fd199fb132",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f4cd1c0-f059-4907-8bf3-ee8f43feed72",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6af9ecaf-5262-4766-9c5a-1f33107bfde9",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84fc0dac-85fd-4f51-8364-db00ca579cf6",
+          "name": "This route is deprecated since November 20th 2024",
+          "request": {
+            "name": "This route is deprecated since November 20th 2024",
+            "description": {
+              "content": "This route is deprecated since November 20th 2024",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "nullable",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4bcf7e96-449d-4886-a2b7-e6a38a77eff5",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57e8970a-b7ea-4045-8d85-a059bf8ec3f5",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "040a5fae-b1e6-438b-adc5-897c7e6fb8be",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "565448ba-81e6-4ebe-963f-f91c2d4e7532",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4572bb31-2336-4906-8b67-a79aedec6c64",
+          "name": "This route is deprecated since November 20th 2024",
+          "request": {
+            "name": "This route is deprecated since November 20th 2024",
+            "description": {
+              "content": "This route is deprecated since November 20th 2024",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "nullable",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c1e24096-803f-44f6-9f81-a4b959c213e0",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a3e652b-51d9-4861-878c-74ca06e6ba06",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33d37f6d-a4ba-432b-b285-b71d1a55498a",
+          "name": "This route is deprecated since November 20th 2024",
+          "request": {
+            "name": "This route is deprecated since November 20th 2024",
+            "description": {
+              "content": "This route is deprecated since November 20th 2024",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "actions",
+                ":action_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "nullable",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68d38eea-88e2-4b3f-a8d3-4ab5a7c66a33",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d89cc69-3db0-48c6-b297-d0afcc92dd63",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20f2a5f9-9d37-4dca-ae31-6d1d63d6f533",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6287ace9-0b13-4e1a-9843-88889b5ddaec",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43c51e9f-afca-414b-8625-d2914667e763",
+          "name": "This route is deprecated since November 20th 2024",
+          "request": {
+            "name": "This route is deprecated since November 20th 2024",
+            "description": {
+              "content": "This route is deprecated since November 20th 2024",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "actions",
+                ":action_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "nullable",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33fd2e64-4981-4b2f-849c-48006041dc6f",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d85d89b-dbdc-4ea9-9277-34d3a6041a32",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "787566d1-09bc-48c4-9ac1-4c4d3a3e3bc2",
+          "name": "This route is deprecated since November 20th 2024",
+          "request": {
+            "name": "This route is deprecated since November 20th 2024",
+            "description": {
+              "content": "This route is deprecated since November 20th 2024",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blueprints",
+                ":blueprint_identifier",
+                "actions",
+                ":action_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "",
+                  "key": "nullable",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a4d61101-8766-4d77-a7f6-558374216e58",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a422eb60-5dde-48a6-bae3-0d1fa5fb1767",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efc7141c-3584-4e35-97d0-277f20de080e",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbe3e7bb-d063-4f01-af46-db31e646f98e",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blueprints",
+                    ":blueprint_identifier",
+                    "actions",
+                    ":action_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "",
+                      "key": "nullable",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dfe9e44-cf5a-4d65-8bce-da0e9052c459",
+          "name": "Get an action's permissions",
+          "request": {
+            "name": "Get an action's permissions",
+            "description": {
+              "content": "This route allows you to fetch the permissions of a self-service action.<br/><br/>To learn more about action RBAC, check out the [documentation](https://docs.port.io/actions-and-automations/create-self-service-experiences/set-self-service-actions-rbac/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                ":action_identifier",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action_identifier",
+                  "description": "(Required) The identifier of the action/automation you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8d1c224e-e423-41b0-ab9d-c46e37180189",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52d06e35-e4a2-4a56-9c56-6c224c7faa1d",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b9a64b-5dae-40b9-80ea-fb278e6fb29b",
+          "name": "Update an action's permissions",
+          "request": {
+            "name": "Update an action's permissions",
+            "description": {
+              "content": "This route allows you to update the permissions of a self-service action.<br/><br/>To learn more about action RBAC, check out the [documentation](https://docs.port.io/actions-and-automations/create-self-service-experiences/set-self-service-actions-rbac/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "actions",
+                ":action_identifier",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action_identifier",
+                  "description": "(Required) The identifier of the action/automation you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"execute\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ownedByTeam\": \"<boolean>\",\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"<string>\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"<string>\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  },\n  \"approve\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"<string>\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"<string>\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f45d610d-4d34-48b0-9f7d-03288c621181",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"execute\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ownedByTeam\": \"<boolean>\",\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  },\n  \"approve\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_2\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2994084e-b7d8-4bf2-897c-5dd34bc177e9",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"execute\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ownedByTeam\": \"<boolean>\",\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  },\n  \"approve\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_2\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0efe4cb-6f53-4eb8-810d-145335aed057",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"execute\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ownedByTeam\": \"<boolean>\",\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  },\n  \"approve\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_2\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f447e88d-3f49-4f12-bd6b-a57b6302f587",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "actions",
+                    ":action_identifier",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action_identifier",
+                      "description": "(Required) The identifier of the action/automation you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"execute\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ownedByTeam\": \"<boolean>\",\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  },\n  \"approve\": {\n    \"users\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"teams\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"policy\": {\n      \"queries\": {\n        \"key_0\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_1\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"key_2\": {\n          \"combinator\": \"string\",\n          \"rules\": [\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"property\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"operator\": \"string\",\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      },\n      \"conditions\": [\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "59c03b17-4528-4274-a96b-b98ed9d4dfa5",
+    "name": "Port Action Runs Actions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

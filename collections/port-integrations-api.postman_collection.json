@@ -1,0 +1,1743 @@
+{
+  "item": [
+    {
+      "id": "1caf43c1-219b-4094-ac03-a5f83c5a7008",
+      "name": "Integrations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9f4bcde7-ba7a-4b33-bac8-9fd716a17112",
+          "name": "Get all integrations meta-data (member view)",
+          "request": {
+            "name": "Get all integrations meta-data (member view)",
+            "description": {
+              "content": "This route allows members to fetch meta-data on all integrations in their Port organization.<br></br>The response includes each integration's identifier, installation ID, integration type, and last update timestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integration",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0b46d9bb-18a2-435a-a6b7-2c7861dfd562",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6357cbc8-1df9-4c5a-8775-54a2ea794747",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e23ecb8-ed2c-449c-a0b2-1b90950dd05e",
+          "name": "Get all integrations",
+          "request": {
+            "name": "Get all integrations",
+            "description": {
+              "content": "This route allows you to fetch all integrations in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac/users-and-teams/manage-users-teams/#roles--permissions).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "actionsProcessingEnabled",
+                  "value": "<boolean>",
+                  "description": "filter by integrations that has actions processing enabled"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1406388f-1d97-491d-a1a9-4a388877626e",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actionsProcessingEnabled",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "219d7f82-0ad4-4c8b-98f4-59992d8b4f22",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "actionsProcessingEnabled",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0aa4f178-36bb-41af-a4c0-7d8b54730b32",
+          "name": "Get an integration",
+          "request": {
+            "name": "Get an integration",
+            "description": {
+              "content": "This route allows you to fetch a specific integration in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac/users-and-teams/manage-users-teams/#roles--permissions).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integration",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "byField",
+                  "value": "installationId",
+                  "description": "The field used to identify the integration. When set to `logIngestId`, the `identifier` parameter should be changed accordingly."
+                },
+                {
+                  "disabled": false,
+                  "key": "isPolling",
+                  "value": "<boolean>",
+                  "description": "Whether to return the integration in polling mode."
+                },
+                {
+                  "disabled": false,
+                  "key": "oceanCoreVersion",
+                  "value": "<string>",
+                  "description": "The version of the core to use."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) The unique identifier of the resource you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96e42ac8-91bd-4bc9-8e88-fc60365b52ee",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "byField",
+                      "value": "installationId"
+                    },
+                    {
+                      "key": "isPolling",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "oceanCoreVersion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61fc1512-7642-4a41-b7cd-b75af33efec9",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "byField",
+                      "value": "installationId"
+                    },
+                    {
+                      "key": "isPolling",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "oceanCoreVersion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "202700fb-624b-4be9-b8fe-57f347cae769",
+          "name": "Update an integration",
+          "request": {
+            "name": "Update an integration",
+            "description": {
+              "content": "This route allows you to modify an integration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Note:** To trigger a resync of an integration without changing its mapping, simply provide its identifier and leave the body empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integration",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) The unique identifier of the resource you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"installationAppType\": \"<string>\",\n  \"version\": \"<string>\",\n  \"pinnedVersion\": \"<string>\",\n  \"spec\": {\n    \"appSpec\": {\n      \"key_0\": \"string\",\n      \"key_1\": 3384,\n      \"key_2\": 4078.0564875596483\n    },\n    \"integrationSpec\": {\n      \"key_0\": 5557,\n      \"key_1\": \"string\",\n      \"key_2\": 3479.91608652376\n    }\n  },\n  \"actionsProcessingEnabled\": \"<boolean>\",\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": true,\n                  \"key_1\": \"string\",\n                  \"key_2\": true,\n                  \"key_3\": \"string\"\n                },\n                \"relations\": {\n                  \"key_0\": false,\n                  \"key_1\": false\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 3210.867898790307,\n                  \"key_1\": 7941\n                },\n                \"relations\": {\n                  \"key_0\": 8632.971810828823,\n                  \"key_1\": \"string\",\n                  \"key_2\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\"\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 6587.266319414796\n                },\n                \"relations\": {\n                  \"key_0\": 1282.3021753474052,\n                  \"key_1\": \"string\",\n                  \"key_2\": 7995,\n                  \"key_3\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      }\n    ]\n  },\n  \"changelogDestination\": {},\n  \"arePortResourcesInitialized\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a93f58db-fb84-4f9c-bcce-a2a4c617cab8",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"installationAppType\": \"<string>\",\n  \"version\": \"<string>\",\n  \"pinnedVersion\": \"<string>\",\n  \"spec\": {\n    \"appSpec\": {\n      \"key_0\": true\n    },\n    \"integrationSpec\": {\n      \"key_0\": 6705.815910207775,\n      \"key_1\": \"string\",\n      \"key_2\": 8366.113902794012,\n      \"key_3\": true\n    }\n  },\n  \"actionsProcessingEnabled\": \"<boolean>\",\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 3072\n                },\n                \"relations\": {\n                  \"key_0\": 879,\n                  \"key_1\": true,\n                  \"key_2\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": false\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": false,\n                  \"key_2\": false,\n                  \"key_3\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": \"string\",\n                  \"key_2\": false,\n                  \"key_3\": 2802\n                },\n                \"relations\": {\n                  \"key_0\": 3252\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 2802.075149363533,\n                  \"key_1\": 6208,\n                  \"key_2\": true\n                },\n                \"relations\": {\n                  \"key_0\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      }\n    ]\n  },\n  \"changelogDestination\": {},\n  \"arePortResourcesInitialized\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fcc5afb-66b8-4613-90c6-85e132405680",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"installationAppType\": \"<string>\",\n  \"version\": \"<string>\",\n  \"pinnedVersion\": \"<string>\",\n  \"spec\": {\n    \"appSpec\": {\n      \"key_0\": true\n    },\n    \"integrationSpec\": {\n      \"key_0\": 6705.815910207775,\n      \"key_1\": \"string\",\n      \"key_2\": 8366.113902794012,\n      \"key_3\": true\n    }\n  },\n  \"actionsProcessingEnabled\": \"<boolean>\",\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 3072\n                },\n                \"relations\": {\n                  \"key_0\": 879,\n                  \"key_1\": true,\n                  \"key_2\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": false\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": false,\n                  \"key_2\": false,\n                  \"key_3\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": \"string\",\n                  \"key_2\": false,\n                  \"key_3\": 2802\n                },\n                \"relations\": {\n                  \"key_0\": 3252\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 2802.075149363533,\n                  \"key_1\": 6208,\n                  \"key_2\": true\n                },\n                \"relations\": {\n                  \"key_0\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      }\n    ]\n  },\n  \"changelogDestination\": {},\n  \"arePortResourcesInitialized\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9eeddc7-ad2c-4b3f-868b-4b2c693b3825",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"installationAppType\": \"<string>\",\n  \"version\": \"<string>\",\n  \"pinnedVersion\": \"<string>\",\n  \"spec\": {\n    \"appSpec\": {\n      \"key_0\": true\n    },\n    \"integrationSpec\": {\n      \"key_0\": 6705.815910207775,\n      \"key_1\": \"string\",\n      \"key_2\": 8366.113902794012,\n      \"key_3\": true\n    }\n  },\n  \"actionsProcessingEnabled\": \"<boolean>\",\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 3072\n                },\n                \"relations\": {\n                  \"key_0\": 879,\n                  \"key_1\": true,\n                  \"key_2\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": false\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": false,\n                  \"key_2\": false,\n                  \"key_3\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": \"string\",\n                  \"key_2\": false,\n                  \"key_3\": 2802\n                },\n                \"relations\": {\n                  \"key_0\": 3252\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 2802.075149363533,\n                  \"key_1\": 6208,\n                  \"key_2\": true\n                },\n                \"relations\": {\n                  \"key_0\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      }\n    ]\n  },\n  \"changelogDestination\": {},\n  \"arePortResourcesInitialized\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c166dd92-0147-4c8a-8a5a-f56af2bdd1c9",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"installationAppType\": \"<string>\",\n  \"version\": \"<string>\",\n  \"pinnedVersion\": \"<string>\",\n  \"spec\": {\n    \"appSpec\": {\n      \"key_0\": true\n    },\n    \"integrationSpec\": {\n      \"key_0\": 6705.815910207775,\n      \"key_1\": \"string\",\n      \"key_2\": 8366.113902794012,\n      \"key_3\": true\n    }\n  },\n  \"actionsProcessingEnabled\": \"<boolean>\",\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 3072\n                },\n                \"relations\": {\n                  \"key_0\": 879,\n                  \"key_1\": true,\n                  \"key_2\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": false\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": false,\n                  \"key_2\": false,\n                  \"key_3\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": \"string\",\n                  \"key_2\": false,\n                  \"key_3\": 2802\n                },\n                \"relations\": {\n                  \"key_0\": 3252\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 2802.075149363533,\n                  \"key_1\": 6208,\n                  \"key_2\": true\n                },\n                \"relations\": {\n                  \"key_0\": \"string\"\n                }\n              }\n            ]\n          }\n        }\n      }\n    ]\n  },\n  \"changelogDestination\": {},\n  \"arePortResourcesInitialized\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0477c524-9c8a-4935-8ac7-f8ad40143127",
+          "name": "Delete an integration",
+          "request": {
+            "name": "Delete an integration",
+            "description": {
+              "content": "This route allows you to delete an integration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integration",
+                ":identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) The unique identifier of the resource you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8d4308f8-94ea-42cc-9ec3-364911fb79c4",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c768944-f909-494d-8cf5-1ad4626e251a",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ebad0b2-bba1-402a-aadc-c74cc6118a21",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b32d3557-e5f9-4cf3-be56-2a8d6b0713b4",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d440a141-31b3-4ffc-9a78-8dd34b5651ac",
+          "name": "Get an integration's event logs",
+          "request": {
+            "name": "Get an integration's event logs",
+            "description": {
+              "content": "This route allows you to fetch the event logs of a specific integration in your Port organization.<br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).<br/><br/>**Permission requirements**<br/>To use this endpoint, you must have a `moderator` or `admin` role in your Port organization.<br/>To learn more about the different roles and permissions, please refer to the [documentation](https://docs.port.io/sso-rbac/users-and-teams/manage-users-teams/#roles--permissions).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integration",
+                ":identifier",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The number of logs to fetch per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<string>",
+                  "description": "The date of time from which to fetch the logs, in `ISO format IE 2022-04-23T18:25:43.511Z`."
+                },
+                {
+                  "disabled": false,
+                  "key": "log_id",
+                  "value": "<string>",
+                  "description": "The identifier of the log."
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Determines whether to fetch logs before or after the specified timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "event_id",
+                  "value": "<string>",
+                  "description": "Filter logs belonging to a specific event."
+                },
+                {
+                  "disabled": false,
+                  "key": "levels",
+                  "value": "<string>",
+                  "description": "Filter logs by severity level."
+                },
+                {
+                  "disabled": false,
+                  "key": "etl_phases",
+                  "value": "<string>",
+                  "description": "Filter logs by ETL phases."
+                },
+                {
+                  "disabled": false,
+                  "key": "kinds",
+                  "value": "<string>",
+                  "description": "Filter logs by kinds (e.g `pull-request`, `branch` for GitHub, `issue` for Jira, etc.)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) The unique identifier of the resource you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "37039d2b-1c01-4bbd-92b5-74e75d46f3ee",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "log_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "event_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "levels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "etl_phases",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kinds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdebb444-e472-4676-8b05-99880a7853c4",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "log_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "event_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "levels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "etl_phases",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kinds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbcfea59-03bb-46b7-b060-8d557d916941",
+          "name": "Update an integration's config",
+          "request": {
+            "name": "Update an integration's config",
+            "description": {
+              "content": "This route allows you to modify an integration's configuration in your Port organization.<br/><br/>To learn more about integrations, check out the [documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integration",
+                ":identifier",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "identifier",
+                  "description": "(Required) The unique identifier of the resource you want to operate on."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": true\n                },\n                \"relations\": {\n                  \"key_0\": 5932,\n                  \"key_1\": \"string\",\n                  \"key_2\": 3544.196042643679\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 7996.343578343686,\n                  \"key_1\": 2081,\n                  \"key_2\": 8941\n                },\n                \"relations\": {\n                  \"key_0\": 9472.710978312889,\n                  \"key_1\": 3296\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 549.5842468887446\n                },\n                \"relations\": {\n                  \"key_0\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 7360,\n                  \"key_1\": 4827.440404818608,\n                  \"key_2\": \"string\"\n                },\n                \"relations\": {\n                  \"key_0\": 5193,\n                  \"key_1\": 619.886542447835,\n                  \"key_2\": 7872.713787581729,\n                  \"key_3\": 2084.460322577697\n                }\n              }\n            ]\n          }\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17c0e033-cd36-479a-b924-33fec8ea439e",
+              "name": "Default Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": true\n                },\n                \"relations\": {\n                  \"key_0\": 7313.249829052416,\n                  \"key_1\": \"string\",\n                  \"key_2\": 9363.103936958243,\n                  \"key_3\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 4822.275660631755,\n                  \"key_1\": 573\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": 9211.276351380124\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 4174.758551219815,\n                  \"key_1\": 1432.0269368536287\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": 159\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": 325.48704210463853,\n                  \"key_2\": 1958\n                },\n                \"relations\": {\n                  \"key_0\": 4478.568369514057,\n                  \"key_1\": \"string\",\n                  \"key_2\": 4389,\n                  \"key_3\": \"string\",\n                  \"key_4\": false\n                }\n              }\n            ]\n          }\n        }\n      }\n    ],\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a77a881-1a3c-498d-81ce-9c8ba39a2ac1",
+              "name": "A resource with the provided identifier was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": true\n                },\n                \"relations\": {\n                  \"key_0\": 7313.249829052416,\n                  \"key_1\": \"string\",\n                  \"key_2\": 9363.103936958243,\n                  \"key_3\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 4822.275660631755,\n                  \"key_1\": 573\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": 9211.276351380124\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 4174.758551219815,\n                  \"key_1\": 1432.0269368536287\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": 159\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": 325.48704210463853,\n                  \"key_2\": 1958\n                },\n                \"relations\": {\n                  \"key_0\": 4478.568369514057,\n                  \"key_1\": \"string\",\n                  \"key_2\": 4389,\n                  \"key_3\": \"string\",\n                  \"key_4\": false\n                }\n              }\n            ]\n          }\n        }\n      }\n    ],\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0cc30415-68ce-486a-8864-8514d5f4d6c2",
+              "name": "Request body is too large (limit is 1MiB)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": true\n                },\n                \"relations\": {\n                  \"key_0\": 7313.249829052416,\n                  \"key_1\": \"string\",\n                  \"key_2\": 9363.103936958243,\n                  \"key_3\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 4822.275660631755,\n                  \"key_1\": 573\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": 9211.276351380124\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 4174.758551219815,\n                  \"key_1\": 1432.0269368536287\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": 159\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": 325.48704210463853,\n                  \"key_2\": 1958\n                },\n                \"relations\": {\n                  \"key_0\": 4478.568369514057,\n                  \"key_1\": \"string\",\n                  \"key_2\": 4389,\n                  \"key_3\": \"string\",\n                  \"key_4\": false\n                }\n              }\n            ]\n          }\n        }\n      }\n    ],\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74c1b0f2-c281-46e5-b8de-74ab21da813a",
+              "name": "The json provided does not match the route's schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration",
+                    ":identifier",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "identifier",
+                      "description": "(Required) The unique identifier of the resource you want to operate on."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"deleteDependentEntities\": \"<boolean>\",\n    \"createMissingRelatedEntities\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": true\n                },\n                \"relations\": {\n                  \"key_0\": 7313.249829052416,\n                  \"key_1\": \"string\",\n                  \"key_2\": 9363.103936958243,\n                  \"key_3\": \"string\"\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 4822.275660631755,\n                  \"key_1\": 573\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": 9211.276351380124\n                }\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"kind\": \"<string>\",\n        \"selector\": {\n          \"query\": \"<string>\"\n        },\n        \"port\": {\n          \"entity\": {\n            \"mappings\": [\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": 4174.758551219815,\n                  \"key_1\": 1432.0269368536287\n                },\n                \"relations\": {\n                  \"key_0\": true,\n                  \"key_1\": 159\n                }\n              },\n              {\n                \"identifier\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"blueprint\": \"<string>\",\n                \"title\": \"<string>\",\n                \"properties\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": 325.48704210463853,\n                  \"key_2\": 1958\n                },\n                \"relations\": {\n                  \"key_0\": 4478.568369514057,\n                  \"key_1\": \"string\",\n                  \"key_2\": 4389,\n                  \"key_3\": \"string\",\n                  \"key_4\": false\n                }\n              }\n            ]\n          }\n        }\n      }\n    ],\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ok\": {},\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fa2f1058-57a8-494b-b141-b5caffb2588a",
+    "name": "Port Action Runs Integrations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

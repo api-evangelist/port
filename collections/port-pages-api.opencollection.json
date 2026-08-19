@@ -1,0 +1,305 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Pages API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a page's permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/pages/:page_identifier/permissions",
+            "params": [
+              {
+                "name": "page_identifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to get a specific page's permissions.<br/><br/>To learn more about pages, check out the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/page-permissions)."
+        },
+        {
+          "info": {
+            "name": "Update a page's permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/pages/:page_identifier/permissions",
+            "params": [
+              {
+                "name": "page_identifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to update a specific page’s permissions. <br/><br/>To learn more about pages, check out the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/page-permissions)."
+        },
+        {
+          "info": {
+            "name": "Get all pages in your portal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/pages",
+            "params": [
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to get all pages in your portal.<br/><br/>To learn more about pages, checkout the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/catalog-page)."
+        },
+        {
+          "info": {
+            "name": "Create pages in your portal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/pages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create pages in your portal.<br/><br/>To learn more about pages, checkout the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/catalog-page)."
+        },
+        {
+          "info": {
+            "name": "Get a page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/pages/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to get a specific page in your portal.<br/><br/>To learn more about pages, checkout the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/catalog-page)."
+        },
+        {
+          "info": {
+            "name": "Patch a page",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/pages/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to update a specific page in your portal.<br/><br/>To learn more about pages, checkout the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/catalog-page)."
+        },
+        {
+          "info": {
+            "name": "Delete a page",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/pages/:identifier",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete a specific page in your portal.<br/><br/>To learn more about pages, checkout the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/catalog-page)."
+        },
+        {
+          "info": {
+            "name": "Duplicate a page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/pages/:identifier/duplicate",
+            "params": [
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a copy of an existing page with the same page permissions."
+        },
+        {
+          "info": {
+            "name": "Create a widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/pages/:page_identifier/widgets",
+            "params": [
+              {
+                "name": "page_identifier",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create a widget in a specific page in your portal. <br/><br/>To learn more about pages, checkout the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/catalog-page)."
+        },
+        {
+          "info": {
+            "name": "Update a widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/pages/:page_identifier/widgets/:widget_id",
+            "params": [
+              {
+                "name": "page_identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "widget_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to update a specific widget in your portal. <br/><br/>To learn more about pages, checkout the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/catalog-page)."
+        },
+        {
+          "info": {
+            "name": "Delete a widget",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/pages/:page_identifier/widgets/:widget_id",
+            "params": [
+              {
+                "name": "page_identifier",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "widget_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete a specific widget in your portal. <br/><br/>To learn more about pages, checkout the [documentation](https://docs.port.io/customize-pages-dashboards-and-plugins/page/catalog-page)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

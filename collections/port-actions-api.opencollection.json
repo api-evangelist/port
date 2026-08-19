@@ -1,0 +1,423 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Port Action Runs Actions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get actions/automations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/actions",
+            "params": [
+              {
+                "name": "action_identifier",
+                "value": "",
+                "type": "query",
+                "description": "The identifier/s of the action/s and/or automation/s you want to fetch."
+              },
+              {
+                "name": "blueprint_identifier",
+                "value": "",
+                "type": "query",
+                "description": "The identifier/s of the blueprint/s whose actions/automations you wish to fetch."
+              },
+              {
+                "name": "operation",
+                "value": "",
+                "type": "query",
+                "description": "The [operation type/s](https://docs.port.io/create-self-service-experiences/setup-ui-for-action/#basic-details) of the action/s you want to fetch. Relevant only for self-service actions."
+              },
+              {
+                "name": "published",
+                "value": "",
+                "type": "query",
+                "description": "Only relevant for **automations**. If `true`, only published automations will be fetched."
+              },
+              {
+                "name": "trigger_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trigger_event",
+                "value": "",
+                "type": "query",
+                "description": "The event/s that triggered the automation/s you want to fetch. Relevant only for automations."
+              },
+              {
+                "name": "trigger_event_action_identifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the API version to use. Please use `v2` for the latest version of the API."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch one or more self-service actions and/or automations in your Port account.<br/><br/>The call will perform a logical `AND` between all query parameters below, and return all actions and automations that match the criteria.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/).<br/><br/>:::info Version parameter<br/>Set the `version` parameter to `v2` for the latest version of the API.:::"
+        },
+        {
+          "info": {
+            "name": "Create an action/automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/actions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to create a new self-service action or automation in your Port account.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/)."
+        },
+        {
+          "info": {
+            "name": "Get an action/automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/actions/:action_identifier",
+            "params": [
+              {
+                "name": "action_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the action/automation you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch the details of a self-service action or automation.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/)."
+        },
+        {
+          "info": {
+            "name": "Change an action/automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/actions/:action_identifier",
+            "params": [
+              {
+                "name": "action_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the action/automation you want to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to change the details of an existing self-service action or automation in your Port account.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/)."
+        },
+        {
+          "info": {
+            "name": "Delete an action/automation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/actions/:action_identifier",
+            "params": [
+              {
+                "name": "action_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the action/automation you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to delete a self-service action or automation.<br/><br/>To learn more about actions and automations, check out the [documentation](https://docs.port.io/actions-and-automations/)."
+        },
+        {
+          "info": {
+            "name": "This route is deprecated since November 20th 2024",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/actions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nullable",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route is deprecated since November 20th 2024"
+        },
+        {
+          "info": {
+            "name": "This route is deprecated since November 20th 2024",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/actions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nullable",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route is deprecated since November 20th 2024"
+        },
+        {
+          "info": {
+            "name": "This route is deprecated since November 20th 2024",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/actions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nullable",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route is deprecated since November 20th 2024"
+        },
+        {
+          "info": {
+            "name": "This route is deprecated since November 20th 2024",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/actions/:action_identifier",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nullable",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route is deprecated since November 20th 2024"
+        },
+        {
+          "info": {
+            "name": "This route is deprecated since November 20th 2024",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/actions/:action_identifier",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nullable",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route is deprecated since November 20th 2024"
+        },
+        {
+          "info": {
+            "name": "This route is deprecated since November 20th 2024",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/blueprints/:blueprint_identifier/actions/:action_identifier",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nullable",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route is deprecated since November 20th 2024"
+        },
+        {
+          "info": {
+            "name": "Get an action's permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/actions/:action_identifier/permissions",
+            "params": [
+              {
+                "name": "action_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the action/automation you want to operate on."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to fetch the permissions of a self-service action.<br/><br/>To learn more about action RBAC, check out the [documentation](https://docs.port.io/actions-and-automations/create-self-service-experiences/set-self-service-actions-rbac/)."
+        },
+        {
+          "info": {
+            "name": "Update an action's permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/actions/:action_identifier/permissions",
+            "params": [
+              {
+                "name": "action_identifier",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the action/automation you want to operate on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This route allows you to update the permissions of a self-service action.<br/><br/>To learn more about action RBAC, check out the [documentation](https://docs.port.io/actions-and-automations/create-self-service-experiences/set-self-service-actions-rbac/)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
