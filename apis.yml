@@ -71,6 +71,8 @@ apis:
   humanURL: https://docs.getport.io/api-reference/port-api/
   baseURL: https://api.getport.io
   tags:
+  - Application
+  tags_raw:
   - Apps
   properties:
   - type: OpenAPI
@@ -152,6 +154,8 @@ apis:
   humanURL: https://docs.getport.io/api-reference/port-api/
   baseURL: https://api.getport.io
   tags:
+  - Integration
+  tags_raw:
   - Integrations
   properties:
   - type: OpenAPI
@@ -232,6 +236,8 @@ apis:
   humanURL: https://docs.getport.io/api-reference/port-api/
   baseURL: https://api.getport.io
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
@@ -248,6 +254,8 @@ apis:
   humanURL: https://docs.getport.io/api-reference/port-api/
   baseURL: https://api.getport.io
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
